@@ -7,12 +7,12 @@ const Home = () => {
   return (
     <>
       <Header />
-      <main className="section">
+      <main className="body">
         <div className="container">
           <img src={photo03} alt="" className="project-instruction" />
         </div>
       </main>
-      <Footer />
+      
     </>
   );
 };

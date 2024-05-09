@@ -3,8 +3,10 @@ import React from 'react';
 const Account: React.FC = () => {
   return (
 
-    <div>
-    <p>Account</p>
+    <div className="body">
+    <p>
+      Account
+    </p>
     
 </div>
   );

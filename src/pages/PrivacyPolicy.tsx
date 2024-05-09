@@ -2,7 +2,7 @@ import React from "react";
 
 export const PrivacyPolicy = () => {
   return (
-    <div style={{ fontSize: "1.1em", lineHeight: "1.6", padding: "20px 0" }}>
+    <div className="body">
       <p className="privacy-police-text">
         <span style={{ fontWeight: "bold", fontSize: "larger" }}>
           PrivacyPolicy

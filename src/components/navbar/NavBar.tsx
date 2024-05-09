@@ -30,7 +30,7 @@ const NavBar = () => {
 
             <li className="nav-list__item">
               <NavLink
-                to="/aboutUs"
+                to="/about"
                 className={({ isActive }) =>
                   isActive ? activeLink : normalLink
                 }
