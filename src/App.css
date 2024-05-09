@@ -1,259 +1,307 @@
 @import url("https://fonts.googleapis.com/css2?family=Prata&display=swap");
-@import "./reset.css";   /*Импорт файлов сброса стилей */
+@import url("https://fonts.googleapis.com/css2?family=Bonheur+Royale&family=DM+Serif+Display:ital@0;1&family=Lemon&family=Modak&family=Poller+One&family=Prata&display=swap");
+@import "./reset.css"; /*Импорт файлов сброса стилей */
 
-
-.body {
-  margin-top: 150px; 
-  height: 800px;
-}
-/* -------------privacy-police------------ */
-
-.privacy-police-text {
-  margin-top: 100px;
-  margin-left: 25%;
-  margin-right: 25%;
-  text-align: justify;
-}
-
-/*------------------createWishlist---------- */
-.wishlist-container {
-  background-color: #ffffff;
+body {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  font-size: 14px;
-  font-family: "DM Serif Display", serif;
-}
-.title {
-  font-size: 30px;
-  margin-top: 8px;
-  margin-left: 15px;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: "DM Sans", sans-serif;
+  letter-spacing: -0.5px;
 }
 
-.title-1 {
-  font-size: 18px;
-  margin-top: 30px;
-  font-family: "DM Serif Display", serif;
+.section {
+  padding: 0px 0px 80px;
 }
-.wishlist-card {
-  background-color: #d1edf8;
-  box-shadow: 0px 2px 4px rgba(53, 22, 22, 0.4);
-  padding: 20px;
-  border-radius: 15px;
-  width: 600px;
-}
-
-.back-arrow a {
-  text-decoration: none;
-  color: #b1abab;
-}
-
-.back-arrow a:hover {
-  text-decoration: underline;
-}
-
-.input-group {
-  width: 100%;
-  margin: 0 auto;
-  border-radius: 20px;
-  margin-left: 15px;
-}
-input:focus,
-textarea:focus {
-  outline: none;
-}
-label {
-  display: block;
-  margin-bottom: 5px;
-  
-}
-
-.rounded-input {
-  color: #d8d7d7;
-  background-color: white;
-  border: none;
-  border-radius: 15px;
-  font-family: "DM Serif Display", serif;
-}
-
-.rounded-textarea {
-  background-color: white;
-  border-radius: 5px;
-  width: 94%;
-  height: 150px;
-  padding: 10px;
-  color: #d8d7d7;
-  font-family: "DM Serif Display", serif;
-}
-
-.save-button {
-  margin-top: 10px;
-  background-color: #007bff;
-  color: #ffffff;
-  font-size: 18px;
-  border: none;
-  border-radius: 10px;
-  padding: 10px 20px;
-  cursor: pointer;
-  width: 94%;
-  height: 50px;
-}
-
-.save-button:hover {
-  background-color: #4294ec;
-}
-
-/* -------------------------------------- */
-
-/* ------------CreateGift---------------- */
-
-.wishlist-container-custom {
-  background-color: #ffffff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  
-}
-
-.title-custom {
-  font-size: 30px;
-  margin-top: 8px;
-  margin-left: 5px;
-}
-
-.title-1-custom {
-  font-size: 18px;
-  margin-top: 10px;
-  font-family: "DM Serif Display", serif;
-}
-
-.wishlist-card-custom {
-  background-color: #d1edf8;
-  box-shadow: 0px 2px 4px rgba(53, 22, 22, 0.4);
-  padding: 30px;
-  border-radius: 15px;
-  width: 1000px;
-  height: 750px;
-  
-}
-
-.back-arrow-custom a {
-  text-decoration: none;
-  color: #b1abab;
-}
-
-.back-arrow-custom a:hover {
-  text-decoration: underline;
-}
-
-#gift-price-custom {
-  width: 60%;
-  float: left;
-}
-
-.currency-select {
-  float: left;
-  margin-left: 10px; /* Добавляем небольшой отступ между полем ввода цены и выпадающим списком */
-  height: 40px; /* Выравниваем высоту выпадающего списка с высотой поля ввода цены */
-}
-
-.currency-input {
-  overflow: hidden;
-}
-
-.image-input-custom input {
-  width: 205px;
-  height: 180px;
-  padding-top: 5px; /* Устанавливаем отступ сверху */
-  line-height: 40px; /* Устанавливаем высоту линии равной высоте поля ввода */
-  text-align: center; /* Выравниваем текст по центру */
-  border-radius: 10px;
-}
-
-.link-input-custom input {
-  justify-content: space-between;
-  width: calc(100% - 50px);
-  gap: 100px;
-  border-radius: 10px;
-}
-
-#gift-name-custom {
-  width: 500px; /* Устанавливаем ширину поля на 90% */
-  border-radius: 10px;
-}
-#gift-link-custom{
-  margin-bottom: 15px;
-  
-}
-.rounded-input-custom {
-  background-color: white;
-  border: none;
-  border-radius: 10px;
-  height: 35px;
-  padding-left: 5px;
-  font-family: "DM Serif Display", serif;
-}
-.input-group-1{
-  display: flex;
-  gap: 30px;
-}
-.rounded-input-custom::placeholder,
-.rounded-textarea-custom::placeholder {
-  color: #d8d7d7; /* Устанавливаем цвет текста placeholder'а */
-  border-radius: 10px;
-}
-.rounded-textarea-custom {
-  background-color: white;
-  border-radius: 10px;
-  width: 100%;
-  height: 100px;
-  padding: 10px;
-  border-color: #dad7d7;
-  color: #d8d7d7;
-  font-family: "DM Serif Display", serif;
-}
-
-.save-button-custom {
-  margin-top: 30px;
-  background-color: #007bff;
-  color: #ffffff;
-  font-size: 25px;
-  border: none;
-  border-radius: 10px;
-  padding: 10px 20px;
-  cursor: pointer;
-  width:200px;
-  height: 50px;
-  float: right;
-}
-
-.save-button-custom:hover {
-  background-color: #4294ec;
-}
-
-
-
-
-/*-------------------------------------------  */
-.project-instruction{
-margin-top: 50px;
-
-}
-.container {
-  margin: 0 auto; /* Размещение по центру */
-  padding: 0 15px; /* Отступы */
-  max-width: 1200px; /* Максимальная ширина */
+  .body {
+    margin-top: 150px;
+    height: 800px;
   }
- 
 
+  /* -------------privacy-police------------ */
 
- 
+  .privacy-police-text {
+    margin-top: 100px;
+    margin-left: 25%;
+    margin-right: 25%;
+    text-align: justify;
+  }
 
+  /*------------------createWishlist---------- */
+  .wishlist-container {
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-size: 14px;
+    font-family: "DM Serif Display", serif;
+  }
+  .title {
+    font-size: 30px;
+    margin-top: 8px;
+    margin-left: 15px;
+  }
 
+  .title-1 {
+    font-size: 18px;
+    margin-top: 30px;
+    font-family: "DM Serif Display", serif;
+  }
+  .wishlist-card {
+    background-color: #d1edf8;
+    box-shadow: 0px 2px 4px rgba(53, 22, 22, 0.4);
+    padding: 20px;
+    border-radius: 15px;
+    width: 600px;
+  }
 
+  .back-arrow a {
+    text-decoration: none;
+    color: #b1abab;
+  }
 
- 
+  .back-arrow a:hover {
+    text-decoration: underline;
+  }
 
- 
+  .input-group {
+    width: 100%;
+    margin: 0 auto;
+    border-radius: 20px;
+    margin-left: 15px;
+  }
+  input:focus,
+  textarea:focus {
+    outline: none;
+  }
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  .rounded-input {
+    color: #d8d7d7;
+    background-color: white;
+    border: none;
+    border-radius: 15px;
+    font-family: "DM Serif Display", serif;
+  }
+
+  .rounded-textarea {
+    background-color: white;
+    border-radius: 5px;
+    width: 94%;
+    height: 150px;
+    padding: 10px;
+    color: #d8d7d7;
+    font-family: "DM Serif Display", serif;
+  }
+
+  .save-button {
+    margin-top: 10px;
+    background-color: #007bff;
+    color: #ffffff;
+    font-size: 18px;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+    width: 94%;
+    height: 50px;
+  }
+
+  .save-button:hover {
+    background-color: #4294ec;
+  }
+
+  /* -------------------------------------- */
+
+  /* ------------CreateGift---------------- */
+
+  .wishlist-container-custom {
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  .title-custom {
+    font-size: 30px;
+    margin-top: 8px;
+    margin-left: 5px;
+  }
+
+  .title-1-custom {
+    font-size: 18px;
+    margin-top: 10px;
+    font-family: "DM Serif Display", serif;
+  }
+
+  .wishlist-card-custom {
+    background-color: #d1edf8;
+    box-shadow: 0px 2px 4px rgba(53, 22, 22, 0.4);
+    padding: 30px;
+    border-radius: 15px;
+    width: 1000px;
+    height: 750px;
+  }
+
+  .back-arrow-custom a {
+    text-decoration: none;
+    color: #b1abab;
+  }
+
+  .back-arrow-custom a:hover {
+    text-decoration: underline;
+  }
+
+  #gift-price-custom {
+    width: 60%;
+    float: left;
+  }
+
+  .currency-select {
+    float: left;
+    margin-left: 10px; /* Добавляем небольшой отступ между полем ввода цены и выпадающим списком */
+    height: 40px; /* Выравниваем высоту выпадающего списка с высотой поля ввода цены */
+  }
+
+  .currency-input {
+    overflow: hidden;
+  }
+
+  .image-input-custom input {
+    width: 205px;
+    height: 180px;
+    padding-top: 5px; /* Устанавливаем отступ сверху */
+    line-height: 40px; /* Устанавливаем высоту линии равной высоте поля ввода */
+    text-align: center; /* Выравниваем текст по центру */
+    border-radius: 10px;
+  }
+
+  .link-input-custom input {
+    justify-content: space-between;
+    width: calc(100% - 50px);
+    gap: 100px;
+    border-radius: 10px;
+  }
+
+  #gift-name-custom {
+    width: 500px; /* Устанавливаем ширину поля на 90% */
+    border-radius: 10px;
+  }
+  #gift-link-custom {
+    margin-bottom: 15px;
+  }
+  .rounded-input-custom {
+    background-color: white;
+    border: none;
+    border-radius: 10px;
+    height: 35px;
+    padding-left: 5px;
+    font-family: "DM Serif Display", serif;
+  }
+  .input-group-1 {
+    display: flex;
+    gap: 30px;
+  }
+  .rounded-input-custom::placeholder,
+  .rounded-textarea-custom::placeholder {
+    color: #d8d7d7; /* Устанавливаем цвет текста placeholder'а */
+    border-radius: 10px;
+  }
+  .rounded-textarea-custom {
+    background-color: white;
+    border-radius: 10px;
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    border-color: #dad7d7;
+    color: #d8d7d7;
+    font-family: "DM Serif Display", serif;
+  }
+
+  .save-button-custom {
+    margin-top: 30px;
+    background-color: #007bff;
+    color: #ffffff;
+    font-size: 25px;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+    width: 200px;
+    height: 50px;
+    float: right;
+  }
+
+  .save-button-custom:hover {
+    background-color: #4294ec;
+  }
+
+  /*-------------------------------------------  */
+  .project-instruction {
+    margin: 50px auto 0 15px;
+  }
+  .container {
+    margin: 0 auto; /* Размещение по центру */
+    padding: 0 15px; /* Отступы */
+    max-width: 1200px; /* Максимальная ширина */
+  }
+
+  /* Блок майн */
+  .purple-box {
+    background-color: #d1b0f0; /* Lighter purple color */
+    border-radius: 15px;
+    padding: 40px; /* Increased padding */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 450px; /* Increased height */
+    margin: 100px auto; /* Центрирование по горизонтали */
+    max-width: 1120px; /* Максимальная ширина блока */
+  }
+
+  .content-left {
+    width: 50%;
+  }
+
+  .content-left h2 {
+    color: black;
+    margin: 5px auto;
+    font-family: "Prata", serif;
+    font-size: 40px;
+    margin-bottom: 40px;
+  }
+
+  .content-left p {
+    color: black;
+    font-family: "Prata";
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+
+  .content-left button {
+    background-color: #8a2be2;
+    color: white; /* Lighter purple color */
+    padding: 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 50%;
+    margin-top: 20px;
+    box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.3); /* Увеличиваем тень при наведении */
+    font-family: "DM Serif Display", serif;
+  }
+
+  .content-right {
+    width: 50%;
+    text-align: right;
+  }
+
+  .content-right img {
+    max-width: 60%;
+  }
+
