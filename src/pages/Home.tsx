@@ -3,8 +3,11 @@ import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom'; // Предполагается, что вы используете React Router для навигации
 
 
-import photo03 from "./../img/Photo03.png";
+import photo03 from "./../img/photo03.jpg";
+import share from "./../img/share.jpg"
+import info from "./../img/info.jpg"
 import gift from "./../img/gift.png"
+import add from "./../img/add.jpg"
 import "../App.css";
 
 const Home = () => {
@@ -18,14 +21,48 @@ const Home = () => {
     <>
       <Header />
       <main className="section">
-        <div className="container">
-          <img src={photo03} alt="" className="project-instruction" />
+       
+        <div className="pink-box">
+          <h2 className="title">How it works</h2>
+          <div className="columns-container">
+            <div className="column">
+              <div className="image-container">
+                <img src={add} alt="Image 1" />
+              </div>
+              <div className="white-rectangle-text">
+                STEP 1<br />
+                Create a wish list<br />
+                Add the gifts you need with links to online stores
+              </div>
+            </div>
+            <div className="column">
+              <div className="image-container">
+                <img src={share} alt="Image 2" />
+              </div>
+              <div className="white-rectangle-text">
+                STEP 1<br />
+                Create a wish list<br />
+                Add the gifts you need with links to online stores
+              </div>
+            </div>
+            <div className="column">
+              <div className="image-container">
+                <img src={info} alt="Image 3" />
+              </div>
+              <div className="white-rectangle-text">
+                STEP 1<br />
+                Create a wish list<br />
+                Add the gifts you need with links to online stores
+              </div>
+            </div>
+          </div>
+        
         </div>
 
         <div className="purple-box">
           <div className="content-left">
             <h2 className="title">Receive only the gifts you want!</h2>
-            <p>No stupid or ridiculous surprises! Add a link and be guaranteed to get what you want in the right form, color, and quality!</p>
+            <p> Avoid any unwanted or absurd surprises! Simply provide a link and ensure you receive exactly what you desire, in the perfect form, color, and quality!</p>
             <Link to="/signup">
               <button>I want a Wishlist</button>
             </Link>
