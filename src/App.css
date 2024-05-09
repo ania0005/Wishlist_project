@@ -66,9 +66,11 @@ textarea:focus {
 label {
   display: block;
   margin-bottom: 5px;
+  
 }
 
 .rounded-input {
+  color: #d8d7d7;
   background-color: white;
   border: none;
   border-radius: 15px;
@@ -81,7 +83,7 @@ label {
   width: 94%;
   height: 150px;
   padding: 10px;
-  border-color: #dad7d7;
+  color: #d8d7d7;
   font-family: "DM Serif Display", serif;
 }
 
