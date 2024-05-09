@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Prata&display=swap");
 @import "./reset.css";   /*Импорт файлов сброса стилей */
 
+
 .body {
   margin-top: 150px; 
   height: 800px;
@@ -117,12 +118,12 @@ label {
 .title-custom {
   font-size: 30px;
   margin-top: 8px;
-  margin-left: 10px;
+  margin-left: 5px;
 }
 
 .title-1-custom {
-  font-size: 20px;
-  margin-top: 30px;
+  font-size: 18px;
+  margin-top: 10px;
   font-family: "DM Serif Display", serif;
 }
 
@@ -132,7 +133,7 @@ label {
   padding: 30px;
   border-radius: 15px;
   width: 1000px;
-  height: 800px;
+  height: 750px;
   
 }
 
@@ -145,13 +146,8 @@ label {
   text-decoration: underline;
 }
 
-.input-group-custom {
-  width: 100%;
-  border-radius: 10px;
-  
-}
 #gift-price-custom {
-  width: 50%;
+  width: 60%;
   float: left;
 }
 
@@ -165,68 +161,60 @@ label {
   overflow: hidden;
 }
 
-.link-input-custom {
-  width: 100%;
-}
-
 .image-input-custom input {
-  width: 200px;
-  height: 200px;
+  width: 205px;
+  height: 180px;
   padding-top: 5px; /* Устанавливаем отступ сверху */
   line-height: 40px; /* Устанавливаем высоту линии равной высоте поля ввода */
   text-align: center; /* Выравниваем текст по центру */
+  border-radius: 10px;
 }
 
 .link-input-custom input {
-  width: 100%;
-  float: left; /* Выравниваем блок по левому краю */
-}
-.input-group-1{
-  display: flex;
   justify-content: space-between;
   width: calc(100% - 50px);
   gap: 100px;
+  border-radius: 10px;
 }
 
-.link-preview-custom {
-  width: 40%;
-  float: right;
-  margin-top: 10px;
-}
-
-.link-preview-custom img {
-  width: 100%;
-}
 #gift-name-custom {
-  width: 638px; /* Устанавливаем ширину поля на 90% */
+  width: 500px; /* Устанавливаем ширину поля на 90% */
+  border-radius: 10px;
 }
 #gift-link-custom{
   margin-bottom: 15px;
+  
 }
 .rounded-input-custom {
   background-color: white;
   border: none;
   border-radius: 10px;
-  height: 40px;
+  height: 35px;
   padding-left: 5px;
   font-family: "DM Serif Display", serif;
 }
-
-.rounded-input-custom::placeholder {
-  color: #999999; /* Устанавливаем цвет текста placeholder'а */
+.input-group-1{
+  display: flex;
+  gap: 30px;
+}
+.rounded-input-custom::placeholder,
+.rounded-textarea-custom::placeholder {
+  color: #d8d7d7; /* Устанавливаем цвет текста placeholder'а */
+  border-radius: 10px;
 }
 .rounded-textarea-custom {
   background-color: white;
-  border-radius: 5px;
+  border-radius: 10px;
   width: 100%;
-  height: 200px;
+  height: 100px;
   padding: 10px;
   border-color: #dad7d7;
+  color: #d8d7d7;
   font-family: "DM Serif Display", serif;
 }
 
 .save-button-custom {
-  margin-top: 10px;
+  margin-top: 30px;
   background-color: #007bff;
   color: #ffffff;
   font-size: 25px;
@@ -256,6 +244,9 @@ margin-top: 50px;
   padding: 0 15px; /* Отступы */
   max-width: 1200px; /* Максимальная ширина */
   }
+ 
+
+
  
 
 

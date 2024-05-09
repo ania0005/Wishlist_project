@@ -21,22 +21,20 @@ const CreateWishlist: React.FC = () => {
         </span>
         <h2 className="title-custom">Add a gift</h2>
 
-        
-          <div className="link-input-custom">
-            <label className="title-1-custom" htmlFor="gift-link-custom">
-              Link where you can buy a gift
-            </label>
-            <input
-              type="text"
-              id="gift-link-custom"
-              placeholder="For example"
-              className="rounded-input-custom"
-            />
-          </div>
+        <div className="link-input-custom">
+          <label className="title-1-custom" htmlFor="gift-link-custom">
+            Link where you can buy a gift
+          </label>
+          <input
+            type="text"
+            id="gift-link-custom"
+            placeholder="For example"
+            className="rounded-input-custom"
+          />
+        </div>
 
-
+        <div className="input-group-1">
           <div className="input-group-custom">
-          <div className="input-group-1">
             <div className="image-input-custom">
               <label className="title-1-custom" htmlFor="gift-image-custom">
                 Image
@@ -44,25 +42,24 @@ const CreateWishlist: React.FC = () => {
               <input
                 type="text"
                 id="gift-image-custom"
-                placeholder="Image URL"
+                placeholder="Image / Click to download"
                 className="rounded-input-custom"
                 onChange={handleImageUrlChange}
               />
             </div>
-            
-            
-            <div className="input-group-custom">
-              <label className="title-1-custom" htmlFor="gift-name-custom">
-                Name
-              </label>
-              <input
-                type="text"
-                id="gift-name-custom"
-                placeholder="For example"
-                className="rounded-input-custom"
-              />
-            </div>
-            </div>
+          </div>
+
+          <div className="input-group-custom">
+            <label className="title-1-custom" htmlFor="gift-name-custom">
+              Name
+            </label>
+            <input
+              type="text"
+              id="gift-name-custom"
+              placeholder="For example"
+              className="rounded-input-custom"
+            />
+          </div>
 
           <div className="input-group-custom">
             <label className="title-1-custom" htmlFor="gift-price-custom">
@@ -81,11 +78,9 @@ const CreateWishlist: React.FC = () => {
             </div>
           </div>
         </div>
-        
-
         <div className="input-group-custom">
           <label className="title-1-custom" htmlFor="link-custom">
-            Link
+            Image Link
           </label>
           <input
             type="text"
@@ -111,8 +106,6 @@ const CreateWishlist: React.FC = () => {
             Save
           </button>
         </div>
-      
-      
       </div>
     </div>
   );
