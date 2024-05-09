@@ -1,11 +1,9 @@
 .footer {
-	position: fixed;
-	bottom: 0;
-	left: 0;
-	right: 0;
+	margin-top: auto;
+	padding: 10px 15px 5px;
 	background-color: #f3f1f1;
 	color: #000000;
-	padding: 7px;
+	
   }
   
   .footer__wrapper {

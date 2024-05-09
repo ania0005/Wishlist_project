@@ -8,11 +8,11 @@ import CreateGift from './pages/CreateGift';
 import Account from './pages/Account';
 import { PrivacyPolicy } from './pages/PrivacyPolicy'
 import NavBar from './components/navbar/NavBar';
-import AboutUs from './pages/AboutUs';
 import "./App.css";
 
 import AuthForm from './components/Auth/AuthForm'; 
 import SignUpPage from './components/SignUp/SignUpPage';
+import About from './pages/About';
 
 
 const App: React.FC = () => {
@@ -25,7 +25,7 @@ const App: React.FC = () => {
                 <NavBar />            
                 <Routes>                 
                     <Route path="/" element={<Home />} />
-                    <Route path="/about" element={<AboutUs />} />
+                    <Route path="/about" element={<About />} />
                     <Route path="/login" element={<AuthForm />} />
                     <Route path="/privacy-policy" element={<PrivacyPolicy />} />
                     <Route path="/createWishlist" element={<CreateWishlist />} />                 
