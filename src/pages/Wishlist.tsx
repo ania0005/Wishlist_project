@@ -2,7 +2,7 @@ import React from 'react'
 
 const Wishlist: React.FC = () => {
   return (
-    <div>Wishlist</div>
+    <div className='body'>Wishlist</div>
   )
 }
 export default Wishlist;

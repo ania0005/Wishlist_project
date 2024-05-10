@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const CreateWishlist: React.FC = () => {
+const CreateGift: React.FC = () => {
   const navigate = useNavigate();
   const [imageUrl, setImageUrl] = useState<string>("");
 
@@ -111,4 +111,4 @@ const CreateWishlist: React.FC = () => {
   );
 };
 
-export default CreateWishlist;
+export default CreateGift;
