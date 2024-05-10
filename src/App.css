@@ -29,7 +29,7 @@ body {
 
   /*------------------createWishlist---------- */
   .wishlist-container {
-    background-color: #ffffff;
+    background-color: whitesmoke;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -81,7 +81,7 @@ body {
   }
 
   .rounded-input {
-    color: #d8d7d7;
+
     background-color: white;
     border: none;
     border-radius: 15px;
@@ -94,7 +94,7 @@ body {
     width: 94%;
     height: 150px;
     padding: 10px;
-    color: #d8d7d7;
+   
     font-family: "DM Serif Display", serif;
   }
 
@@ -120,7 +120,7 @@ body {
   /* ------------CreateGift---------------- */
 
   .wishlist-container-custom {
-    background-color: #ffffff;
+    background-color: whitesmoke;
     display: flex;
     justify-content: center;
     align-items: center;
