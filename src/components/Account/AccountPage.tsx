@@ -8,13 +8,7 @@ const AccountPage: React.FC = () => {
 
   useEffect(() => {
     // 
-    fetch('http://localhost:3030/api/getUserName', { 
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ userId: 'user_id' }),
-    })
+    fetch('/api/users/auth/me')
     .then(response => response.json())
     .then(data => {
       setUsername(data.userName);
