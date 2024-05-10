@@ -1,0 +1,91 @@
+.dashboard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    background-image: url('../../img/fon_account.avif');
+    background-size: contain; 
+    
+    background-position: center;
+  
+  }
+  
+  
+  
+  .dashboard-header {
+    width: 100%;
+    background-color: #fff; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+  }
+  
+  .user-profile {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 60px; 
+    right: 20px;
+  }
+  
+  .user-icon {
+    width: 50px;
+    height: 50px;
+    background-color: #ddd; 
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+  
+  .username {
+    font-weight: bold;
+  }
+  
+  .welcome-message {
+    font-size: 24px;
+    color: #333; 
+    margin: 80px 0 20px; 
+    text-align: center;
+  }
+  
+  /* Стили для кнопок */
+  .home-button,
+  .wishlist-button,
+  .gift-button,
+  .logout-button,
+  .create-wishlist-button {
+    padding: 15px 30px;
+    margin: 10px;
+    font-size: 18px;
+    text-decoration: none;
+    color: white;
+    background-color: hsl(211, 27%, 68%); 
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .create-wishlist-button {
+    background-color: rgb(191, 50, 158); 
+    
+  }
+  
+  
+  .home-button:hover,
+  .wishlist-button:hover,
+  .gift-button:hover,
+  .logout-button:hover,
+  .create-wishlist-button:hover {
+    background-color: #0056b3; 
+  }
+  
+  .dashboard-content {
+    padding-top: 140px; 
+    width: 100%;
+    max-width: 800px; 
+    margin: auto;
+    padding: 20px;
+  }
+  

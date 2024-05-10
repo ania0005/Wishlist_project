@@ -16,7 +16,7 @@ const SignUpPage: React.FC = () => {
       return;
     }
     try {
-      const response = await fetch('https://localhost:3000/signup', {
+      const response = await fetch('/api/users/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
