@@ -114,6 +114,17 @@ body {
   .save-button:hover {
     background-color: #4294ec;
   }
+  .file-input-text {
+    width: 200px; /* Задайте нужную ширину */
+    height: 200px; 
+    justify-content: center; /* Выравнивание по горизонтали */
+    align-items: center; /* Выравнивание по вертикали */
+    display: flex;
+    padding: 10px; 
+    border-radius: 5px; 
+    background-color: white; /* Белый фон */
+    cursor: pointer; /* Курсор при наведении становится указателем */
+  }
 
   /* -------------------------------------- */
 
@@ -125,18 +136,22 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
+
   }
 
   .title-custom {
-    font-size: 30px;
+    font-size: 50px;
     margin-top: 8px;
-    margin-left: 5px;
+    margin-left: 20px;
+    padding-bottom: 50px;
   }
 
   .title-1-custom {
-    font-size: 18px;
-    margin-top: 10px;
+    font-size: 20px;
     font-family: "DM Serif Display", serif;
+    margin-top: 8px;
+    margin-left: 20px;
+
   }
 
   .wishlist-card-custom {
@@ -146,6 +161,7 @@ body {
     border-radius: 15px;
     width: 1000px;
     height: 750px;
+    
   }
 
   .back-arrow-custom a {
@@ -158,7 +174,7 @@ body {
   }
 
   #gift-price-custom {
-    width: 60%;
+    width: 85%;
     float: left;
   }
 
@@ -176,7 +192,7 @@ body {
     width: 205px;
     height: 180px;
     padding-top: 5px; /* Устанавливаем отступ сверху */
-    line-height: 40px; /* Устанавливаем высоту линии равной высоте поля ввода */
+    line-height: 20px; /* Устанавливаем высоту линии равной высоте поля ввода */
     text-align: center; /* Выравниваем текст по центру */
     border-radius: 10px;
   }
@@ -186,26 +202,30 @@ body {
     width: calc(100% - 50px);
     gap: 100px;
     border-radius: 10px;
+    margin-left: 20px;
+
   }
 
   #gift-name-custom {
-    width: 500px; /* Устанавливаем ширину поля на 90% */
+    width: 535px; /* Устанавливаем ширину поля на 90% */
     border-radius: 10px;
   }
   #gift-link-custom {
-    margin-bottom: 15px;
+    margin-bottom: 45px;
   }
   .rounded-input-custom {
     background-color: white;
     border: none;
     border-radius: 10px;
-    height: 35px;
+    height: 40px;
     padding-left: 5px;
     font-family: "DM Serif Display", serif;
   }
   .input-group-1 {
     display: flex;
-    gap: 30px;
+    gap: 150px;
+    margin-left: 20px;
+
   }
   .rounded-input-custom::placeholder,
   .rounded-textarea-custom::placeholder {
@@ -224,7 +244,8 @@ body {
   }
 
   .save-button-custom {
-    margin-top: 30px;
+    margin-top: 80px;
+    margin-right: 50px;
     background-color: #007bff;
     color: #ffffff;
     font-size: 25px;
@@ -239,6 +260,9 @@ body {
 
   .save-button-custom:hover {
     background-color: #4294ec;
+  }
+  .right-column{
+    margin-top: 20px;
   }
 
   /*-------------------------------------------  */
