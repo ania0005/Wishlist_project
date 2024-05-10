@@ -4,7 +4,6 @@ import ScrollToTop from "./utils/ScrollToTop";
 import Home from "./pages/Home";
 import CreateWishlist from './pages/CreateWishlist';
 import CreateGift from './pages/CreateGift';
-
 import { PrivacyPolicy } from './pages/PrivacyPolicy'
 import NavBar from './components/navbar/NavBar';
 import "./App.css";

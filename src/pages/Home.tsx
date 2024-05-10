@@ -10,9 +10,7 @@ import "../App.css";
 const Home = () => {
   const navigate = useNavigate();
 
-  const handleCreateWishlistClick = () => {
-    navigate('/login');
-  };
+  
 
   return (
     <>
