@@ -30,10 +30,10 @@ const SignUpPage: React.FC = () => {
 
       const data = await response.json();
       if (data.success) {
-        window.location.href = '/login'; 
+        window.location.href = '/login';
       } else {
         setError('Registration failed. Please try again.');
-        console.error('Registration failed:', data.message); 
+        console.error('Registration failed:', data.message);
       }
     } catch (error) {
       setError('Error during registration. Please check the entered data.');
@@ -43,8 +43,8 @@ const SignUpPage: React.FC = () => {
 
   return (
     <div className="auth-container">
-      <h2>Sign Up</h2> 
-     
+      <h2>Sign Up</h2>
+
       {error && <p className="error-message">{error}</p>}
 
       <form onSubmit={handleSubmit}>
@@ -55,6 +55,7 @@ const SignUpPage: React.FC = () => {
             id="first-name"
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
+            placeholder="your Name"
             required
           />
         </div>
@@ -65,6 +66,7 @@ const SignUpPage: React.FC = () => {
             id="last-name"
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
+            placeholder="your Last Name"
             required
           />
         </div>
@@ -75,6 +77,7 @@ const SignUpPage: React.FC = () => {
             id="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            placeholder="john@example.com"
             required
           />
         </div>
@@ -85,29 +88,29 @@ const SignUpPage: React.FC = () => {
             id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            placeholder="at least 8 characters"
             required
           />
-          <div className="input-group">
-            <label htmlFor="confirm-password">Confirm Password</label>
-            <input
+        </div>
+        <div className="input-group">
+          <label htmlFor="confirm-password">Confirm Password</label>
+          <input
             type="password"
             id="confirm-password"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
+            placeholder="at least 8 characters"
             required
           />
-          </div>
-
         </div>
 
-        
         <p className="consent-text">
-          By entering the resource, you automatically consent to the processing of personal data. 
+          By entering the resource, you automatically consent to the processing of personal data.
           <a href="/privacy-policy"> Personal Policy</a>
         </p>
         <button type="submit">Sign Up</button>
       </form>
-     
+
       <p>
         Already have an account? <a href="/login">Log In</a>
       </p>

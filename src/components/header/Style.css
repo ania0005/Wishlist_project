@@ -24,7 +24,7 @@
 
 .header__title {
 	margin-bottom: 20px;
-	font-size: 60px;
+	font-size: 50px;
 	font-weight: 700;
 	line-height: 1.4;
 	color: white;
@@ -32,8 +32,9 @@
 }
 
 .header__title strong {
-	font-size: 80px;
+	font-size: 100px;
 	font-weight: 700;
+	
 }
 
 .header__title em {
@@ -45,7 +46,7 @@
 
 .header__text {
 	margin-bottom: 40px;
-	font-size: 18px;
+	font-size: 30px;
 	line-height: 1.333;
 	color: white;
 	font-family: "DM Serif Display", serif;
@@ -66,4 +67,6 @@
 	transition: box-shadow 0.3s ease; /* Плавное изменение тени */
 	box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.3); /* Увеличиваем тень при наведении */
 	font-family: "DM Serif Display", serif;
+	font-size: 20px;
+	width: 60%;
 }

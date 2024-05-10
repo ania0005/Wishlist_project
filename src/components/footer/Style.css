@@ -1,11 +1,12 @@
 .footer {
-	margin-top: auto;
+	bottom: 0; /* Расположим футер внизу */
 	padding: 10px 15px 5px;
-	background-color: #f3f1f1;
+	background-color: #b1ceda;
 	color: #000000;
-	
+	margin-top: auto;
+	width: 100%;
   }
-  
+ 
   .footer__wrapper {
 	display: flex;
 	justify-content: space-between;
@@ -36,4 +37,4 @@
   .privacy-policy{
 	margin-right: 40px;
   }
- 
+

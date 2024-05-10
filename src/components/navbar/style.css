@@ -56,6 +56,7 @@ text-decoration: none;
     color: #fff;
     transition: opacity 0.2s ease-in;
     line-height: 24px;
+    font-size: 21px;
 }
 
 .nav-list__link:hover {

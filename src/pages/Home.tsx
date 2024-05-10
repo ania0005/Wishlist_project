@@ -16,6 +16,7 @@ const Home = () => {
     <>
       <Header />
       <main className="section">
+        
        
         <div className="pink-box">
           <h2 className="title">How it works</h2>
@@ -27,8 +28,7 @@ const Home = () => {
               <div className="white-rectangle-text">
                 STEP 1<br />
                 Create a wish list<br />
-                Add the gifts you need with links to online stores
-                !!!!!!!!
+                Add the gifts you need with links to online store
               </div>
             </div>
             <div className="column">
