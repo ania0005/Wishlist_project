@@ -30,7 +30,7 @@ const SignUpPage: React.FC = () => {
 
       const data = await response.json();
       if (data.success) {
-        window.location.href = '/login'; 
+        window.location.href = '/dashboard'; 
       } else {
         setError('Registration failed. Please try again.');
         console.error('Registration failed:', data.message); 

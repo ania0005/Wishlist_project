@@ -12,6 +12,7 @@ import AuthForm from './components/Auth/AuthForm';
 import SignUpPage from './components/SignUp/SignUpPage';
 import About from './pages/About';
 import Wishlist from "./pages/Wishlist";
+import AccountPage from './components/Account/AccountPage';
 
 
 const App: React.FC = () => {
@@ -29,7 +30,7 @@ const App: React.FC = () => {
                     <Route path="/privacy-policy" element={<PrivacyPolicy />} />
                     <Route path="/createWishlist" element={<CreateWishlist />} />                 
                     <Route path="/createGift" element={<CreateGift />} />
-                    <Route path="/dashboard" element={<Account />} />
+                    <Route path="/dashboard" element={<AccountPage />} />
                     <Route path="/wishlist" element={<Wishlist />} />
                     <Route path="/signup" element={<SignUpPage />} />
                 </Routes>
