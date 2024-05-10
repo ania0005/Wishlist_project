@@ -28,6 +28,7 @@ const Home = () => {
                 STEP 1<br />
                 Create a wish list<br />
                 Add the gifts you need with links to online stores
+                !!!!!!!!
               </div>
             </div>
             <div className="column">
