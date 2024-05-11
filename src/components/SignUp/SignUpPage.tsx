@@ -107,7 +107,9 @@ const SignUpPage: React.FC = () => {
           of personal data.
           <a href="/privacy-policy"> Personal Policy</a>
         </p>
-        <button type="submit">Sign Up</button>
+        <div className="center">
+        <button className="save-button" type="submit">Sign Up</button>
+        </div>
       </form>
 
 

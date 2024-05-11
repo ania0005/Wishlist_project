@@ -32,8 +32,13 @@
   border-radius: 4px;
 }
 
-button {
-  width: 50%; /* Ширина кнопки */
+.center{
+  justify-content: center; /* Выравнивание по центру по горизонтали */
+  display: flex;
+}
+
+.save-button {
+  width: 95%; /* Ширина кнопки */
   padding: 10px;
   background-color: #007bff; /* Голубой цвет кнопки */
   color: #ffffff; /* Белый текст */
@@ -41,7 +46,6 @@ button {
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s; /* Плавное изменение цвета при наведении */
-  margin-left: 145px;
 }
 
 button:hover {

@@ -5,7 +5,10 @@
   border-radius: 10px; /* Скругленные углы */
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-
+.center{
+  justify-content: center; /* Выравнивание по центру по горизонтали */
+  display: flex;
+}
   
   .auth-container h2 {
     text-align: center;
