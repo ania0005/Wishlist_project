@@ -28,7 +28,10 @@ const AuthForm: React.FC = () => {
 
       const data = await response.json();
       console.log("Successful authorization:", data);
-
+     
+      const authToken = data.token;
+      localStorage.setItem("authToken", authToken);
+      
       navigate("/dashboard");
       
     } catch (error) {
