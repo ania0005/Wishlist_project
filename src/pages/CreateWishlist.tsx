@@ -13,19 +13,19 @@ return (
     <div className="wishlist-container">
       <div className="wishlist-card">
       <span className="back-arrow"><a href="/">&#8592; Back</a></span>
-        <h2 className="title"> Create a wishlist</h2>
+        <h2 className="title-custom"> Create a wishlist</h2>
         
         <div className="input-group">
-          <label className="title-1" htmlFor="wishlist-name">Wish list name</label>
+          <label className="title-1-custom" htmlFor="wishlist-name">Wishlist name</label>
           <input
             type="text"
             id="wishlist-name"
             placeholder="For example: Birthday, New Year"
-            className="rounded-input"
+            className="rounded-input-custom"
           />
         </div>
         <div className="input-group">
-          <label htmlFor="comment" className="title-1">Comment</label>
+          <label htmlFor="comment" className="title-1-custom">Comment</label>
           <textarea
             id="comment"
             placeholder="Write something to your friends. This could be a greeting, wishes for gifts or an invitation."
@@ -33,11 +33,11 @@ return (
           ></textarea>
         </div>
         <div className="input-group">
-          <label htmlFor="event-date" className="title-1">Event date</label>
+          <label htmlFor="event-date" className="title-1-custom">Event date</label>
           <input type="date" id="event-date" className="rounded-input" lang="en"/>
         </div>
         <div className="input-group">
-        <button className="save-button" onClick={handleSaveClick}>Save</button>
+        <button className="save-button-custom" onClick={handleSaveClick}>Save</button>
         </div>
       </div>
     </div>
