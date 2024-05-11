@@ -37,9 +37,8 @@ const AuthForm: React.FC = () => {
   };
 
   return (
-    <body>
-    <div className="auth-container">    
-    <h2>Log In</h2> 
+    <div className="auth-container">
+      <h2>Log In</h2>
       {error && <p className="error-message">{error}</p>}
       <form onSubmit={handleSubmit}>
         <div className="input-group">
@@ -49,7 +48,6 @@ const AuthForm: React.FC = () => {
             id="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="john@example.com" //
             required
           />
         </div>
@@ -60,7 +58,6 @@ const AuthForm: React.FC = () => {
             id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            placeholder="At least 8 characters" //
             required
           />
         </div>
@@ -75,9 +72,7 @@ const AuthForm: React.FC = () => {
       <p>
         Don't have an account? <a href="/signup">Sign Up</a>
       </p>
-      
     </div>
-    </body>
   );
 };
 

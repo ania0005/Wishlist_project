@@ -31,9 +31,8 @@ const SignUpPage: React.FC = () => {
         throw new Error(`Error: ${response.status}`);
       }
 
-    
-      navigate("/dashboard");
-      
+      // const data = await response.json();
+      navigate("/login");
     } catch (error) {
       setError("Error during registration. Please check the entered data.");
       console.error("Error sending data:", error);
@@ -42,8 +41,6 @@ const SignUpPage: React.FC = () => {
 
   return (
     <div className="auth-container">
-      <h2>Sign Up</h2>
-
       <h2>Sign Up</h2>
 
       {error && <p className="error-message">{error}</p>}
@@ -56,7 +53,6 @@ const SignUpPage: React.FC = () => {
             id="first-name"
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
-            placeholder="your Name"
             required
           />
         </div>
@@ -67,7 +63,6 @@ const SignUpPage: React.FC = () => {
             id="last-name"
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
-            placeholder="your Last Name"
             required
           />
         </div>
@@ -78,7 +73,6 @@ const SignUpPage: React.FC = () => {
             id="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="john@example.com"
             required
           />
         </div>
@@ -89,7 +83,6 @@ const SignUpPage: React.FC = () => {
             id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            placeholder="at least 8 characters"
             required
           />
           <div className="input-group">
@@ -111,7 +104,6 @@ const SignUpPage: React.FC = () => {
         </p>
         <button type="submit">Sign Up</button>
       </form>
-
 
       <p>
         Already have an account? <a href="/login">Log In</a>
