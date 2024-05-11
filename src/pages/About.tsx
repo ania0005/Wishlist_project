@@ -2,6 +2,7 @@ import React from "react";
 
 const About = () => {
   return (
+    <body>
     <div className="body">
       <p className="privacy-police-text">
         <span style={{ fontWeight: "bold", fontSize: "larger" }}>
@@ -28,6 +29,7 @@ const About = () => {
       напишите нам по адресу [ваш электронный адрес].
       </p>
     </div>
+    </body>
   );
 };
 

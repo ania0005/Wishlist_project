@@ -1,7 +1,7 @@
 .auth-container {
   width: 50%;
   max-width: 600px;
-  margin: 260px auto;
+  margin: 205px auto;
   padding: 15px;
   background-color: #ffffff; /* Белый цвет формы */
   border-radius: 10px; /* Скругленные углы */
@@ -11,12 +11,12 @@
 
 .auth-container h2 {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom:20px;
   font-size: 40px;
 }
 
 .input-group {
-  margin-bottom: 20px;
+  margin-bottom: 5px;
 }
 
 .input-group label {
