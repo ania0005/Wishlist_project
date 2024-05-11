@@ -7,9 +7,16 @@
 .section {
   padding: 0px 0px 80px;
 }
-  .body {
-    margin-top: 150px;
-    height: 700px;
+ body {
+   display: flex;
+	 flex-direction: column;
+   min-height: 93vh; /* Занимает всю высоту видимой области страницы */
+   margin: 0;
+   padding: 0;
+   letter-spacing: -0.5px;
+   font-size: 20px;
+   font-family: "DM Serif Display", serif;
+   background-color: #d6f2fd; /* Голубой цвет фона страницы */
   }
 
   /* -------------privacy-police------------ */
@@ -108,6 +115,17 @@
   .save-button:hover {
     background-color: #4294ec;
   }
+  .file-input-text {
+    width: 200px; /* Задайте нужную ширину */
+    height: 200px; 
+    justify-content: center; /* Выравнивание по горизонтали */
+    align-items: center; /* Выравнивание по вертикали */
+    display: flex;
+    padding: 10px; 
+    border-radius: 5px; 
+    background-color: white; /* Белый фон */
+    cursor: pointer; /* Курсор при наведении становится указателем */
+  }
 
   /* -------------------------------------- */
 
@@ -119,18 +137,22 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
+
   }
 
   .title-custom {
-    font-size: 30px;
+    font-size: 50px;
     margin-top: 8px;
-    margin-left: 5px;
+    margin-left: 20px;
+    padding-bottom: 30px;
   }
 
   .title-1-custom {
-    font-size: 18px;
-    margin-top: 10px;
+    font-size: 20px;
     font-family: "DM Serif Display", serif;
+    margin-top: 15px;
+    margin-left: 20px;
+
   }
 
   .wishlist-card-custom {
@@ -138,8 +160,9 @@
     box-shadow: 0px 2px 4px rgba(53, 22, 22, 0.4);
     padding: 30px;
     border-radius: 15px;
-    width: 1000px;
-    height: 750px;
+    width: 1055px;
+    height: 820px;
+    
   }
 
   .back-arrow-custom a {
@@ -152,13 +175,13 @@
   }
 
   #gift-price-custom {
-    width: 60%;
+    width: 85%;
     float: left;
   }
 
   .currency-select {
     float: left;
-    margin-left: 10px; /* Добавляем небольшой отступ между полем ввода цены и выпадающим списком */
+    margin-left: 15px; /* Добавляем небольшой отступ между полем ввода цены и выпадающим списком */
     height: 40px; /* Выравниваем высоту выпадающего списка с высотой поля ввода цены */
   }
 
@@ -170,7 +193,7 @@
     width: 205px;
     height: 180px;
     padding-top: 5px; /* Устанавливаем отступ сверху */
-    line-height: 40px; /* Устанавливаем высоту линии равной высоте поля ввода */
+    line-height: 20px; /* Устанавливаем высоту линии равной высоте поля ввода */
     text-align: center; /* Выравниваем текст по центру */
     border-radius: 10px;
   }
@@ -180,26 +203,30 @@
     width: calc(100% - 50px);
     gap: 100px;
     border-radius: 10px;
+    margin-left: 20px;
+
   }
 
   #gift-name-custom {
-    width: 500px; /* Устанавливаем ширину поля на 90% */
+    width: 535px; /* Устанавливаем ширину поля на 90% */
     border-radius: 10px;
   }
   #gift-link-custom {
-    margin-bottom: 15px;
+    margin-bottom: 45px;
   }
   .rounded-input-custom {
     background-color: white;
     border: none;
     border-radius: 10px;
-    height: 35px;
+    height: 40px;
     padding-left: 5px;
     font-family: "DM Serif Display", serif;
   }
   .input-group-1 {
     display: flex;
-    gap: 30px;
+    gap: 150px;
+    margin-left: 20px;
+
   }
   .rounded-input-custom::placeholder,
   .rounded-textarea-custom::placeholder {
@@ -218,7 +245,8 @@
   }
 
   .save-button-custom {
-    margin-top: 30px;
+    margin-top: 80px;
+    margin-right: 50px;
     background-color: #007bff;
     color: #ffffff;
     font-size: 25px;
@@ -233,6 +261,9 @@
 
   .save-button-custom:hover {
     background-color: #4294ec;
+  }
+  .right-column{
+    margin-top: 20px;
   }
 
   /*-------------------------------------------  */
@@ -295,7 +326,7 @@
     padding: 10px; /* Padding for text */
     margin-top: 10px; /* Margin between image and text */
     text-align: left; /* Center align text */
-    font-family: "Prata";
+    font-family: "Prata", serif;
     font-size: 15px;
   
   }

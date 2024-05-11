@@ -1,10 +1,11 @@
 .auth-container {
-    width: 50%;
-    max-width: 600px;
-    margin: 400px auto 200px;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
+  width: 50%;
+  max-width: 600px;
+  background-color: #ffffff; /* Белый цвет формы */
+  border-radius: 10px; /* Скругленные углы */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
   
   .auth-container h2 {
     text-align: center;
