@@ -19,6 +19,12 @@
    background-color: #d6f2fd; /* Голубой цвет фона страницы */
   }
 
+.body{
+  height: 800px;
+}
+
+
+
   /* -------------privacy-police------------ */
 
   .privacy-police-text {
