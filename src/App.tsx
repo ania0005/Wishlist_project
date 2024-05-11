@@ -14,9 +14,10 @@ import Wishlist from "./pages/Wishlist";
 import AccountPage from "./components/Account/AccountPage";
 
 
+
 const App: React.FC = () => {
    
-
+console.log("Hello")
     return (
         <div className='App'>
            <Router>              
