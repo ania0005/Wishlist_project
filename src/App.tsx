@@ -11,7 +11,7 @@ import AuthForm from './components/Auth/AuthForm';
 import SignUpPage from './components/SignUp/SignUpPage';
 import About from './pages/About';
 import Wishlist from "./pages/Wishlist";
-import AccountPage from "./components/Account/AccountPage";
+import AccountPage from "./pages/Account/AccountPage";
 
 
 

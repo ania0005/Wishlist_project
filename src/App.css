@@ -2,13 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Bonheur+Royale&family=DM+Serif+Display:ital@0;1&family=Lemon&family=Modak&family=Poller+One&family=Prata&display=swap");
 @import "./reset.css"; /*Импорт файлов сброса стилей */
 
-body {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  font-family: "DM Sans", sans-serif;
-  letter-spacing: -0.5px;
-}
+
 
 .section {
   padding: 0px 0px 80px;
