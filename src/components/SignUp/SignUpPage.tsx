@@ -31,8 +31,8 @@ const SignUpPage: React.FC = () => {
         throw new Error(`Error: ${response.status}`);
       }
 
-      // const data = await response.json();
-      navigate("/login");
+    
+      navigate("/dashboard");
       
     } catch (error) {
       setError("Error during registration. Please check the entered data.");
