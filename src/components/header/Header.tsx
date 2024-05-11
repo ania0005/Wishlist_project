@@ -7,7 +7,7 @@ const Header = () => {
   const navigate = useNavigate();
 
   const handleCreateWishlistClick = () => {
-    navigate('/createWishlist');
+    navigate('/login');
   };
 
   return (

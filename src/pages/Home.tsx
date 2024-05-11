@@ -10,13 +10,14 @@ import "../App.css";
 const Home = () => {
   const navigate = useNavigate();
 
-  
+
 
   return (
     <>
       <Header />
       <main className="section">
-       
+
+
         <div className="pink-box">
           <h2 className="title">How it works</h2>
           <div className="columns-container">
@@ -26,9 +27,10 @@ const Home = () => {
               </div>
               <div className="white-rectangle-text">
                 STEP 1<br />
+                <br />
                 Create a wish list<br />
-                Add the gifts you need with links to online stores
-                !!!!!!!!
+                <br />
+                Add the gifts you need with links to online store
               </div>
             </div>
             <div className="column">
@@ -36,23 +38,25 @@ const Home = () => {
                 <img src={share} alt="Image 2" />
               </div>
               <div className="white-rectangle-text">
-                STEP 1<br />
-                Create a wish list<br />
-                Add the gifts you need with links to online stores
-              </div>
+                STEP 2<br />
+                <br />
+                Share with your friends<br />
+                <br />
+                Send them a link and everyone can reserve a gift from the list              </div>
             </div>
             <div className="column">
               <div className="image-container">
                 <img src={info} alt="Image 3" />
               </div>
               <div className="white-rectangle-text">
-                STEP 1<br />
-                Create a wish list<br />
-                Add the gifts you need with links to online stores
-              </div>
+                STEP 3<br />
+                <br />
+                Ready! Enjoy!<br />
+                <br />
+                You get cool gifts, and your friends don’t ask the question “What should I give?”              </div>
             </div>
           </div>
-        
+
         </div>
 
         <div className="purple-box">
