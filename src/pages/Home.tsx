@@ -1,23 +1,20 @@
 import Header from "../components/header/Header";
-import { useNavigate } from 'react-router-dom';
-import { Link } from 'react-router-dom'; // Предполагается, что вы используете React Router для навигации
-import share from "./../img/share.jpg"
-import info from "./../img/info.jpg"
-import gift from "./../img/gift.png"
-import add from "./../img/add.jpg"
+import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom"; // Предполагается, что вы используете React Router для навигации
+import share from "./../img/share.jpg";
+import info from "./../img/info.jpg";
+import gift from "./../img/gift.png";
+import add from "./../img/add.jpg";
 import "../App.css";
 
 const Home = () => {
   const navigate = useNavigate();
-
-
+  const isAuthenticated = localStorage.getItem("authToken");
 
   return (
     <>
       <Header />
       <main className="section">
-
-
         <div className="pink-box">
           <h2 className="title">How it works</h2>
           <div className="columns-container">
@@ -28,7 +25,8 @@ const Home = () => {
               <div className="white-rectangle-text">
                 STEP 1<br />
                 <br />
-                Create a wish list<br />
+                Create a wish list
+                <br />
                 <br />
                 Add the gifts you need with links to online store
               </div>
@@ -40,9 +38,11 @@ const Home = () => {
               <div className="white-rectangle-text">
                 STEP 2<br />
                 <br />
-                Share with your friends<br />
+                Share with your friends
                 <br />
-                Send them a link and everyone can reserve a gift from the list              </div>
+                <br />
+                Send them a link and everyone can reserve a gift from the list{" "}
+              </div>
             </div>
             <div className="column">
               <div className="image-container">
@@ -51,27 +51,40 @@ const Home = () => {
               <div className="white-rectangle-text">
                 STEP 3<br />
                 <br />
-                Ready! Enjoy!<br />
+                Ready! Enjoy!
                 <br />
-                You get cool gifts, and your friends don’t ask the question “What should I give?”              </div>
+                <br />
+                You get cool gifts, and your friends don’t ask the question
+                “What should I give?”{" "}
+              </div>
             </div>
           </div>
-
         </div>
 
         <div className="purple-box">
           <div className="content-left">
             <h2 className="title">Receive only the gifts you want!</h2>
-            <p> Avoid any unwanted or absurd surprises! Simply provide a link and ensure you receive exactly what you desire, in the perfect form, color, and quality!</p>
-            <Link to="/signup">
-              <button>I want a Wishlist</button>
-            </Link>
+            <p>
+              {" "}
+              Avoid any unwanted or absurd surprises! Simply provide a link and
+              ensure you receive exactly what you desire, in the perfect form,
+              color, and quality!
+            </p>
+
+            {isAuthenticated ? (
+              <Link to="/createWishlist">
+                <button>I want a Wishlist</button>
+              </Link>
+            ) : (
+              <Link to="/signup">
+                <button>I want a Wishlist</button>
+              </Link>
+            )}
           </div>
           <div className="content-right">
             <img src={gift} alt="Your Alt Text" />
           </div>
         </div>
-
       </main>
     </>
   );

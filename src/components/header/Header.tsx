@@ -4,10 +4,17 @@ import "./Style.css";
 
 
 const Header = () => {
+  
   const navigate = useNavigate();
-
+  const isAuthenticated = localStorage.getItem("authToken");
+  
   const handleCreateWishlistClick = () => {
-    navigate('/login');
+    {isAuthenticated ? (
+      navigate('/createWishlist')
+    ) : (
+      navigate('/login')
+    )}
+    
   };
 
   return (
