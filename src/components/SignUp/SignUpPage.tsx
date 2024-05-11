@@ -1,25 +1,28 @@
-import React, { useState } from 'react';
-import './SignUpPage.css';
+import React, { useState } from "react";
+import "./SignUpPage.css";
+import { useNavigate } from "react-router-dom";
 
 const SignUpPage: React.FC = () => {
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [error, setError] = useState('');
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [error, setError] = useState("");
+
+  const navigate = useNavigate();
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (password !== confirmPassword) {
-      setError('Passwords do not match.');
+      setError("Passwords do not match.");
       return;
     }
     try {
-      const response = await fetch('https://localhost:3000/signup', {
-        method: 'POST',
+      const response = await fetch("/api/users/register", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({ firstName, lastName, email, password }),
       });
@@ -28,23 +31,18 @@ const SignUpPage: React.FC = () => {
         throw new Error(`Error: ${response.status}`);
       }
 
-      const data = await response.json();
-      if (data.success) {
-        window.location.href = '/login'; 
-      } else {
-        setError('Registration failed. Please try again.');
-        console.error('Registration failed:', data.message); 
-      }
+      // const data = await response.json();
+      navigate("/login");
     } catch (error) {
-      setError('Error during registration. Please check the entered data.');
-      console.error('Error sending data:', error);
+      setError("Error during registration. Please check the entered data.");
+      console.error("Error sending data:", error);
     }
   };
 
   return (
     <div className="auth-container">
-      <h2>Sign Up</h2> 
-     
+      <h2>Sign Up</h2>
+
       {error && <p className="error-message">{error}</p>}
 
       <form onSubmit={handleSubmit}>
@@ -90,24 +88,23 @@ const SignUpPage: React.FC = () => {
           <div className="input-group">
             <label htmlFor="confirm-password">Confirm Password</label>
             <input
-            type="password"
-            id="confirm-password"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-            required
-          />
+              type="password"
+              id="confirm-password"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              required
+            />
           </div>
-
         </div>
 
-        
         <p className="consent-text">
-          By entering the resource, you automatically consent to the processing of personal data. 
+          By entering the resource, you automatically consent to the processing
+          of personal data.
           <a href="/privacy-policy"> Personal Policy</a>
         </p>
         <button type="submit">Sign Up</button>
       </form>
-     
+
       <p>
         Already have an account? <a href="/login">Log In</a>
       </p>
