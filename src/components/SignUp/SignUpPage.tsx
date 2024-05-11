@@ -53,6 +53,7 @@ const SignUpPage: React.FC = () => {
             id="first-name"
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
+            placeholder="your name"
             required
           />
         </div>
@@ -63,6 +64,7 @@ const SignUpPage: React.FC = () => {
             id="last-name"
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
+            placeholder="your last name"
             required
           />
         </div>
@@ -73,6 +75,7 @@ const SignUpPage: React.FC = () => {
             id="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            placeholder="john@example.com"
             required
           />
         </div>
@@ -83,8 +86,10 @@ const SignUpPage: React.FC = () => {
             id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            placeholder="at least 8 characters"
             required
           />
+           </div>
           <div className="input-group">
             <label htmlFor="confirm-password">Confirm Password</label>
             <input
@@ -92,10 +97,10 @@ const SignUpPage: React.FC = () => {
               id="confirm-password"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
+              placeholder="at least 8 characters"
               required
             />
           </div>
-        </div>
 
         <p className="consent-text">
           By entering the resource, you automatically consent to the processing
