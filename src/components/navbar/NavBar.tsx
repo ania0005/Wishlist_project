@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import "./style.css";
 import logOut from "../Auth/LogOut";
@@ -5,22 +6,28 @@ import logOut from "../Auth/LogOut";
 const NavBar = () => {
   const activeLink = "nav-list__link nav-list__link--active";
   const normalLink = "nav-list__link";
-
   const navigate = useNavigate();
+
+  const [isAuthenticated, setIsAuthenticated] = useState(
+    localStorage.getItem("authToken") !== null
+  );
+
+  useEffect(() => {
+    // Проверяем, зарегистрирован ли пользователь при монтировании компонента
+    setIsAuthenticated(localStorage.getItem("authToken") !== null);
+  }, []); // Пустой массив зависимостей означает, что эффект выполнится только при монтировании компонента
 
   const handleLogout = async () => {
     try {
       await logOut();
       localStorage.removeItem("authToken");
+      setIsAuthenticated(false); // Устанавливаем isAuthenticated в false при выходе из аккаунта
       navigate("/");
     } catch (error: any) {
       console.error("Ошибка при выходе из аккаунта:", error.message);
     }
   };
 
-  // Проверяем, зарегистрирован ли пользователь
-  const isAuthenticated = localStorage.getItem("authToken");
-  
   return (
     <nav className="nav">
       <div className="container">
@@ -49,7 +56,7 @@ const NavBar = () => {
                 About us
               </NavLink>
             </li>
-            {isAuthenticated ? ( // Если пользователь зарегистрирован
+            {isAuthenticated ? (
               <>
                 <li className="nav-list__item">
                   <NavLink
@@ -63,7 +70,7 @@ const NavBar = () => {
                   </NavLink>
                 </li>
               </>
-            ) : ( // Если пользователь не зарегистрирован
+            ) : (
               <>
                 <li className="nav-list__item">
                   <NavLink
@@ -94,4 +101,4 @@ const NavBar = () => {
   );
 };
 
-export default NavBar; 
+export default NavBar;

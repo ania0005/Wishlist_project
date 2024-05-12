@@ -43,6 +43,9 @@ button {
   transition: background-color 0.3s; /* Плавное изменение цвета при наведении */
   margin-left: 145px;
 }
+.input-group input::placeholder {
+  color: #c2bfbf; /* Цвет текста placeholder */
+}
 
 button:hover {
   background-color: #0056b3; /* Темнее при наведении */
