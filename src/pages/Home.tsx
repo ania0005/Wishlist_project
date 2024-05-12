@@ -76,7 +76,7 @@ const Home = () => {
                 <button>I want a Wishlist</button>
               </Link>
             ) : (
-              <Link to="/signup">
+              <Link to="/login">
                 <button>I want a Wishlist</button>
               </Link>
             )}
