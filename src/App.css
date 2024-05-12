@@ -206,16 +206,11 @@ label {
   gap: 60px;
   margin-left: 10px;
 }
-
-.rounded-input-custom::placeholder,
-.rounded-textarea-custom::placeholder,
-.file-input-text,
-.rounded-input {
-  color: #8d8484; /* Устанавливаем цвет текста placeholder'а */
-  border-radius: 10px;
-  padding-left: 10px;
-  font-size: 18px;
+.rounded-input-custom,
+.link-input-custom input {
+  padding-left: 8px; /* Добавляем отступ слева (Текст вводимой пользователем.) */
 }
+
 .rounded-textarea-custom {
   background-color: white;
   border-radius: 10px;
@@ -223,8 +218,17 @@ label {
   height: 100px;
   padding: 10px;
   border-color: #dad7d7;
-  color: #d8d7d7;
   font-family: "DM Serif Display", serif;
+}
+.rounded-input::placeholder,
+.rounded-textarea::placeholder,
+.rounded-input-custom::placeholder,
+.rounded-textarea-custom::placeholder,
+.file-input-text {
+  color: #c2bfbf; /* Устанавливаем цвет текста placeholder'а */
+  border-radius: 10px;
+  padding-left: 10px;
+  font-size: 18px;
 }
 
 .save-button-custom {

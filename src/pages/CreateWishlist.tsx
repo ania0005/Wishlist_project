@@ -3,9 +3,14 @@ import { useNavigate } from 'react-router-dom';
 
 const CreateWishlist: React.FC = () => {
   const navigate = useNavigate();
+  const [wishlistName, setWishlistName] = useState<string>(""); // Состояние для хранения имени вишлиста
   const [errorMessage, setErrorMessage] = useState<string>("");
 
   const handleSaveClick = () => {
+    if (!wishlistName.trim()) { // Проверяем, что поле "Wishlist name" не пустое или не состоит только из пробелов
+      setErrorMessage("Please enter a wishlist name."); // Устанавливаем сообщение об ошибке
+      return; // Прерываем выполнение функции
+    }
     navigate("/dashboard");
   };
   
@@ -37,10 +42,16 @@ const CreateWishlist: React.FC = () => {
       setErrorMessage("");
     }
   };
+
+  const handleWishlistNameChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setWishlistName(event.target.value); // Обновляем состояние с именем вишлиста при изменении значения поля ввода
+    setErrorMessage(""); // Убираем сообщение об ошибке при изменении значения поля ввода
+  };
+  
   return (
     <div className="wishlist-container">
       <div className="wishlist-card">
-        <span className="back-arrow"><a href="/">&#8592; Back</a></span>
+        <span className="back-arrow"><a href="/dashboard">&#8592; Back</a></span>
         <h2 className="title-custom"> Create a wishlist</h2>
 
         <div className="input-group">
@@ -50,6 +61,8 @@ const CreateWishlist: React.FC = () => {
             id="wishlist-name"
             placeholder="For example: Birthday, New Year"
             className="rounded-input-custom"
+            value={wishlistName}
+            onChange={handleWishlistNameChange} // Добавляем обработчик изменения значения поля ввода для имени вишлиста
           />
         </div>
         <div className="input-group">
