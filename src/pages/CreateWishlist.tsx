@@ -11,7 +11,7 @@ const CreateWishlist: React.FC = () => {
       setErrorMessage("Please enter a wishlist name."); // Устанавливаем сообщение об ошибке
       return; // Прерываем выполнение функции
     }
-    navigate("/dashboard");
+    navigate("/wishlist");
   };
   
   const currentDate = new Date();
