@@ -23,9 +23,9 @@ const Home = () => {
                 <img src={add} alt="Image 1" />
               </div>
               <div className="white-rectangle-text">
-                STEP 1<br />               
-                 <br />
-                <strong>Create a wish list</strong>
+                STEP 1<br />
+                <br />
+                Create a wish list
                 <br />
                 <br />
                 Add the gifts you need with links to online store
@@ -36,9 +36,9 @@ const Home = () => {
                 <img src={share} alt="Image 2" />
               </div>
               <div className="white-rectangle-text">
-                STEP 2<br />               
-                 <br />
-                <strong>Share with your friends</strong>
+                STEP 2<br />
+                <br />
+                Share with your friends
                 <br />
                 <br />
                 Send them a link and everyone can reserve a gift from the list{" "}
@@ -51,7 +51,7 @@ const Home = () => {
               <div className="white-rectangle-text">
                 STEP 3<br />
                 <br />
-                <strong>Ready! Enjoy!</strong>
+                Ready! Enjoy!
                 <br />
                 <br />
                 You get cool gifts, and your friends don’t ask the question
@@ -91,3 +91,4 @@ const Home = () => {
 };
 
 export default Home;
+

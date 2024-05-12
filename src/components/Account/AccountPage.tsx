@@ -20,7 +20,7 @@ const AccountPage: React.FC = () => {
 
   // Функция для обработки клика по кнопке
   const handleCreateWishlistClick = () => {
-    navigate('/createWishlist'); // Программная навигация
+    navigate('/dashboard'); // Программная навигация
   };
 
   return (
