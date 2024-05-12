@@ -20,7 +20,7 @@ const AuthForm: React.FC = () => {
         },
         body: JSON.stringify({ email, password }),
       });
-      console.log("Hi");
+      
 
       if (!response.ok) {
         throw new Error(`Error: ${response.status}`);
