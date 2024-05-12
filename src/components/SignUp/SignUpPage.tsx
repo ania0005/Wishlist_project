@@ -68,7 +68,7 @@ const SignUpPage: React.FC = () => {
             id="last-name"
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
-            placeholder="your Last Name"
+            placeholder="your last name"
             required
           />
         </div>
@@ -79,6 +79,7 @@ const SignUpPage: React.FC = () => {
             id="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            placeholder="john@example.com"
             required
           />
         </div>
@@ -89,6 +90,7 @@ const SignUpPage: React.FC = () => {
             id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            placeholder="at least 8 characters"
             required
           />
         </div>

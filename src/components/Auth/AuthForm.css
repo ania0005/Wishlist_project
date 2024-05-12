@@ -40,7 +40,7 @@
   button {
     width: 100%;
     padding: 10px;
-    background-color: #F1F8FF;
+    background-color: #2891e2;
     color: white;
     border: none;
     border-radius: 4px;
@@ -48,7 +48,7 @@
   }
   
   button:hover {
-    background-color: #F1F8FF;
+    background-color: #3788da;
   }
   /* Стили текста под кнопкой */
   .auth-container p {

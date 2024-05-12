@@ -17,10 +17,7 @@ body {
   font-family: "DM Serif Display", serif;
   background-color: #d6f2fd; /* Голубой цвет фона страницы */
 }
-.body {
-  margin-top: 80px;
-  height: 850px;
-}
+
 /* -------------privacy-police------------ */
 
 .privacy-police-text {
