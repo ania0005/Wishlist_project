@@ -20,7 +20,7 @@ const AuthForm: React.FC = () => {
         },
         body: JSON.stringify({ email, password }),
       });
-      console.log("Hi");
+      
 
       if (!response.ok) {
         throw new Error(`Error: ${response.status}`);
@@ -41,6 +41,7 @@ const AuthForm: React.FC = () => {
   };
 
   return (
+    <body>
     
     <div className="auth-container">
       <h2>Log In</h2>
@@ -74,12 +75,15 @@ const AuthForm: React.FC = () => {
           of personal data.
           <a href="/privacy-policy"> Personal Policy</a>
         </p>
-        <button type="submit">Log In</button>
+        <div className="center">
+        <button className="save-button" type="submit">Log In</button>
+        </div>
       </form>
       <p>
         Don't have an account? <a href="/signup">Sign Up</a>
       </p>
     </div>
+    </body>
     
   );
 };

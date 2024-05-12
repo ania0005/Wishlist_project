@@ -45,7 +45,7 @@
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  transition: background-color 0.s; /* Плавное изменение цвета при наведении */
+  transition: background-color 0.3s; /* Плавное изменение цвета при наведении */
 }
 .input-group input::placeholder {
   color: #c2bfbf; /* Цвет текста placeholder */
