@@ -1,13 +1,13 @@
-
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom'; // Добавлен импорт useNavigate
 import './AccountPage.css';
 
 const AccountPage: React.FC = () => {
   const [username, setUsername] = useState('Guest');
+  const navigate = useNavigate(); 
 
   useEffect(() => {
-    // 
+    
     fetch('/api/users/auth/me')
     .then(response => response.json())
     .then(data => {
@@ -18,22 +18,27 @@ const AccountPage: React.FC = () => {
     });
   }, []); 
 
+  // Функция для обработки клика по кнопке
+  const handleCreateWishlistClick = () => {
+    navigate('/createWishlist'); // Программная навигация
+  };
+
   return (
     <div className="dashboard">
       <header className="dashboard-header">
         <div className="user-profile">
           <div className="user-icon"></div>
           <div className="username">{username}</div>
+          <div className="wishlist-section">
+            <span className="my-wishlists">My WishLists</span>
+         
+            <Link to="/createWishList" className="create-wishlist-button">Create WishList</Link>
+          
+          </div>
         </div>
-        <h1 className="welcome-message">Welcome! Create your wishlist with us and share it with your friends!</h1>
-        <Link to="/" className="home-button">Home</Link>
-        <Link to="/createWishList" className="wishlist-button">WishList</Link>
-        <Link to="/createGift" className="gift-button">Gift</Link>
-        <Link to="/login" className="logout-button">Log Out</Link>
-        <Link to="/createWishList" className="create-wishlist-button">Create WishList</Link>
       </header>
       <main className="dashboard-content">
-        
+        {/* Содержимое основной части страницы */}
       </main>
     </div>
   );
