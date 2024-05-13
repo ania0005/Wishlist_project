@@ -68,7 +68,7 @@ const SignUpPage: React.FC = () => {
             id="last-name"
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
-            placeholder="your Last Name"
+            placeholder="your last name"
             required
           />
         </div>
@@ -93,18 +93,18 @@ const SignUpPage: React.FC = () => {
             placeholder="at least 8 characters"
             required
           />
-        </div>
-        <div className="input-group">
-          <label htmlFor="confirm-password">Confirm Password</label>
-          <input
-            type="password"
-            id="confirm-password"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-            placeholder="at least 8 characters"
-            required
-          />
-        </div>
+           </div>
+          <div className="input-group">
+            <label htmlFor="confirm-password">Confirm Password</label>
+            <input
+              type="password"
+              id="confirm-password"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              placeholder="at least 8 characters"
+              required
+            />
+          </div>
 
         <p className="consent-text">
           By entering the resource, you automatically consent to the processing
