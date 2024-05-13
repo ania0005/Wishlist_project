@@ -10,8 +10,8 @@ import "./App.css";
 import AuthForm from './components/Auth/AuthForm'; 
 import SignUpPage from './components/SignUp/SignUpPage';
 import About from './pages/About';
-import Wishlist from "./pages/Wishlist";
-import AccountPage from "./pages/Account/AccountPage";
+import AccountPage from "./components/Account/AccountPage";
+import WishListPage from "./components/WishList/WishListPage";
 
 
 
@@ -31,7 +31,7 @@ console.log("Hello")
                     <Route path="/createWishlist" element={<CreateWishlist />} />                 
                     <Route path="/createGift" element={<CreateGift />} />
                     <Route path="/dashboard" element={<AccountPage />} />
-                    <Route path="/wishlist" element={<Wishlist />} />
+                    <Route path="/wishlist" element={<WishListPage />} /> 
                     <Route path="/signup" element={<SignUpPage />} />
                 </Routes>
                 <Footer />

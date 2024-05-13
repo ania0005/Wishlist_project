@@ -1,11 +1,11 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import './AccountPage.css';
+import './WishListPage.css';
 import { GoPencil } from "react-icons/go";
 
 import { IoLogOutOutline } from "react-icons/io5";
 
-const AccountPage: React.FC = () => {
+const WishListPage: React.FC = () => {
   const [username, setUsername] = useState('firstName');
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
@@ -20,7 +20,7 @@ const AccountPage: React.FC = () => {
       })
       .then(data => {
         if (data) {
-          setUsername(data.firstName); 
+          setUsername(data.userName); 
         }
       })
       .catch(error => {
@@ -72,7 +72,7 @@ const AccountPage: React.FC = () => {
             <div className="user-icon"></div>
             <div className="username">{username}</div>
             <div className="wishlist-section">
-              <span className="my-wishlists">My WishLists</span>
+              <span className="my-wishlists">My WishList:</span>
               <Link to="/createWishList" className="create-wishlist-button">Create WishList</Link>
               <button onClick={handleEditClick} className="edit-button"><GoPencil /> edit </button>
               <button onClick={handleLogout} className="logout-button"><IoLogOutOutline /> Log out</button> {/* Кнопка выхода из системы */}
@@ -95,5 +95,4 @@ const AccountPage: React.FC = () => {
     </Fragment>
   );
 };
-
-export default AccountPage;
+export default WishListPage;

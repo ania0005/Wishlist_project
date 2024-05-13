@@ -30,9 +30,13 @@ const SignUpPage: React.FC = () => {
       if (!response.ok) {
         throw new Error(`Error: ${response.status}`);
       }
-
+      const data = await response.json();
+      console.log("Successful authorization:", data);
+      
+      const authToken = data.token;
+      localStorage.setItem("authToken", authToken);
       // const data = await response.json();
-      navigate("/login");
+      navigate("/dashboard");
     } catch (error) {
       setError("Error during registration. Please check the entered data.");
       console.error("Error sending data:", error);
@@ -107,7 +111,9 @@ const SignUpPage: React.FC = () => {
           of personal data.
           <a href="/privacy-policy"> Personal Policy</a>
         </p>
-        <button type="submit">Sign Up</button>
+        <div className="center">
+        <button className="save-button" type="submit">Sign Up</button>
+        </div>
       </form>
 
 

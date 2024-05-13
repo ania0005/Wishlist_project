@@ -4,13 +4,19 @@ import { useNavigate } from "react-router-dom";
 const CreateGift: React.FC = () => {
   const navigate = useNavigate();
   const [imageUrl, setImageUrl] = useState<string>("");
+  const [giftName, setGiftName] = useState<string>("");
+  const [giftLink, setGiftLink] = useState<string>("");
+  const [errorMessage, setErrorMessage] = useState<string>("");
   const fileInputRef = useRef<HTMLInputElement>(null); // Создаем ссылку на элемент input для загрузки файла
 
   const handleSaveClick = () => {
+    if (!giftName.trim() && !giftLink.trim()) {
+      setErrorMessage("Please enter either a gift name or a link where you can buy the gift.");
+      return;
+    }
     navigate("/wishlist");
   };
 
-  // Обработчик загрузки изображения из файла
   const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0]; // Получаем файл из события
     if (file) {
@@ -24,28 +30,36 @@ const CreateGift: React.FC = () => {
     }
   };
 
-  // Обработчик открытия диалога выбора файла при клике на квадрат
   const handleChooseFile = () => {
     if (fileInputRef.current) {
       fileInputRef.current.click(); // Вызываем клик на элементе input для выбора файла
     }
   };
 
-  // Обработчик изменения ссылки на изображение
   const handleImageLinkChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const link = event.target.value;
     setImageUrl(link); // Устанавливаем ссылку на изображение в состояние
+  };
+
+  const handleGiftNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setGiftName(event.target.value);
+    setErrorMessage(""); // Сбрасываем сообщение об ошибке при изменении имени
+  };
+
+  const handleGiftLinkChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setGiftLink(event.target.value);
+    setErrorMessage(""); // Сбрасываем сообщение об ошибке при изменении ссылки
   };
 
   return (
     <div className="wishlist-container-custom">
       <div className="wishlist-card-custom">
         <span className="back-arrow-custom">
-          <a href="/">&#8592; Back</a>
+          <a href="/wishlist">&#8592; Back</a>
         </span>
         <h2 className="title-custom">Add a gift</h2>
        
-       <div className="link-input-custom">
+        <div className="link-input-custom">
           <label className="title-1-custom" htmlFor="gift-link-custom">
             Link where you can buy a gift
           </label>
@@ -54,6 +68,7 @@ const CreateGift: React.FC = () => {
             id="gift-link-custom"
             placeholder="For example"
             className="rounded-input-custom"
+            onChange={handleGiftLinkChange} // Обработчик изменения ссылки на подарок
           />
         </div>
 
@@ -101,6 +116,7 @@ const CreateGift: React.FC = () => {
                 id="gift-name-custom"
                 placeholder="For example"
                 className="rounded-input-custom"
+                onChange={handleGiftNameChange} // Обработчик изменения имени подарка
               />
             </div>
 
@@ -139,6 +155,7 @@ const CreateGift: React.FC = () => {
             Save
           </button>
         </div>
+        {errorMessage && <p className="error-message">{errorMessage}</p>} {/* Отображаем сообщение об ошибке */}
       </div>
     </div>
   );
