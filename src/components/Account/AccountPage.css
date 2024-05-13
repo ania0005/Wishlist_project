@@ -1,47 +1,50 @@
 .dashboard {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    min-height: 100vh;
-    background-color: #F1F8FF;
-    background-size: contain; 
-    
-    background-position: center;
-  
-  }
-  
-  
-  .dashboard-header {
-    width: 100%;
-    background-color: #fff; 
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
-    position: fixed;
-    top: 0;
-    z-index: 1000;
-  }
-  
-  .user-profile {
-    display: flex;
-    align-items: center;
-    position: fixed; 
-    top: 134px; 
-    left: 200px;
-  }
-  
-  .user-icon {
-    width: 100px;
-    height: 100px;
-    background-image: url('/src/img/avatarDefault.png');
-    border-radius: 50%;
-    margin-right: 10px;
-  }
-  
-  .username {
-    font-weight: bold;
-  }
-  
- 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  background-color: #F1F8FF;
+  background-size: contain;
+  background-position: center;
+}
+
+.dashboard-header {
+  width: 100%;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+  position: fixed;
+  top: 134px;
+  left: 200px;
+}
+
+.user-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 100px;
+  background-image: url('../../../src/img/avatar.jpg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+
+.username {
+  font-weight: bold;
+}
+
 .wishlist-section {
   display: flex;
   flex-direction: column;
@@ -50,10 +53,10 @@
 
 .my-wishlists {
   font-size: 18px;
-  margin-bottom: 10px; 
-  position: fixed; 
-    top: 260px; 
-    left: 205px;
+  margin-bottom: 10px;
+  position: fixed;
+  top: 260px;
+  left: 205px;
 }
 
 .create-wishlist-button {
@@ -61,21 +64,124 @@
   font-size: 16px;
   text-decoration: none;
   color: #49BAF9;
-  background-color: #F1F8FF; 
-  border: 1px solid #49BAF9 ;
+  background-color: #F1F8FF;
+  border: 1px solid #49BAF9;
   border-radius: 10px;
   cursor: pointer;
-  position: fixed; 
-    top: 250px; 
-    left: 342px;
+  position: fixed;
+  top: 250px;
+  left: 342px;
 }
 
-  
-  .dashboard-content {
-    padding-top: 140px; 
-    width: 100%;
-    max-width: 800px; 
-    margin: auto;
-    padding: 20px;
-  }
-  
+.edit-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  text-decoration: none;
+  color: #95abb8;
+  background-color: #F1F8FF;
+  border: 1px solid #F1F8FF;
+  border-radius: 10px;
+  cursor: pointer;
+  position: fixed;
+  top: 200px;
+  left: 342px;
+  max-width: 146px;
+  text-align: left;
+}
+
+.modal {
+  position: fixed;
+  z-index: 1001;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 500px;
+}
+
+.close-button {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.dashboard-content {
+  padding-top: 140px;
+  width: 100%;
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+}
+
+/* Стили для кнопки подтверждения в модальном окне */
+.confirm-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  margin-top: 10px; /* Отступ сверху */
+  color: #F1F8FF;
+  background-color: #007bff; /* Синий цвет кнопки */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.confirm-button:hover {
+  background-color: #0056b3; /* Темно-синий цвет при наведении */
+}
+
+.edit-button:hover {
+  background-color: #F1F8FF; /* Цвет фона при наведении */
+  color: #5c6c75; /* Цвет текста при наведении */
+}
+.delete-account-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #F1F8FF;
+  background-color: #007bff; /* Синий цвет кнопки */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.delete-account-button:hover {
+  background-color: #0056b3; /* Темно-синий цвет при наведении */
+}
+.logout-button {
+  position: fixed; /* Фиксируем кнопку */
+  bottom: 100px;
+  left: 175px;
+  font-size: 16px; /* Позиционируем кнопку внизу страницы */
+  background-color: #F1F8FF; /* Серый цвет фона */
+  color: #808080; /* Серый цвет текста */
+  border: none; /* Убираем рамку */
+  padding: 15px 32px; /* Добавляем отступы */
+  text-align: left; /* Выравниваем текст по центру */
+  text-decoration: none; /* Убираем подчеркивание */
+  display: inline-block; /* Делаем кнопку строчно-блочной */
+  font-size: 16px; 
+  max-width: 146px;
+  text-align: left;/* Устанавливаем размер шрифта */
+}
+
+.logout-button:hover {
+  background-color: #F1F8FF; /* Цвет фона при наведении */
+  color: #5c6c75; /* Цвет текста при наведении */
+}
