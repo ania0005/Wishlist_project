@@ -73,7 +73,7 @@
   left: 342px;
 }
 
-.edit-button {
+.delete-button {
   padding: 10px 20px;
   font-size: 16px;
   text-decoration: none;
@@ -87,6 +87,10 @@
   left: 342px;
   max-width: 146px;
   text-align: left;
+}
+.delete-button:hover {
+  background-color: #F1F8FF; /* Цвет фона при наведении */
+  color: #5c6c75; /* Цвет текста при наведении */
 }
 
 .modal {
@@ -147,10 +151,7 @@
   background-color: #0056b3; /* Темно-синий цвет при наведении */
 }
 
-.edit-button:hover {
-  background-color: #F1F8FF; /* Цвет фона при наведении */
-  color: #5c6c75; /* Цвет текста при наведении */
-}
+
 .delete-account-button {
   padding: 10px 20px;
   font-size: 16px;
@@ -163,25 +164,4 @@
 
 .delete-account-button:hover {
   background-color: #0056b3; /* Темно-синий цвет при наведении */
-}
-.logout-button {
-  position: fixed; /* Фиксируем кнопку */
-  bottom: 100px;
-  left: 175px;
-  font-size: 16px; /* Позиционируем кнопку внизу страницы */
-  background-color: #F1F8FF; /* Серый цвет фона */
-  color: #808080; /* Серый цвет текста */
-  border: none; /* Убираем рамку */
-  padding: 15px 32px; /* Добавляем отступы */
-  text-align: left; /* Выравниваем текст по центру */
-  text-decoration: none; /* Убираем подчеркивание */
-  display: inline-block; /* Делаем кнопку строчно-блочной */
-  font-size: 16px; 
-  max-width: 146px;
-  text-align: left;/* Устанавливаем размер шрифта */
-}
-
-.logout-button:hover {
-  background-color: #F1F8FF; /* Цвет фона при наведении */
-  color: #5c6c75; /* Цвет текста при наведении */
 }

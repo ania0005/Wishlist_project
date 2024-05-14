@@ -1,12 +1,22 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import "./style.css";
-import logOut from "../Auth/LogOut";
+
 
 const NavBar = () => {
   const activeLink = "nav-list__link nav-list__link--active";
   const normalLink = "nav-list__link";
 
   const navigate = useNavigate();
+
+  const logOut = async () => {
+    try {
+      localStorage.removeItem("authToken");
+      navigate("/login"); 
+    } catch (error) {      
+      console.error("Logout error: ", error);
+    }
+  };
+  
 
   const handleLogout = async () => {
     try {
