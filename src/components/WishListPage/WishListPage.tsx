@@ -48,8 +48,8 @@ const WishListPage: React.FC = () => {
       })
       .then(response => {
         if (response.ok) {
-          document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
-          localStorage.removeItem('token'); 
+          document.cookie = 'authToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+          localStorage.removeItem('authToken'); 
           sessionStorage.clear(); 
           console.log('Account successfully deleted.');
           navigate('/'); 

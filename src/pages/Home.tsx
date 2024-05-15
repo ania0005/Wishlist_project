@@ -1,4 +1,4 @@
-import Header from "../components/header/Header";
+import Header from "../components/Header/Header";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom"; // Предполагается, что вы используете React Router для навигации
 import share from "./../img/share.jpg";

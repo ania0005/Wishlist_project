@@ -1,17 +1,17 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Footer from "./components/footer/Footer";
+import Footer from "./components/Footer/Footer";
 import ScrollToTop from "./utils/ScrollToTop";
 import Home from "./pages/Home";
-import CreateWishlist from './pages/CreateWishlist';
+import CreateWishlist from './components/Wishlists/CreateWishlist/CreateWishlist';
 import CreateGift from './pages/CreateGift';
 import { PrivacyPolicy } from './pages/PrivacyPolicy'
-import NavBar from './components/navbar/NavBar';
+import NavBar from './components/Navbar/NavBar';
 import "./App.css";
 import AuthForm from './components/Auth/AuthForm'; 
 import SignUpPage from './components/SignUp/SignUpPage';
 import About from './pages/About';
 import AccountPage from "./components/Account/AccountPage";
-import WishListPage from "./components/WishList/WishListPage";
+import WishListPage from "./components/WishListPage/WishListPage";
 
 
 
