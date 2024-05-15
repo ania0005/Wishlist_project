@@ -12,6 +12,7 @@ import SignUpPage from './components/SignUp/SignUpPage';
 import About from './pages/About';
 import AccountPage from "./components/Account/AccountPage";
 import WishListPage from "./components/WishListPage/WishListPage";
+import NoPageFound from "./components/NoPageFound/NoPageFound";
 
 
 
@@ -33,6 +34,8 @@ console.log("Hello")
                     <Route path="/dashboard" element={<AccountPage />} />
                     <Route path="/wishlist" element={<WishListPage />} /> 
                     <Route path="/signup" element={<SignUpPage />} />
+                    <Route path="*" element={<NoPageFound />} />
+
                 </Routes>
                 <Footer />
             </Router>

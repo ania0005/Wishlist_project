@@ -1,4 +1,5 @@
 import { NavLink, useNavigate } from "react-router-dom";
+import { GoPerson } from 'react-icons/go';
 import "./style.css";
 
 const NavBar = () => {
@@ -10,6 +11,7 @@ const NavBar = () => {
   const handleLogout = async () => {
     try {
       localStorage.removeItem("authToken");
+      document.cookie = "authToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
       navigate("/");
     } catch (error: any) {
       console.error("Error when logging out of your account:", error.message);
@@ -60,6 +62,16 @@ const NavBar = () => {
                     Log Out
                   </NavLink>
                 </li>
+                <li className="nav-list__item">
+              <NavLink
+                to="/dashboard"
+                className={({ isActive }) =>
+                  isActive ? activeLink : normalLink
+                }
+              >
+                <GoPerson />
+              </NavLink>
+            </li>
               </>
             ) : (
               // Если пользователь не зарегистрирован

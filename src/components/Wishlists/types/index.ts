@@ -12,7 +12,9 @@ export interface Wishlist {
   }
   
   export interface WishlistDTO {
+    id: number
     title: string
     description: string
     date: string
+    user_id: number
   }
