@@ -1,29 +1,28 @@
-import React, { useState, useEffect, Fragment } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import './AccountPage.css';
+import React, { useState, useEffect, Fragment } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import "./AccountPage.css";
 import { GoTrash } from "react-icons/go";
 
 const AccountPage = () => {
-  const [username, setUsername] = useState('');
+  const [username, setUsername] = useState("");
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch('/api/users/auth/me')
-      .then(response => {
+    fetch("/api/users/auth/me")
+      .then((response) => {
         if (!response.ok) {
-          throw new Error('Network response was not ok');
+          throw new Error("Network response was not ok");
         }
-        return response.json(); 
+        return response.json();
       })
-      .then(data => {
+      .then((data) => {
         if (data) {
           setUsername(data.firstName);
-          
         }
       })
-      .catch(error => {
-        console.error('Error:', error);
+      .catch((error) => {
+        console.error("Error:", error);
       });
   }, []);
 
@@ -36,23 +35,24 @@ const AccountPage = () => {
   };
 
   const handleDeleteAccount = () => {
-    fetch('/api/users/auth/me', {
-      method: 'DELETE',
+    fetch("/api/users/auth/me", {
+      method: "DELETE",
     })
-    .then(response => {
-      if (response.ok) {
-        document.cookie = 'authToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
-        localStorage.removeItem('authToken'); 
-        sessionStorage.clear(); 
-        console.log('Account successfully deleted.');
-        navigate('/'); 
-      } else {
-        console.error('Failed to delete account.');
-      }
-    })
-    .catch(error => {
-      console.error('Error deleting account:', error);
-    });
+      .then((response) => {
+        if (response.ok) {
+          document.cookie =
+            "authToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+          localStorage.removeItem("authToken");
+          sessionStorage.clear();
+          console.log("Account successfully deleted.");
+          navigate("/");
+        } else {
+          console.error("Failed to delete account.");
+        }
+      })
+      .catch((error) => {
+        console.error("Error deleting account:", error);
+      });
   };
 
   return (
@@ -64,21 +64,30 @@ const AccountPage = () => {
             <div className="username">{username}</div>
             <div className="wishlist-section">
               <span className="my-wishlists">My WishLists</span>
-              <Link to="/createWishList" className="create-wishlist-button">Create WishList</Link>
-              <button onClick={handleDeleteClick} className="delete-button"><GoTrash /> delete </button>
+              <Link to="/createWishList" className="create-wishlist-button">
+                Create WishList
+              </Link>
+              <button onClick={handleDeleteClick} className="delete-button">
+                <GoTrash /> delete{" "}
+              </button>
             </div>
           </div>
         </header>
-        <main className="dashboard-content">
-          {/* Content here */}
-        </main>
+        <main className="dashboard-content">{/* Content here */}</main>
       </div>
       {showModal && (
         <div className="modal">
           <div className="modal-content">
-            <span className="close-button" onClick={handleCloseModal}>×</span>
+            <span className="close-button" onClick={handleCloseModal}>
+              ×
+            </span>
             <p>Do you want to delete your account?</p>
-            <button onClick={handleDeleteAccount} className="delete-account-button">Delete Account</button>
+            <button
+              onClick={handleDeleteAccount}
+              className="delete-account-button"
+            >
+              Delete Account
+            </button>
           </div>
         </div>
       )}

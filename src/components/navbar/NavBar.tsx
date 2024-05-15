@@ -1,36 +1,24 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import "./style.css";
 
-
 const NavBar = () => {
   const activeLink = "nav-list__link nav-list__link--active";
   const normalLink = "nav-list__link";
 
   const navigate = useNavigate();
 
-  const logOut = async () => {
-    try {
-      localStorage.removeItem("authToken");
-      navigate("/login"); 
-    } catch (error) {      
-      console.error("Logout error: ", error);
-    }
-  };
-  
-
   const handleLogout = async () => {
     try {
-      await logOut();
       localStorage.removeItem("authToken");
       navigate("/");
     } catch (error: any) {
-      console.error("Ошибка при выходе из аккаунта:", error.message);
+      console.error("Error when logging out of your account:", error.message);
     }
   };
 
   // Проверяем, зарегистрирован ли пользователь
   const isAuthenticated = localStorage.getItem("authToken");
-  
+
   return (
     <nav className="nav">
       <div className="container">
@@ -73,7 +61,8 @@ const NavBar = () => {
                   </NavLink>
                 </li>
               </>
-            ) : ( // Если пользователь не зарегистрирован
+            ) : (
+              // Если пользователь не зарегистрирован
               <>
                 <li className="nav-list__item">
                   <NavLink
@@ -104,4 +93,4 @@ const NavBar = () => {
   );
 };
 
-export default NavBar; 
+export default NavBar;

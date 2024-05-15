@@ -40,3 +40,4 @@
 //   })
 //   return res.json()
 // }
+export{}
