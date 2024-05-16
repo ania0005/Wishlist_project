@@ -10,7 +10,6 @@ import { useContext } from "react";
 
 const Home = () => {
   const { user} = useContext(AuthContext);
- 
 
   return (
     <>

@@ -5,18 +5,18 @@ import Home from "./pages/Home";
 import CreateWishlist from "./components/Wishlists/CreateWishlist/CreateWishlist";
 import CreateGift from "./pages/CreateGift";
 import { PrivacyPolicy } from "./pages/PrivacyPolicy";
-import NavBar from "./components/Navbar/NavBar";
 import "./App.css";
 import AuthForm from "./components/Auth/AuthForm";
 import SignUpPage from "./components/SignUp/SignUpPage";
-import About from "./components/About/About";
 import AccountPage from "./components/Account/AccountPage";
-
 import NoPageFound from "./components/NoPageFound";
 import AuthContext from "./contexts/AuthContext";
 import { useEffect, useState } from "react";
 import User from "./types/User";
 import WishlistPage from "./components/WishlistPage/WishlistPage";
+import NavBar from "./components/Navbar/NavBar";
+import About from "./components/About/About";
+
 
 const App: React.FC = () => {
   const [user, setUser] = useState<User | undefined>(undefined);
