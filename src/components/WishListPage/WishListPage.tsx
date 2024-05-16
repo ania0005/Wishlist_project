@@ -5,13 +5,15 @@ import { GoTrash } from "react-icons/go";
 import { GoArrowLeft } from "react-icons/go";
 import { FaShareAlt } from 'react-icons/fa';
 
+
 const WishListPage = () => {
   const [title, setTitle] = useState('');
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
 
+
   useEffect(() => {
-    fetch('/api/wishlists/{wishlists-id}')
+    fetch('/api/wishlists/{wishlistId}')
       .then(response => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
@@ -37,30 +39,30 @@ const WishListPage = () => {
     setShowModal(false);
   };
 
-  const handleDeleteWishList = () => {
-    fetch('/api/wishlists/{wishlists-id}', {
-      method: 'DELETE',
-    })
-    .then(response => {
+  const handleDeleteWishList = async () => {
+    try {
+      const response = await fetch('/api/wishlists/{wishlistId}', {
+        method: 'DELETE',
+      });
+  
       if (response.ok) {
-        document.cookie = 'authToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
-        localStorage.removeItem('authToken'); 
         sessionStorage.clear(); 
         console.log('WishList successfully deleted.');
-        navigate('/'); 
+        navigate('/');
       } else {
-        console.error('Failed to delete WishList.');
+        // If the deletion fails due to server error or other reasons
+        throw new Error('Failed to delete WishList.');
       }
-    })
-    .catch(error => {
+    } catch (error) {
       console.error('Error deleting WishList:', error);
-    });
+    }
   };
 
+  
   const handleShareClick = () => {
     const authToken = localStorage.getItem('authToken'); 
 
-    fetch('/api/wishlists/{wishlists-id}/share', {
+    fetch('/api/wishlists/{wishlistsId}/share', {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${authToken}`
