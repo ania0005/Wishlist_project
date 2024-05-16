@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./AuthForm.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate} from "react-router-dom";
+import AuthContext from "../../contexts/AuthContext";
 
 const AuthForm: React.FC = () => {
   const [email, setEmail] = useState("");
@@ -8,7 +9,7 @@ const AuthForm: React.FC = () => {
   const [error, setError] = useState("");
 
   const navigate = useNavigate();
-
+  const { setUser } = useContext(AuthContext);
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
@@ -28,11 +29,9 @@ const AuthForm: React.FC = () => {
 
       const data = await response.json();
       console.log("Successful authorization:", data);
-     
-     // const authToken = data.token;
-     const authToken = data.accessToken;
-      localStorage.setItem("authToken", authToken);
-      
+    
+    const {user} = data;
+    if(setUser){setUser(user)}; 
       navigate("/dashboard");
       
     } catch (error) {
@@ -42,8 +41,7 @@ const AuthForm: React.FC = () => {
   };
 
   return (
-    <body>
-    
+    <body>    
     <div className="auth-container">
       <h2>Log In</h2>
       {error && <p className="error-message">{error}</p>}
@@ -55,7 +53,7 @@ const AuthForm: React.FC = () => {
             id="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="john@example.com" //
+            placeholder="john@example.com"
             required
           />
         </div>

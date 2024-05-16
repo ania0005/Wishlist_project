@@ -10,7 +10,7 @@ const NoPageFound: React.FC = () => {
       </p>
       <ul>
         <li><a href="/">Home</a></li>
-        <li><a href="/login">Create a Wish list</a></li>
+        <li><a href="/login">Create a Wishlist</a></li>
         <li><a href="/about">About us</a></li>
       </ul>
     </div>

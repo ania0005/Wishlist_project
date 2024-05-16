@@ -1,30 +1,13 @@
-// import { Link, useNavigate, useParams } from "react-router-dom"
-// import { useAppDispatch, useAppSelector } from "../../../app/hooks"
-// import { useEffect } from "react"
-// import { getProduct, selectProduct } from "../productsSlice"
-// import NoPageFound from "../../../components/NoPageFound"
-// import style from "./WishCard.module.css"
+import React from 'react';
 
-// export default function ProductCard() {
-//   const { productId } = useParams()
-//   const dispatch = useAppDispatch()
-//   const navigate = useNavigate()
-//   const product = useAppSelector(selectProduct)
-//   useEffect(() => {
-//     dispatch(getProduct(Number(productId)))
-//   }, [dispatch])
-//   if (product) {
-//     return (
-//       <div className={style.box}>
-//         <h2>{product?.title}</h2>
-//         <img src={product.images[0]} alt={product?.title} />
-//         <p>{product?.description}</p>
-//         <Link to="/products">To products</Link>
-//         <button onClick={() => navigate(-1)}>To previous page</button>
-//       </div>
-//     )
-//   } else {
-//     return <NoPageFound />
-//   }
-// }
-export{}
+const WishlistCard: React.FC<{ wishlistName: string; numberOfGifts: number; creationDate: string }> = ({ wishlistName, numberOfGifts, creationDate }) => {
+  return (
+    <div className="wishlist-card">
+      <h3>{wishlistName}</h3>
+      <p>Number of Gifts: {numberOfGifts}</p>
+      <p>Creation Date: {creationDate}</p>
+    </div>
+  );
+};
+
+export default WishlistCard;

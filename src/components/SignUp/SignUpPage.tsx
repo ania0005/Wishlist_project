@@ -33,10 +33,8 @@ const SignUpPage: React.FC = () => {
       const data = await response.json();
       console.log("Successful authorization:", data);
       
-      const authToken = data.accessToken;
-      localStorage.setItem("authToken", authToken);
       localStorage.setItem("username", data.username);
-      navigate("/dashboard");
+      navigate("/login");
     } catch (error) {
       setError("Error during registration. Please check the entered data.");
       console.error("Error sending data:", error);
