@@ -9,7 +9,7 @@ import NavBar from "./components/Navbar/NavBar";
 import "./App.css";
 import AuthForm from "./components/Auth/AuthForm";
 import SignUpPage from "./components/SignUp/SignUpPage";
-import About from "./pages/About";
+import About from "./components/About/About";
 import AccountPage from "./components/Account/AccountPage";
 
 import NoPageFound from "./components/NoPageFound";

@@ -1,15 +1,16 @@
 import Header from "../components/Header/Header";
-import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom"; // Предполагается, что вы используете React Router для навигации
+import { Link } from "react-router-dom";
 import share from "./../img/share.jpg";
 import info from "./../img/info.jpg";
 import gift from "./../img/gift.png";
 import add from "./../img/add.jpg";
 import "../App.css";
+import AuthContext from "../contexts/AuthContext";
+import { useContext } from "react";
 
 const Home = () => {
-  const navigate = useNavigate();
-  const isAuthenticated = localStorage.getItem("authToken");
+  const { user} = useContext(AuthContext);
+ 
 
   return (
     <>
@@ -71,7 +72,7 @@ const Home = () => {
               color, and quality!
             </p>
 
-            {isAuthenticated ? (
+            {user ? (
               <Link to="/createWishlist">
                 <button>I want a Wishlist</button>
               </Link>

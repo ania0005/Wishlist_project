@@ -10,6 +10,7 @@
 }
 
 .dashboard-header {
+  margin: 10px;
   width: 100%;
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -57,6 +58,7 @@
   position: fixed;
   top: 260px;
   left: 205px;
+  margin: 10px;
 }
 
 .create-wishlist-button {
@@ -71,7 +73,61 @@
   position: fixed;
   top: 250px;
   left: 342px;
+  margin: 10px;
 }
+.dashboard-content {
+  padding-top: 140px;
+  padding-bottom: 30px;
+  padding-left: 0px;
+  padding-right: 20px;
+  width: 100%;
+  max-width: 800px;
+  margin: auto;
+  height: 230px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+
+
+.wishlist-card-in {
+  width: 200px;
+  position: relative;
+  height:200px ;
+  margin: 50px;
+  top: 130px;
+  /* left: 205px; */
+  font-size: 12px;
+  /* overflow: hidden; */
+  background-color: white;
+  
+}
+
+.add-gift-in-card-button {
+  margin-top: 10px;
+  background-color: #49BAF9;
+  color: white;
+  font-size: 12px;
+}
+
+
+ 
+.event-date {
+  position: absolute;
+  bottom: 5px;
+  left: 5px;
+}
+
+.time-left-button {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  background-color: orange;
+  color: white;
+}
+
+
 
 .delete-button {
   padding: 10px 20px;
@@ -127,13 +183,7 @@
   cursor: pointer;
 }
 
-.dashboard-content {
-  padding-top: 140px;
-  width: 100%;
-  max-width: 800px;
-  margin: auto;
-  padding: 20px;
-}
+
 
 /* Стили для кнопки подтверждения в модальном окне */
 .confirm-button {

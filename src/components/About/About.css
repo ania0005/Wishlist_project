@@ -1,0 +1,30 @@
+body{
+    font-family: Manrope, sans-serif;
+    font-weight: 500;
+    text-align: justify;
+    letter-spacing: 1px;
+
+}
+.about-page {
+    padding: 8%  17% 0 17%;
+    
+  }
+  
+  .sub-title {
+    font-size: 54px;
+  }
+  
+  .paragraph {
+    font-size: 24px;
+    line-height: 1.5;
+    padding-top: 20px;
+    padding-bottom: 80px;
+
+  }  
+  .paragraph-first {
+    font-size: 32px;
+    line-height: 1.5;
+    padding-bottom: 90px;
+    font-weight: bold;
+
+  }  
