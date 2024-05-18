@@ -1,54 +1,110 @@
-import React, { useState, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useRef, ChangeEvent } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 
 const CreateGift: React.FC = () => {
   const navigate = useNavigate();
-  const [imageUrl, setImageUrl] = useState<string>("");
+  const [giftImgUrl, setGiftImgUrl] = useState<string>("");
   const [giftName, setGiftName] = useState<string>("");
   const [giftLink, setGiftLink] = useState<string>("");
+  const [giftPrice, setGiftPrice] = useState<string>("");
+  const [giftComment, setGiftComment] = useState<string>("");
   const [errorMessage, setErrorMessage] = useState<string>("");
-  const fileInputRef = useRef<HTMLInputElement>(null); // Создаем ссылку на элемент input для загрузки файла
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const { id } = useParams();
 
-  const handleSaveClick = () => {
-    if (!giftName.trim() && !giftLink.trim()) {
-      setErrorMessage("Please enter either a gift name or a link where you can buy the gift.");
-      return;
+  const saveGift = async () => {
+    try {
+      const giftData = {
+        title: giftName,
+        description: giftComment,
+        price: parseFloat(giftPrice),
+        url: giftLink,
+        img_url: giftImgUrl || "", 
+      };
+
+      console.log("Saving gift data:", giftData); // Логируем данные перед отправкой
+
+      const response = await fetch(`/api/wishlists/${id}/gifts`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(giftData),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        console.error("Failed to save gift", errorData);
+        throw new Error("Failed to save gift");
+      }
+
+      console.log("Gift saved successfully");
+    } catch (error: any) {
+      console.error("Error:", error.message);
+      setErrorMessage(error.message);
     }
-    navigate("/wishlist");
   };
 
-  const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0]; // Получаем файл из события
+  const handleSaveClick = async () => {
+    if (!giftName.trim() && !giftLink.trim()) {
+      setErrorMessage(
+        "Please enter either a gift name or a link where you can buy the gift."
+      );
+      return;
+    }
+
+    if (!giftPrice.trim()) {
+      setErrorMessage("Please enter a price for the gift.");
+      return;
+    }
+
+    await saveGift();
+
+    navigate(`/wishlist/${id}`);
+  };
+
+  const handleImgUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
     if (file) {
-      const reader = new FileReader(); // Создаем объект для чтения файла
-      reader.onload = (event) => { // Обработчик события загрузки файла
+      const reader = new FileReader();
+      reader.onload = (event) => {
         if (event.target && event.target.result) {
-          setImageUrl(event.target.result as string); // Устанавливаем URL изображения в состояние
+          setGiftImgUrl(event.target.result as string);
         }
       };
-      reader.readAsDataURL(file); // Читаем файл как Data URL
+      reader.readAsDataURL(file);
     }
   };
 
   const handleChooseFile = () => {
     if (fileInputRef.current) {
-      fileInputRef.current.click(); // Вызываем клик на элементе input для выбора файла
+      fileInputRef.current.click();
     }
   };
 
-  const handleImageLinkChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const link = event.target.value;
-    setImageUrl(link); // Устанавливаем ссылку на изображение в состояние
+  const handleImgLinkChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setGiftImgUrl(event.target.value);
+    setErrorMessage("");
   };
 
-  const handleGiftNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleGiftNameChange = (event: ChangeEvent<HTMLInputElement>) => {
     setGiftName(event.target.value);
-    setErrorMessage(""); // Сбрасываем сообщение об ошибке при изменении имени
+    setErrorMessage("");
   };
 
-  const handleGiftLinkChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleGiftPriceChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setGiftPrice(event.target.value);
+    setErrorMessage("");
+  };
+
+  const handleGiftCommentChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
+    setGiftComment(event.target.value);
+    setErrorMessage("");
+  };
+
+  const handleGiftLinkChange = (event: ChangeEvent<HTMLInputElement>) => {
     setGiftLink(event.target.value);
-    setErrorMessage(""); // Сбрасываем сообщение об ошибке при изменении ссылки
+    setErrorMessage("");
   };
 
   return (
@@ -58,7 +114,6 @@ const CreateGift: React.FC = () => {
           <a href="/wishlist">&#8592; Back</a>
         </span>
         <h2 className="title-custom">Add a gift</h2>
-       
         <div className="link-input-custom">
           <label className="title-1-custom" htmlFor="gift-link-custom">
             Link where you can buy a gift
@@ -68,40 +123,41 @@ const CreateGift: React.FC = () => {
             id="gift-link-custom"
             placeholder="For example"
             className="rounded-input-custom"
-            onChange={handleGiftLinkChange} // Обработчик изменения ссылки на подарок
+            value={giftLink}
+            onChange={handleGiftLinkChange}
           />
         </div>
-
         <div className="input-group-1">
           <div className="right-column">
-            <div className="image-input-custom" onClick={handleChooseFile}>
+            <div className="img-input-custom" onClick={handleChooseFile}>
               <div className="file-input-text">
-                {imageUrl ? ( // Если есть URL изображения, отображаем изображение
-                  <img src={imageUrl} alt="Uploaded" />
+                {giftImgUrl ? (
+                  <img src={giftImgUrl} alt="Uploaded" />
                 ) : (
-                  "Image / Click to upload" // Иначе показываем текст для загрузки файла
+                  "Img / Click to upload"
                 )}
               </div>
               <input
                 type="file"
-                id="gift-image-custom"
+                id="gift-img-custom"
                 className="file-input-custom"
-                onChange={handleImageUpload}
-                ref={fileInputRef} // Привязываем ссылку на элемент input
-                style={{ display: 'none' }} // Скрыть элемент input
+                onChange={handleImgUpload}
+                ref={fileInputRef}
+                style={{ display: "none" }}
               />
             </div>
 
             <div className="input-group-custom">
               <label className="title-1-custom" htmlFor="link-custom">
-                Image Link
+                Img Link
               </label>
               <input
                 type="text"
                 id="link-custom"
                 placeholder="Enter link"
                 className="rounded-input-custom"
-                onChange={handleImageLinkChange} // Обработчик изменения ссылки на изображение
+                value={giftImgUrl}
+                onChange={handleImgLinkChange}
               />
             </div>
           </div>
@@ -116,7 +172,8 @@ const CreateGift: React.FC = () => {
                 id="gift-name-custom"
                 placeholder="For example"
                 className="rounded-input-custom"
-                onChange={handleGiftNameChange} // Обработчик изменения имени подарка
+                value={giftName}
+                onChange={handleGiftNameChange}
               />
             </div>
 
@@ -129,6 +186,8 @@ const CreateGift: React.FC = () => {
                   type="text"
                   id="gift-price-custom"
                   className="rounded-input-custom"
+                  value={giftPrice}
+                  onChange={handleGiftPriceChange}
                 />
                 <select className="currency-select">
                   <option value="USD">USD</option>
@@ -145,17 +204,18 @@ const CreateGift: React.FC = () => {
                 id="gift-comment-custom"
                 placeholder="Write something about the gift..."
                 className="rounded-textarea-custom"
+                value={giftComment}
+                onChange={handleGiftCommentChange}
               ></textarea>
             </div>
           </div>
         </div>
-
         <div className="input-group-custom">
           <button className="save-button-custom" onClick={handleSaveClick}>
             Save
           </button>
         </div>
-        {errorMessage && <p className="error-message">{errorMessage}</p>} {/* Отображаем сообщение об ошибке */}
+        {errorMessage && <p className="error-message">{errorMessage}</p>}
       </div>
     </div>
   );

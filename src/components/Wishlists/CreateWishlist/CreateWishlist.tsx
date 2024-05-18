@@ -1,6 +1,6 @@
-import React, { useState, ChangeEvent, useContext } from "react"; // Импортируем ChangeEvent
+import React, { useState, ChangeEvent} from "react"; // Импортируем ChangeEvent
 import { useNavigate } from "react-router-dom";
-import AuthContext from "../../../contexts/AuthContext";
+
 
 const CreateWishlist: React.FC = () => {
   const navigate = useNavigate();
@@ -8,8 +8,6 @@ const CreateWishlist: React.FC = () => {
   const [wishlistComment, setWishlistComment] = useState<string>(""); // Состояние для хранения комментария вишлиста
   const [wishlistDate, setWishlistDate] = useState<string>(""); // Состояние для хранения даты события вишлиста
   const [errorMessage, setErrorMessage] = useState<string>("");
-
-  const { user } = useContext(AuthContext);
  
   const saveWishlist = async () => {
     try {
@@ -22,7 +20,6 @@ const CreateWishlist: React.FC = () => {
           title: wishlistName,
           description: wishlistComment,
           eventDate: wishlistDate,
-          user_id: user?.id,
         }),
       });
 
@@ -43,7 +40,7 @@ const CreateWishlist: React.FC = () => {
     }
 
     await saveWishlist();
-    navigate("/wishlist");
+    navigate('/dashboard');
   };
 
   const currentDate = new Date();

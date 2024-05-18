@@ -13,9 +13,9 @@ import NoPageFound from "./components/NoPageFound";
 import AuthContext from "./contexts/AuthContext";
 import { useEffect, useState } from "react";
 import User from "./types/User";
-import WishlistPage from "./components/WishlistPage/WishlistPage";
 import NavBar from "./components/Navbar/NavBar";
 import About from "./components/About/About";
+import WishlistPage from "./components/WishlistPage/WishlistPage";
 
 
 const App: React.FC = () => {
@@ -41,10 +41,10 @@ const App: React.FC = () => {
             <Route path="/about" element={<About />} />
             <Route path="/login" element={<AuthForm />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-            <Route path="/createWishlist" element={<CreateWishlist />} />
-            <Route path="/createGift" element={<CreateGift />} />
+            <Route path="/createWishlist" element={<CreateWishlist />} />           
+            <Route path="/wishlist/:id/createGift" element={<CreateGift />} />
             <Route path="/dashboard" element={<AccountPage />} />
-            <Route path="/wishlist" element={<WishlistPage />} />
+            <Route path="/wishlist/:id" element={<WishlistPage />} />
             <Route path="/signup" element={<SignUpPage />} />
             <Route path="*" element={<NoPageFound />} />
           </Routes>

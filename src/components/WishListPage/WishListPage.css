@@ -5,11 +5,10 @@
   justify-content: flex-start;
   min-height: 100vh;
   background-color: #F1F8FF;
-  background-size: contain;
-  background-position: center;
 }
 
 .dashboard-header {
+  margin: 10px;
   width: 100%;
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -26,23 +25,10 @@
   left: 200px;
 }
 
-.user-icon {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100px;
-  height: 100px;
-  background-image: url('../../../src/img/avatar.jpg');
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
-  border-radius: 50%;
-  margin-right: 10px;
-}
-
-
 .username {
   font-weight: bold;
+  font-size: 24px;
+  margin-right: 20px;
 }
 
 .wishlist-section {
@@ -52,72 +38,47 @@
 }
 
 .go-to-wishlist {
-  font-size: 12px;
+  font-size: 18px;
   margin-bottom: 10px;
-  position: fixed;
-  top: 150px;
-  left: 242px;
-  color: #95abb8;
-}
-.go-to-wishlist:hover {
-  background-color: #F1F8FF; /* Цвет фона при наведении */
-  color: #5c6c75; /* Цвет текста при наведении */
-}
-
-.add-gift-button {
-  padding: 10px 20px;
-  font-size: 16px;
-  text-decoration: none;
   color: #49BAF9;
-  background-color: #F1F8FF;
-  border: 1px solid #49BAF9;
-  border-radius: 10px;
-  cursor: pointer;
-  position: fixed;
-  top: 180px;
-  left: 400px;
-}
-.add-gift-button:hover {
-  background-color: #49BAF9; /* Цвет фона при наведении */
-  color: #ffffff /* Цвет текста при наведении */
 }
 
-.share-button{
-  padding: 10px 20px;
-  font-size: 16px;
-  text-decoration: none;
-  color: #ffffff;
+.add-wl-button, .delete-wl-button, .share-button {
+  margin-top: 10px;
+  margin-bottom: 10px;
   background-color: #49BAF9;
-  border: 1px solid #49BAF9;
-  border-radius: 10px;
+  color: white;
+  border: none;
   cursor: pointer;
-  max-width: 200px;
-  position: fixed;
-  top: 180px;
-  left: 900px;
 }
-.share-button:hover {
-  background-color: #F1F8FF; /* Цвет фона при наведении */
-  color: #49BAF9; /* Цвет текста при наведении */
+
+.add-wl-button:hover, .delete-wl-button:hover, .share-button:hover {
+  background-color: #007bff;
 }
-.delete-button {
-  padding: 10px 20px;
-  font-size: 16px;
-  text-decoration: none;
-  color: #95abb8;
-  background-color: #F1F8FF;
-  border: 1px solid #F1F8FF;
-  border-radius: 10px;
+
+.dashboard-content {
+  padding-top: 200px;
+  padding-bottom: 30px;
+  width: 100%;
+  max-width: 800px;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.wishlist-card-in {
+  width: 300px;
+  margin: 20px;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   cursor: pointer;
-  position: fixed;
-  top: 180px;
-  left: 850px;
-  max-width: 146px;
-  text-align: left;
 }
-.delete-button:hover {
-  background-color: #F1F8FF; /* Цвет фона при наведении */
-  color: #5c6c75; /* Цвет текста при наведении */
+
+.wishlist-card-in img {
+  width: 100%;
+  height: auto;
 }
 
 .modal {
@@ -153,47 +114,3 @@
   text-decoration: none;
   cursor: pointer;
 }
-
-.dashboard-content {
-  padding-top: 140px;
-  width: 100%;
-  max-width: 800px;
-  margin: auto;
-  padding: 20px;
-}
-
-/* Стили для кнопки подтверждения в модальном окне */
-.confirm-button {
-  padding: 10px 20px;
-  font-size: 16px;
-  margin-top: 10px; /* Отступ сверху */
-  color: #F1F8FF;
-  background-color: #007bff; /* Синий цвет кнопки */
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.confirm-button:hover {
-  background-color: #0056b3; /* Темно-синий цвет при наведении */
-}
-
-
-.delete-wishlist-button {
-  padding: 10px 20px;
-  font-size: 16px;
-  color: #F1F8FF;
-  background-color: #007bff; /* Синий цвет кнопки */
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.delete-wishlist-button:hover {
-  background-color: #0056b3; /* Темно-синий цвет при наведении */
-}
-
-
-
-
-  
