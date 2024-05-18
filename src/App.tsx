@@ -2,7 +2,6 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Footer from "./components/Footer/Footer";
 import ScrollToTop from "./utils/ScrollToTop";
 import Home from "./pages/Home";
-import CreateWishlist from "./components/Wishlists/CreateWishlist/CreateWishlist";
 import CreateGift from "./pages/CreateGift";
 import { PrivacyPolicy } from "./pages/PrivacyPolicy";
 import "./App.css";
@@ -12,10 +11,11 @@ import AccountPage from "./components/Account/AccountPage";
 import NoPageFound from "./components/NoPageFound";
 import AuthContext from "./contexts/AuthContext";
 import { useEffect, useState } from "react";
-import User from "./types/User";
+import User from "./types/index";
 import NavBar from "./components/Navbar/NavBar";
 import About from "./components/About/About";
 import WishlistPage from "./components/WishlistPage/WishlistPage";
+import CreateWishlist from "./pages/CreateWishlist";
 
 
 const App: React.FC = () => {

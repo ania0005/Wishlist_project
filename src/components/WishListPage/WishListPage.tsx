@@ -3,7 +3,8 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import './WishlistPage.css';
 import { DeleteOutlined, ArrowLeftOutlined, ShareAltOutlined, MoreOutlined } from '@ant-design/icons';
 import { Card, Button, Modal, Typography, Dropdown, Menu } from 'antd';
-import { Wishlist, Gift } from '../Wishlists/types/index';
+import { Gift, Wishlist } from '../../types';
+
 const { Meta } = Card;
 const { Text } = Typography;
 
@@ -110,11 +111,11 @@ const WishListPage = () => {
   };
 
   const handleEditGift = (gift: Gift) => {
-    navigate(`/editGift/${gift.title}`);
+    navigate(`/api/gifts/${gift.id}`);
   };
 
   const handleDeleteGift = (gift: Gift) => {
-    fetch(`/api/wishlists/${id}/gifts/${gift.title}`, {
+    fetch(`/api/gifts/${gift.id}`, {
       method: 'DELETE',
     })
       .then(response => {
@@ -153,26 +154,28 @@ const WishListPage = () => {
               <Link to="/dashboard" className="go-to-wishlist"><ArrowLeftOutlined /> Go to wishlists</Link>
               <Button onClick={handleAddWishlistClick} className="add-wl-button">Add gift</Button>
               <Button onClick={handleDeleteClick} className="delete-wl-button" icon={<DeleteOutlined />} />
-              <Button onClick={handleShareClick} className="share-button" icon={<ShareAltOutlined />}>Share WishList</Button>
+              <Button onClick={handleShareClick} className="share-button" icon={<ShareAltOutlined />}>Share list</Button>
             </div>
           </div>
         </header>
         <main className="dashboard-content">
           {gifts.map((gift) => (
-            <Card key={gift.title} title={gift.title} className="wishlist-card-in">
+            <Card key={gift.id} title={gift.title} className="wishlist-card-in">
               <div style={{ position: 'relative' }}>
                 <Dropdown menu={{ items: giftMenu(gift) }} trigger={['click']}>
                   <MoreOutlined style={{ position: 'absolute', top: 0, right: 0, fontSize: '24px', cursor: 'pointer' }} />
                 </Dropdown>
               </div>
-              <Meta description={<img src={gift.imageUrl} alt={gift.title} />} />
-              <p>URL: <a href={gift.url}>{gift.url}</a></p>
+              <img src={gift.imageUrl} alt={gift.title} className="gift-image" />
+              <div>Price: {gift.price}{gift.currency}</div>
+              <div>Comment: {gift.description}</div>
+              {/* <p>URL: <a href={gift.url}>{gift.url}</a></p> */}
             </Card>
           ))}
         </main>
         {showModal && (
           <Modal open={showModal} onCancel={handleCloseModal} onOk={handleDeleteWishList}>
-            <p>Do you want to delete your WishList?</p>
+            <p>Do you really want to delete this wishlist?</p>
           </Modal>
         )}
       </div>

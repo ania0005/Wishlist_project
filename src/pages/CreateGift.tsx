@@ -9,6 +9,7 @@ const CreateGift: React.FC = () => {
   const [giftPrice, setGiftPrice] = useState<string>("");
   const [giftComment, setGiftComment] = useState<string>("");
   const [errorMessage, setErrorMessage] = useState<string>("");
+  const [selectedCurrency, setSelectedCurrency] = useState<string>("");
   const fileInputRef = useRef<HTMLInputElement>(null);
   const { id } = useParams();
 
@@ -19,8 +20,19 @@ const CreateGift: React.FC = () => {
         description: giftComment,
         price: parseFloat(giftPrice),
         url: giftLink,
-        img_url: giftImgUrl || "", 
+        imgUrl: giftImgUrl, 
       };
+
+// const giftDataWithCurrency = {
+//   title: giftName,
+//   description: giftComment,
+//   price: parseFloat(giftPrice),
+//   url: giftLink,
+//   imgUrl: giftImgUrl, 
+//   currency: selectedCurrency,
+// };
+
+
 
       console.log("Saving gift data:", giftData); // Логируем данные перед отправкой
 
@@ -96,7 +108,10 @@ const CreateGift: React.FC = () => {
     setGiftPrice(event.target.value);
     setErrorMessage("");
   };
-
+  const handleCurrencyChange = (event: ChangeEvent<HTMLSelectElement>) => {
+    setSelectedCurrency(event.target.value)
+    setErrorMessage("");
+  };
   const handleGiftCommentChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
     setGiftComment(event.target.value);
     setErrorMessage("");
@@ -189,7 +204,11 @@ const CreateGift: React.FC = () => {
                   value={giftPrice}
                   onChange={handleGiftPriceChange}
                 />
-                <select className="currency-select">
+                <select
+                  className="currency-select"
+                  value={selectedCurrency}
+                  onChange={handleCurrencyChange}
+                >
                   <option value="USD">USD</option>
                   <option value="EUR">EUR</option>
                 </select>
