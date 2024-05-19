@@ -1,15 +1,18 @@
-import React, { useState, useEffect, Fragment } from 'react';
-import { Link, useNavigate, useParams } from 'react-router-dom';
-import './WishlistPage.css';
-import { DeleteOutlined, ArrowLeftOutlined, ShareAltOutlined, MoreOutlined } from '@ant-design/icons';
-import { Card, Button, Modal, Typography, Dropdown, Menu } from 'antd';
-import { Gift, Wishlist } from '../../types';
-
-const { Meta } = Card;
-const { Text } = Typography;
+import { useState, useEffect, Fragment } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import "./WishlistPage.css";
+import {
+  DeleteOutlined,
+  ArrowLeftOutlined,
+  ShareAltOutlined,
+  MoreOutlined,
+} from "@ant-design/icons";
+import { Card, Button, Modal, Dropdown } from "antd";
+import { Gift, Wishlist } from "../../types";
+import { GoArrowUpRight } from "react-icons/go";
 
 const WishListPage = () => {
-  const [title, setTitle] = useState('');
+  const [title, setTitle] = useState("");
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
   const [gifts, setGifts] = useState<Gift[]>([]);
@@ -18,38 +21,38 @@ const WishListPage = () => {
 
   useEffect(() => {
     fetch(`/api/wishlists/${id}`)
-      .then(response => {
+      .then((response) => {
         if (!response.ok) {
-          throw new Error('Network response was not ok');
+          throw new Error("Network response was not ok");
         }
         return response.json();
       })
-      .then(data => {
+      .then((data) => {
         if (data) {
           setWishlist(data);
           setTitle(data.title);
         }
       })
-      .catch(error => {
-        console.error('Error:', error);
+      .catch((error) => {
+        console.error("Error:", error);
       });
   }, [id]);
 
   useEffect(() => {
     fetch(`/api/wishlists/${id}/gifts`)
-      .then(response => {
+      .then((response) => {
         if (!response.ok) {
-          throw new Error('Network response was not ok');
+          throw new Error("Network response was not ok");
         }
         return response.json();
       })
-      .then(data => {
+      .then((data) => {
         if (data) {
           setGifts(data);
         }
       })
-      .catch(error => {
-        console.error('Error:', error);
+      .catch((error) => {
+        console.error("Error:", error);
       });
   }, [id]);
 
@@ -67,46 +70,47 @@ const WishListPage = () => {
 
   const handleDeleteWishList = () => {
     fetch(`/api/wishlists/${id}`, {
-      method: 'DELETE',
+      method: "DELETE",
     })
-      .then(response => {
+      .then((response) => {
         if (response.ok) {
-          document.cookie = 'accessToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
-          localStorage.removeItem('accessToken');
+          document.cookie =
+            "accessToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+          localStorage.removeItem("accessToken");
           sessionStorage.clear();
-          console.log('WishList successfully deleted.');
-          navigate('/');
+          console.log("WishList successfully deleted.");
+          navigate("/");
         } else {
-          console.error('Failed to delete WishList.');
+          console.error("Failed to delete WishList.");
         }
       })
-      .catch(error => {
-        console.error('Error deleting WishList:', error);
+      .catch((error) => {
+        console.error("Error deleting WishList:", error);
       });
   };
 
   const handleShareClick = () => {
-    const accessToken = localStorage.getItem('accessToken');
+    const accessToken = localStorage.getItem("accessToken");
     fetch(`/api/wishlists/${id}/share`, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Authorization': `Bearer ${accessToken}`
-      }
+        Authorization: `Bearer ${accessToken}`,
+      },
     })
-      .then(response => {
+      .then((response) => {
         if (response.ok) {
           return response.json();
         } else {
-          throw new Error('Failed to share WishList.');
+          throw new Error("Failed to share WishList.");
         }
       })
-      .then(data => {
+      .then((data) => {
         const uuid = data.uuid;
         console.log(`WishList successfully shared. UUID: ${uuid}`);
         navigate(`/wishlist-share/${uuid}`);
       })
-      .catch(error => {
-        console.error('Error sharing WishList:', error);
+      .catch((error) => {
+        console.error("Error sharing WishList:", error);
       });
   };
 
@@ -116,30 +120,30 @@ const WishListPage = () => {
 
   const handleDeleteGift = (gift: Gift) => {
     fetch(`/api/gifts/${gift.id}`, {
-      method: 'DELETE',
+      method: "DELETE",
     })
-      .then(response => {
+      .then((response) => {
         if (response.ok) {
-          setGifts(gifts.filter(g => g.title !== gift.title));
-          console.log('Gift successfully deleted.');
+          setGifts(gifts.filter((g) => g.title !== gift.title));
+          console.log("Gift successfully deleted.");
         } else {
-          console.error('Failed to delete Gift.');
+          console.error("Failed to delete Gift.");
         }
       })
-      .catch(error => {
-        console.error('Error deleting Gift:', error);
+      .catch((error) => {
+        console.error("Error deleting Gift:", error);
       });
   };
 
   const giftMenu = (gift: Gift) => [
     {
-      key: 'edit',
-      label: 'Edit',
+      key: "edit",
+      label: "Edit",
       onClick: () => handleEditGift(gift),
     },
     {
-      key: 'delete',
-      label: 'Delete',
+      key: "delete",
+      label: "Delete",
       onClick: () => handleDeleteGift(gift),
     },
   ];
@@ -149,32 +153,76 @@ const WishListPage = () => {
       <div className="dashboard">
         <header className="dashboard-header">
           <div className="user-profile">
-            <div className="username">{title}</div>
+            <div className="username">
+              <Link to="/dashboard" className="go-to-wishlist">
+                <ArrowLeftOutlined /> Go to wishlists
+              </Link>
+              <br />
+              {title}
+            </div>
             <div className="wishlist-section">
-              <Link to="/dashboard" className="go-to-wishlist"><ArrowLeftOutlined /> Go to wishlists</Link>
-              <Button onClick={handleAddWishlistClick} className="add-wl-button">Add gift</Button>
-              <Button onClick={handleDeleteClick} className="delete-wl-button" icon={<DeleteOutlined />} />
-              <Button onClick={handleShareClick} className="share-button" icon={<ShareAltOutlined />}>Share list</Button>
+              <Button
+                onClick={handleDeleteClick}
+                className="delete-wl-button"
+                icon={<DeleteOutlined />}
+              />
+              <Button
+                onClick={handleAddWishlistClick}
+                className="add-wl-button"
+              >
+                Add gift
+              </Button>
+
+              <Button
+                onClick={handleShareClick}
+                className="share-button"
+                icon={<ShareAltOutlined />}
+              >
+                Share list
+              </Button>
             </div>
           </div>
         </header>
         <main className="dashboard-content">
           {gifts.map((gift) => (
             <Card key={gift.id} title={gift.title} className="wishlist-card-in">
-              <div style={{ position: 'relative' }}>
-                <Dropdown menu={{ items: giftMenu(gift) }} trigger={['click']}>
-                  <MoreOutlined style={{ position: 'absolute', top: 0, right: 0, fontSize: '24px', cursor: 'pointer' }} />
+              <div style={{ position: "relative" }}>
+                <Dropdown menu={{ items: giftMenu(gift) }} trigger={["click"]}>
+                  <MoreOutlined
+                    style={{
+                      position: "absolute",
+                      top: 0,
+                      right: 0,
+                      fontSize: "24px",
+                      cursor: "pointer",
+                    }}
+                  />
                 </Dropdown>
               </div>
-              <img src={gift.imageUrl} alt={gift.title} className="gift-image" />
-              <div>Price: {gift.price}{gift.currency}</div>
+              <img
+                src={gift.imageUrl}
+                alt={gift.title}
+                className="gift-image"
+              />
+              <div>
+                Price: {gift.price}
+                {gift.currency}
+              </div>
               <div>Comment: {gift.description}</div>
-              {/* <p>URL: <a href={gift.url}>{gift.url}</a></p> */}
+              {gift.url && (
+                <Link to={gift.url} className="go-to-store">
+                  To the store <GoArrowUpRight className="arrow-icon" />
+                </Link>
+              )}
             </Card>
           ))}
         </main>
         {showModal && (
-          <Modal open={showModal} onCancel={handleCloseModal} onOk={handleDeleteWishList}>
+          <Modal
+            open={showModal}
+            onCancel={handleCloseModal}
+            onOk={handleDeleteWishList}
+          >
             <p>Do you really want to delete this wishlist?</p>
           </Modal>
         )}
