@@ -8,8 +8,9 @@ const CreateGift: React.FC = () => {
   const [giftLink, setGiftLink] = useState<string>("");
   const [giftPrice, setGiftPrice] = useState<string>("");
   const [giftComment, setGiftComment] = useState<string>("");
+  const [giftIsReserved, setGiftIsReserved] = useState<boolean>(true);
   const [errorMessage, setErrorMessage] = useState<string>("");
-  const [selectedCurrency, setSelectedCurrency] = useState<string>("");
+  const [currency, setCurrency] = useState<string>("EUR");
   const fileInputRef = useRef<HTMLInputElement>(null);
   const { id } = useParams();
 
@@ -21,20 +22,11 @@ const CreateGift: React.FC = () => {
         price: parseFloat(giftPrice),
         url: giftLink,
         imgUrl: giftImgUrl, 
+        currency: currency,
+        isReserved: giftIsReserved,
       };
 
-// const giftDataWithCurrency = {
-//   title: giftName,
-//   description: giftComment,
-//   price: parseFloat(giftPrice),
-//   url: giftLink,
-//   imgUrl: giftImgUrl, 
-//   currency: selectedCurrency,
-// };
-
-
-
-      console.log("Saving gift data:", giftData); // Логируем данные перед отправкой
+      console.log("Saving gift data:", giftData); // Log the data before sending
 
       const response = await fetch(`/api/wishlists/${id}/gifts`, {
         method: "POST",
@@ -108,10 +100,13 @@ const CreateGift: React.FC = () => {
     setGiftPrice(event.target.value);
     setErrorMessage("");
   };
+
   const handleCurrencyChange = (event: ChangeEvent<HTMLSelectElement>) => {
-    setSelectedCurrency(event.target.value)
+    console.log("Selected currency:", event.target.value); // Log the selected value
+    setCurrency(event.target.value);
     setErrorMessage("");
   };
+
   const handleGiftCommentChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
     setGiftComment(event.target.value);
     setErrorMessage("");
@@ -206,11 +201,11 @@ const CreateGift: React.FC = () => {
                 />
                 <select
                   className="currency-select"
-                  value={selectedCurrency}
+                  value={currency}
                   onChange={handleCurrencyChange}
                 >
-                  <option value="USD">USD</option>
                   <option value="EUR">EUR</option>
+                  <option value="USD">USD</option>
                 </select>
               </div>
             </div>

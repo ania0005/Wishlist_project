@@ -13,6 +13,7 @@ export interface Gift {
     url: string
     imageUrl: string 
     currency: string
+    isReserved: boolean
   }
 export interface Wishlist {
     id: number

@@ -207,8 +207,7 @@ const WishListPage = () => {
                 className="gift-image"
               />
               <div>
-                Price: {gift.price}
-                {gift.currency}
+            Price: {gift.price} {gift.currency}
               </div>
               <div>Comment: {gift.description}</div>
               {gift.url && (
@@ -218,6 +217,7 @@ const WishListPage = () => {
               )}
             </Card>
           ))}
+
         </main>
         {showModal && (
           <Modal

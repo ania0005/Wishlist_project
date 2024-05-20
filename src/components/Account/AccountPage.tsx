@@ -85,7 +85,7 @@ const AccountPage = () => {
 
   const handleAddGiftClick = (event: React.MouseEvent, id: string) => {
     event.stopPropagation(); // Останавливаем всплытие события
-    navigate(`/createGift`);
+   navigate(`/wishlist/${id}/createGift`);
   };
 
   const handleCardClick = (id: string) => {
