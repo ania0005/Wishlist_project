@@ -1,7 +1,7 @@
 
 import { useState, useEffect, Fragment } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import "./WishlistPage.css";
+import "./WishListPage.css";
 import "../../App.css";
 import {
   DeleteOutlined,
