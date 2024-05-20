@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Footer from "./components/Footer/Footer";
+import Footer from "./components/footer/Footer";
 import ScrollToTop from "./utils/ScrollToTop";
 import Home from "./pages/Home";
 import CreateGift from "./pages/CreateGift";
@@ -12,10 +12,10 @@ import NoPageFound from "./components/NoPageFound";
 import AuthContext from "./contexts/AuthContext";
 import { useEffect, useState } from "react";
 import User from "./types/index";
-import NavBar from "./components/Navbar/NavBar";
+import NavBar from "./components/navbar/NavBar";
 import About from "./components/About/About";
-import WishlistPage from "./components/WishlistPage/WishlistPage";
 import CreateWishlist from "./pages/CreateWishlist";
+import WishListPage from "./components/WishListPage/WishListPage";
 
 
 const App: React.FC = () => {
@@ -44,7 +44,7 @@ const App: React.FC = () => {
             <Route path="/createWishlist" element={<CreateWishlist />} />           
             <Route path="/wishlist/:id/createGift" element={<CreateGift />} />
             <Route path="/dashboard" element={<AccountPage />} />
-            <Route path="/wishlist/:id" element={<WishlistPage />} />
+            <Route path="/wishlist/:id" element={<WishListPage />} />
             <Route path="/signup" element={<SignUpPage />} />
             <Route path="*" element={<NoPageFound />} />
           </Routes>

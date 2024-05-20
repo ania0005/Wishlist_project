@@ -1,4 +1,4 @@
-import Header from "../components/Header/Header";
+import Header from "../components/header/Header";
 import { Link } from "react-router-dom";
 import share from "./../img/share.jpg";
 import info from "./../img/info.jpg";
