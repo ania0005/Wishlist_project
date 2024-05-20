@@ -1,6 +1,8 @@
+
 import { useState, useEffect, Fragment } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import "./WishlistPage.css";
+import "../../App.css";
 import {
   DeleteOutlined,
   ArrowLeftOutlined,
@@ -60,7 +62,7 @@ const WishListPage = () => {
     setShowModal(true);
   };
 
-  const handleAddWishlistClick = () => {
+  const handleAddGiftClick = () => {
     navigate(`/wishlist/${id}/createGift`);
   };
 
@@ -79,7 +81,7 @@ const WishListPage = () => {
           localStorage.removeItem("accessToken");
           sessionStorage.clear();
           console.log("WishList successfully deleted.");
-          navigate("/");
+          navigate("/dashboard");
         } else {
           console.error("Failed to delete WishList.");
         }
@@ -150,11 +152,11 @@ const WishListPage = () => {
 
   return (
     <Fragment>
-      <div className="dashboard">
-        <header className="dashboard-header">
-          <div className="user-profile">
-            <div className="username">
-              <Link to="/dashboard" className="go-to-wishlist">
+      <div className="wishlist">
+        <header className="wishlist-header">
+          <div className="wishlist-profile">
+            <div className="wishlist-name">
+              <Link to="/dashboard" className="go-to-wishlists">
                 <ArrowLeftOutlined /> Go to wishlists
               </Link>
               <br />
@@ -167,12 +169,11 @@ const WishListPage = () => {
                 icon={<DeleteOutlined />}
               />
               <Button
-                onClick={handleAddWishlistClick}
+                onClick={handleAddGiftClick}
                 className="add-wl-button"
               >
                 Add gift
               </Button>
-
               <Button
                 onClick={handleShareClick}
                 className="share-button"
@@ -183,7 +184,7 @@ const WishListPage = () => {
             </div>
           </div>
         </header>
-        <main className="dashboard-content">
+        <main className="wishlist-content">
           {gifts.map((gift) => (
             <Card key={gift.id} title={gift.title} className="wishlist-card-in">
               <div style={{ position: "relative" }}>
@@ -194,6 +195,7 @@ const WishListPage = () => {
                       top: 0,
                       right: 0,
                       fontSize: "24px",
+                      fontFamily: "DM Serif Display",
                       cursor: "pointer",
                     }}
                   />
@@ -210,9 +212,9 @@ const WishListPage = () => {
               </div>
               <div>Comment: {gift.description}</div>
               {gift.url && (
-                <Link to={gift.url} className="go-to-store">
-                  To the store <GoArrowUpRight className="arrow-icon" />
-                </Link>
+                <a href={gift.url} className="go-to-store" target="_blank" rel="noopener noreferrer">
+                To the store <GoArrowUpRight className="arrow-icon" />
+              </a>
               )}
             </Card>
           ))}
@@ -232,3 +234,8 @@ const WishListPage = () => {
 };
 
 export default WishListPage;
+
+
+
+
+

@@ -1,29 +1,17 @@
-import React, { useState, useEffect, Fragment } from 'react';
+import { useState, useEffect, Fragment } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './AccountPage.css';
 import { GoTrash } from "react-icons/go";
-
+import { FaGift } from 'react-icons/fa';
+import { Wishlist, Gift } from './types';
 import moment from 'moment'; // Импортируем библиотеку moment для работы с датами
-import { Card, List, Button, Typography, Row, Col } from 'antd'; 
-// Импортируем Row и Col из antd для создания сетки
+import { Card, List, Button, Typography} from 'antd';
+import AliceCarousel from 'react-alice-carousel';
+import 'react-alice-carousel/lib/alice-carousel.css'; 
+
 const { Meta } = Card;
 const { Text } = Typography;
 
-// Наши интерфейсы массивов
-
-interface Wishlist {
-  id: string;
-  title: string;
-  comment: string;
-  eventDate: string;
-  gifts: Gift[];
-}
-
-interface Gift {
-  title: string;
-  url: string;
-  imageUrl: string; 
-}
 
 const AccountPage = () => {
   const [username, setUsername] = useState('');
@@ -95,8 +83,9 @@ const AccountPage = () => {
     });
   };
 
-  const handleAddGiftClick = () => {
-    navigate('/createGift');
+  const handleAddGiftClick = (event: React.MouseEvent, id: string) => {
+    event.stopPropagation(); // Останавливаем всплытие события
+    navigate(`/createGift`);
   };
 
   const handleCardClick = (id: string) => {
@@ -108,7 +97,34 @@ const AccountPage = () => {
     const event = moment(eventDate);
     return event.diff(now, 'days');
   };
-
+  const items = wishlists.map((wishlist) => (
+    <div key={wishlist.id}>
+      <Card title={wishlist.title} className="wishlist-card-in" onClick={() => handleCardClick(wishlist.id)}>
+        <Text className="event-date">{wishlist.eventDate.split('T')[0]}</Text>
+        <Meta description={wishlist.comment} />
+        {wishlist.gifts && wishlist.gifts.length > 0 ? (
+          <Fragment>
+            <List
+              itemLayout="horizontal"
+              dataSource={wishlist.gifts}
+              renderItem={(gift: Gift) => (
+                <List.Item>
+                  <List.Item.Meta
+                    title={gift.title}
+                    description={`URL: ${gift.url}`}
+                  />
+                </List.Item>
+              )}
+            />
+            <FaGift className="gift-icon" /> {/* Отображаем иконку подарка */}
+          </Fragment>
+        ) : (
+          <Button onClick={(event) => handleAddGiftClick(event, wishlist.id)} className="add-gift-in-card-button">add gift</Button>
+        )}
+        <Button className="time-left-button">Days left: {calculateDaysLeft(wishlist.eventDate)}</Button>
+      </Card>
+    </div>
+  ));
   return (
     <Fragment>
       <div className="dashboard">
@@ -123,33 +139,15 @@ const AccountPage = () => {
             </div>
           </div>
         </header>
-        <main className="dashboard-content">
-          <Row gutter={16}> {/* Создаем сетку с отступом между колонками в 16px */}
-            {wishlists.map((wishlist) => (
-              <Col span={6} key={wishlist.id}> {/* Каждая карточка занимает 6/24 всей ширины, т.е. в ряду будет 4 карточки */}
-                <Card title={wishlist.title} className="wishlist-card-in" onClick={() => handleCardClick(wishlist.id)}>
-                  <Text className="event-date">{wishlist.eventDate.split('T')[0]}</Text> {/* Отображаем дату сразу под названием */}
-                  <Meta description={wishlist.comment} />
-                  {wishlist.gifts && wishlist.gifts.length > 0 && (
-                    <List
-                      itemLayout="horizontal"
-                      dataSource={wishlist.gifts}
-                      renderItem={(gift: Gift) => (
-                        <List.Item>
-                          <List.Item.Meta
-                            title={gift.title}
-                            description={`URL: ${gift.url}`}
-                          />
-                        </List.Item>
-                      )}
-                    />
-                  )}
-                  <Button onClick={handleAddGiftClick} className="add-gift-in-card-button">add gift</Button>
-                  <Button className="time-left-button">Осталось дней: {calculateDaysLeft(wishlist.eventDate)}</Button>
-                </Card>
-              </Col>
-            ))}
-          </Row>
+        <main className="dashboard-content"style={{ marginTop: '230px', display: 'flex', flexDirection: 'row', flexWrap: 'wrap', position: 'fixed' }}>
+          <AliceCarousel
+            mouseTracking
+            items={items}
+            responsive={{
+              0: { items: 1 },
+              1024: { items: 3 },
+            }}
+          />
         </main>
       </div>
       {showModal && (

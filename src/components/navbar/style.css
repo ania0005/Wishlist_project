@@ -13,6 +13,7 @@
     /* border-bottom: 1px solid #26292d; */
     color: #fff;
     letter-spacing: normal;
+    z-index: 1000;
 }
 
 /* Стили для строки навигации */

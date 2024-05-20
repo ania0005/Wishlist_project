@@ -1,14 +1,13 @@
-import React, { useState, ChangeEvent} from "react"; // Импортируем ChangeEvent
+import React, { useState, ChangeEvent } from "react";
 import { useNavigate } from "react-router-dom";
-
 
 const CreateWishlist: React.FC = () => {
   const navigate = useNavigate();
-  const [wishlistName, setWishlistName] = useState<string>(""); // Состояние для хранения имени вишлиста
-  const [wishlistComment, setWishlistComment] = useState<string>(""); // Состояние для хранения комментария вишлиста
-  const [wishlistDate, setWishlistDate] = useState<string>(""); // Состояние для хранения даты события вишлиста
+  const [wishlistName, setWishlistName] = useState<string>("");
+  const [wishlistComment, setWishlistComment] = useState<string>("");
+  const [wishlistDate, setWishlistDate] = useState<string>("");
   const [errorMessage, setErrorMessage] = useState<string>("");
- 
+
   const saveWishlist = async () => {
     try {
       const response = await fetch("/api/wishlists", {
@@ -37,17 +36,22 @@ const CreateWishlist: React.FC = () => {
   const handleSaveClick = async () => {
     if (!wishlistName.trim()) {
       setErrorMessage("Please enter a wishlist name.");
+      return;
     }
-
+    if (!wishlistDate.trim()) {
+      setErrorMessage("Please enter a valid date within the range from today to the next 50 years.");
+      return;
+    }
+    
     await saveWishlist();
-    navigate('/dashboard');
+    navigate("/dashboard");
   };
 
   const currentDate = new Date();
   const currentYear = currentDate.getFullYear();
   const currentMonth = currentDate.getMonth() + 1;
   const currentDay = currentDate.getDate();
-  
+
   const currentDateFormatted = `${currentYear}-${
     currentMonth < 10 ? "0" + currentMonth : currentMonth
   }-${currentDay < 10 ? "0" + currentDay : currentDay}`;
@@ -64,28 +68,28 @@ const CreateWishlist: React.FC = () => {
   }-${maxDay < 10 ? "0" + maxDay : maxDay}`;
 
   const handleDateChange = (event: ChangeEvent<HTMLInputElement>) => {
-    // Явно указываем тип параметра как ChangeEvent<HTMLInputElement>
     const inputDate = event.target.value;
+    const inputDateObject = new Date(inputDate);
 
-    if (inputDate < currentDateFormatted || inputDate > maxDateFormatted) {
+    if (!inputDate || inputDateObject < new Date(currentDateFormatted) || inputDateObject > new Date(maxDateFormatted)) {
       setErrorMessage(
         "Please enter a valid date within the range from today to the next 50 years."
       );
     } else {
       setErrorMessage("");
-      setWishlistDate(inputDate); // Обновляем состояние с датой события при изменении значения поля ввода
+      setWishlistDate(inputDate);
     }
   };
 
   const handleWishlistNameChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setWishlistName(event.target.value); // Обновляем состояние с именем вишлиста при изменении значения поля ввода
-    setErrorMessage(""); // Убираем сообщение об ошибке при изменении значения поля ввода
+    setWishlistName(event.target.value);
+    setErrorMessage("");
   };
 
   const handleWishlistCommentChange = (
     event: ChangeEvent<HTMLTextAreaElement>
   ) => {
-    setWishlistComment(event.target.value); // Обновляем состояние с комментарием вишлиста при изменении значения поля ввода
+    setWishlistComment(event.target.value);
   };
 
   return (
@@ -105,7 +109,7 @@ const CreateWishlist: React.FC = () => {
             placeholder="For example: Birthday, New Year"
             className="rounded-input-custom"
             value={wishlistName}
-            onChange={handleWishlistNameChange} // Добавляем обработчик изменения значения поля ввода для имени вишлиста
+            onChange={handleWishlistNameChange}
           />
         </div>
         <div className="input-group">
@@ -116,7 +120,7 @@ const CreateWishlist: React.FC = () => {
             id="comment"
             placeholder="Write something to your friends. This could be a greeting, wishes for gifts or an invitation."
             className="rounded-textarea"
-            onChange={handleWishlistCommentChange} // Добавляем обработчик изменения значения поля ввода для комментария вишлиста
+            onChange={handleWishlistCommentChange}
           ></textarea>
         </div>
         <div className="input-group">
@@ -128,11 +132,11 @@ const CreateWishlist: React.FC = () => {
             id="event-date"
             className="rounded-input"
             lang="en"
-            onChange={handleDateChange} // Добавляем обработчик изменения даты
+            value={wishlistDate}
+            onChange={handleDateChange}
           />
         </div>
-        {errorMessage && <p className="error-message">{errorMessage}</p>}{" "}
-        {/* Отображаем сообщение об ошибке */}
+        {errorMessage && <p className="error-message">{errorMessage}</p>}
         <div className="input-group">
           <button className="save-button-custom" onClick={handleSaveClick}>
             Save

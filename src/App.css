@@ -274,7 +274,7 @@ label {
 
 .title {
   color: black;
-  margin: 5px auto;
+
   font-family: "Prata", serif;
   font-size: 40px;
   margin-bottom: 40px;
@@ -339,7 +339,7 @@ img {
 
 .content-left h2 {
   color: black;
-  margin: 5px auto;
+
   font-family: "Prata", serif;
   font-size: 42px;
   margin-bottom: 80px;
@@ -364,7 +364,9 @@ img {
   box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.3); /* Увеличиваем тень при наведении */
   font-family: "DM Serif Display", serif;
 }
-
+.content-left button:hover {
+  background-color: #6a1b9a;
+}
 .content-right {
   width: 50%;
   text-align: right;
@@ -372,5 +374,7 @@ img {
 
 .content-right img {
   max-width: 60%;
+  height: auto;
+  border-radius: 10px;
 }
 /* ----------------------------------------------- */
