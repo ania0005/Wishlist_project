@@ -1,62 +1,87 @@
-import React, { useState, useRef, ChangeEvent } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
-const CreateGift: React.FC = () => {
+const EditGift: React.FC = () => {
   const navigate = useNavigate();
   const [giftImgUrl, setGiftImgUrl] = useState<string>("");
+
   const [giftName, setGiftName] = useState<string>("");
   const [giftLink, setGiftLink] = useState<string>("");
   const [giftPrice, setGiftPrice] = useState<string>("");
+  const [wishlistId, setWishlistId] = useState<string>("");
   const [giftComment, setGiftComment] = useState<string>("");
   const [giftIsReserved, setGiftIsReserved] = useState<boolean>(true);
   const [errorMessage, setErrorMessage] = useState<string>("");
   const [currency, setCurrency] = useState<string>("EUR");
   const fileInputRef = useRef<HTMLInputElement>(null);
-  const { id } = useParams();
+  const { id: giftId } = useParams<{ id: string }>();
 
-  const saveGift = async () => {
+  useEffect(() => {
+    if (!giftId) return;
+
+    fetch(`/api/gifts/${giftId}`)
+      .then((response) => response.json())
+      .then((data) => {
+        setGiftImgUrl(data.imgUrl);
+        setGiftName(data.title);
+        setGiftLink(data.url);
+        setGiftPrice(data.price.toString());
+        setGiftComment(data.description);
+        setCurrency(data.currency);
+        setGiftIsReserved(data.isReserved);
+        setWishlistId(data.wishlist.id)
+      })
+      .catch((error) => {
+        console.error("Error fetching gift data:", error);
+      });
+  }, [giftId]);
+
+  const updateGift = async () => {
+    if (!giftId) return;
+
     try {
       const giftData = {
         title: giftName,
-        description: giftComment,
-        price: parseFloat(giftPrice),
         url: giftLink,
-        imgUrl: giftImgUrl, 
-        currency: currency,
+        price: parseFloat(giftPrice),
+        description: giftComment,
         isReserved: giftIsReserved,
+        imgUrl: giftImgUrl,
+        currency: currency,
       };
-  
-      const response = await fetch(`/api/wishlists/${id}/gifts`, {
-        method: "POST",
+
+      const response = await fetch(`/api/gifts/${giftId}`, {
+        method: "PUT",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(giftData),
       });
-  
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error("Failed to save gift");
-      }
 
-      navigate(`/wishlist/${id}`);
-    } catch (error: any) {
-      setErrorMessage(error.message);
+      if (response.ok) {
+        console.log("Gift updated successfully.");
+      } else {
+        setErrorMessage("Failed to update gift. Please try again.");
+      }
+    } catch (error) {
+      console.error("Error updating gift:", error);
     }
   };
 
   const handleSaveClick = async () => {
     if (!giftName.trim() && !giftLink.trim()) {
-      setErrorMessage("Please enter either a gift name or a link where you can buy the gift.");
+      setErrorMessage("Please enter a gift name or purchase link.");
       return;
     }
 
     if (!giftPrice.trim()) {
-      setErrorMessage("Please enter a price for the gift.");
+      setErrorMessage("Please enter the gift price.");
       return;
     }
 
-    await saveGift();
+    await updateGift();
+      navigate(`/wishlist/${wishlistId}`);
+    
   };
 
   const handleImgUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -78,44 +103,13 @@ const CreateGift: React.FC = () => {
     }
   };
 
-  const handleImgLinkChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setGiftImgUrl(event.target.value);
-    setErrorMessage("");
-  };
-
-  const handleGiftNameChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setGiftName(event.target.value);
-    setErrorMessage("");
-  };
-
-  const handleGiftPriceChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setGiftPrice(event.target.value);
-    setErrorMessage("");
-  };
-
-  const handleCurrencyChange = (event: ChangeEvent<HTMLSelectElement>) => {
-    console.log("Selected currency:", event.target.value); // Log the selected value
-    setCurrency(event.target.value);
-    setErrorMessage("");
-  };
-
-  const handleGiftCommentChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
-    setGiftComment(event.target.value);
-    setErrorMessage("");
-  };
-
-  const handleGiftLinkChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setGiftLink(event.target.value);
-    setErrorMessage("");
-  };
-
   return (
     <div className="wishlist-container-custom">
       <div className="wishlist-card-custom">
         <span className="back-arrow-custom">
-          <a href={`/wishlist/${id}`}>&#8592; Back</a>
+          <a href={`/`}>&#8592; Back</a>
         </span>
-        <h2 className="title-custom">Add a gift</h2>
+        <h2 className="title-custom">Edit Gift</h2>
         <div className="link-input-custom">
           <label className="title-1-custom" htmlFor="gift-link-custom">
             Link where you can buy a gift
@@ -126,7 +120,7 @@ const CreateGift: React.FC = () => {
             placeholder="For example"
             className="rounded-input-custom"
             value={giftLink}
-            onChange={handleGiftLinkChange}
+            onChange={(e) => setGiftLink(e.target.value)}
           />
         </div>
         <div className="input-group-1">
@@ -136,7 +130,7 @@ const CreateGift: React.FC = () => {
                 {giftImgUrl ? (
                   <img src={giftImgUrl} alt="Uploaded" />
                 ) : (
-                  "Img / Click to upload"
+                  "Image / Click to upload"
                 )}
               </div>
               <input
@@ -148,10 +142,9 @@ const CreateGift: React.FC = () => {
                 style={{ display: "none" }}
               />
             </div>
-
             <div className="input-group-custom">
               <label className="title-1-custom" htmlFor="link-custom">
-                Img Link
+                Image Link
               </label>
               <input
                 type="text"
@@ -159,11 +152,10 @@ const CreateGift: React.FC = () => {
                 placeholder="Enter link"
                 className="rounded-input-custom"
                 value={giftImgUrl}
-                onChange={handleImgLinkChange}
+                onChange={(e) => setGiftImgUrl(e.target.value)}
               />
             </div>
           </div>
-
           <div className="left-column">
             <div className="input-group-custom">
               <label className="title-1-custom" htmlFor="gift-name-custom">
@@ -175,10 +167,9 @@ const CreateGift: React.FC = () => {
                 placeholder="For example"
                 className="rounded-input-custom"
                 value={giftName}
-                onChange={handleGiftNameChange}
+                onChange={(e) => setGiftName(e.target.value)}
               />
             </div>
-
             <div className="input-group-custom">
               <label className="title-1-custom" htmlFor="gift-price-custom">
                 Price
@@ -189,29 +180,28 @@ const CreateGift: React.FC = () => {
                   id="gift-price-custom"
                   className="rounded-input-custom"
                   value={giftPrice}
-                  onChange={handleGiftPriceChange}
+                  onChange={(e) => setGiftPrice(e.target.value)}
                 />
                 <select
                   className="currency-select"
                   value={currency}
-                  onChange={handleCurrencyChange}
+                  onChange={(e) => setCurrency(e.target.value)}
                 >
                   <option value="EUR">EUR</option>
                   <option value="USD">USD</option>
                 </select>
               </div>
             </div>
-
             <div className="input-group-custom">
               <label className="title-1-custom" htmlFor="gift-comment-custom">
-                Comment on the gift
+                Comment
               </label>
               <textarea
                 id="gift-comment-custom"
                 placeholder="Write something about the gift..."
                 className="rounded-textarea-custom"
                 value={giftComment}
-                onChange={handleGiftCommentChange}
+                onChange={(e) => setGiftComment(e.target.value)}
               ></textarea>
             </div>
           </div>
@@ -227,4 +217,6 @@ const CreateGift: React.FC = () => {
   );
 };
 
-export default CreateGift;
+export default EditGift;
+
+

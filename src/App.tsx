@@ -16,6 +16,7 @@ import NavBar from "./components/navbar/NavBar";
 import About from "./components/About/About";
 import CreateWishlist from "./pages/CreateWishlist";
 import WishListPage from "./components/WishListPage/WishListPage";
+import EditGift from "./components/EditGift/EditGift";
 
 
 const App: React.FC = () => {
@@ -43,6 +44,7 @@ const App: React.FC = () => {
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/createWishlist" element={<CreateWishlist />} />           
             <Route path="/wishlist/:id/createGift" element={<CreateGift />} />
+            <Route path="/gift/:id/editGift" element={<EditGift />} />
             <Route path="/dashboard" element={<AccountPage />} />
             <Route path="/wishlist/:id" element={<WishListPage />} />
             <Route path="/signup" element={<SignUpPage />} />

@@ -1,4 +1,3 @@
-
 import { useState, useEffect, Fragment } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import "./WishListPage.css";
@@ -18,10 +17,12 @@ const WishListPage = () => {
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
   const [gifts, setGifts] = useState<Gift[]>([]);
-  const [wishlist, setWishlist] = useState<Wishlist>();
-  const { id } = useParams();
+  const [wishlist, setWishlist] = useState<Wishlist | undefined>();
+  const { id } = useParams<{ id: string }>();
 
   useEffect(() => {
+    if (!id) return;
+
     fetch(`/api/wishlists/${id}`)
       .then((response) => {
         if (!response.ok) {
@@ -41,6 +42,8 @@ const WishListPage = () => {
   }, [id]);
 
   useEffect(() => {
+    if (!id) return;
+
     fetch(`/api/wishlists/${id}/gifts`)
       .then((response) => {
         if (!response.ok) {
@@ -63,7 +66,7 @@ const WishListPage = () => {
   };
 
   const handleAddGiftClick = () => {
-    navigate(`/wishlist/${id}/createGift`);
+    if (id) navigate(`/wishlist/${id}/createGift`);
   };
 
   const handleCloseModal = () => {
@@ -71,6 +74,8 @@ const WishListPage = () => {
   };
 
   const handleDeleteWishList = () => {
+    if (!id) return;
+
     fetch(`/api/wishlists/${id}`, {
       method: "DELETE",
     })
@@ -92,6 +97,8 @@ const WishListPage = () => {
   };
 
   const handleShareClick = () => {
+    if (!id) return;
+
     const accessToken = localStorage.getItem("accessToken");
     fetch(`/api/wishlists/${id}/share`, {
       method: "POST",
@@ -117,7 +124,7 @@ const WishListPage = () => {
   };
 
   const handleEditGift = (gift: Gift) => {
-    navigate(`/api/gifts/${gift.id}`);
+    if (gift.id) navigate(`/gift/${gift.id}/editGift`);
   };
 
   const handleDeleteGift = (gift: Gift) => {
@@ -126,7 +133,7 @@ const WishListPage = () => {
     })
       .then((response) => {
         if (response.ok) {
-          setGifts(gifts.filter((g) => g.title !== gift.title));
+          setGifts(gifts.filter((g) => g.id !== gift.id));
           console.log("Gift successfully deleted.");
         } else {
           console.error("Failed to delete Gift.");
@@ -207,17 +214,16 @@ const WishListPage = () => {
                 className="gift-image"
               />
               <div>
-            Price: {gift.price} {gift.currency}
+                Price: {gift.price} {gift.currency}
               </div>
               <div>Comment: {gift.description}</div>
               {gift.url && (
                 <a href={gift.url} className="go-to-store" target="_blank" rel="noopener noreferrer">
-                To the store <GoArrowUpRight className="arrow-icon" />
-              </a>
+                  To the store <GoArrowUpRight className="arrow-icon" />
+                </a>
               )}
             </Card>
           ))}
-
         </main>
         {showModal && (
           <Modal
@@ -234,6 +240,8 @@ const WishListPage = () => {
 };
 
 export default WishListPage;
+
+
 
 
 

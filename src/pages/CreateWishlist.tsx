@@ -42,7 +42,17 @@ const CreateWishlist: React.FC = () => {
       setErrorMessage("Please enter a valid date within the range from today to the next 50 years.");
       return;
     }
-    
+
+    const inputDateObject = new Date(wishlistDate);
+    const currentDate = new Date();
+    const maxDate = new Date();
+    maxDate.setFullYear(currentDate.getFullYear() + 50);
+
+    if (inputDateObject < currentDate || inputDateObject > maxDate) {
+      setErrorMessage("Please enter a valid date within the range from today to the next 50 years.");
+      return;
+    }
+
     await saveWishlist();
     navigate("/dashboard");
   };
@@ -69,16 +79,8 @@ const CreateWishlist: React.FC = () => {
 
   const handleDateChange = (event: ChangeEvent<HTMLInputElement>) => {
     const inputDate = event.target.value;
-    const inputDateObject = new Date(inputDate);
-
-    if (!inputDate || inputDateObject < new Date(currentDateFormatted) || inputDateObject > new Date(maxDateFormatted)) {
-      setErrorMessage(
-        "Please enter a valid date within the range from today to the next 50 years."
-      );
-    } else {
-      setErrorMessage("");
-      setWishlistDate(inputDate);
-    }
+    setWishlistDate(inputDate);
+    setErrorMessage("");
   };
 
   const handleWishlistNameChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -148,3 +150,6 @@ const CreateWishlist: React.FC = () => {
 };
 
 export default CreateWishlist;
+
+
+

@@ -54,7 +54,7 @@ const Home = () => {
                 <strong>Ready! Enjoy!</strong>
                 <br />
                 <br />
-                You get cool gifts, and your friends don’t ask the question
+                You get cool gifts. Your friends don’t ask the question
                 “What should I give?”{" "}
               </div>
             </div>

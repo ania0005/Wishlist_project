@@ -6,7 +6,7 @@ export default interface User {
   }
 
 export interface Gift {
-    id: number
+    id: string
     title: string
     price: number
     description: string
@@ -14,9 +14,10 @@ export interface Gift {
     imageUrl: string 
     currency: string
     isReserved: boolean
+    wishlist: Wishlist
   }
 export interface Wishlist {
-    id: number
+    id: string
     title: string
     description: string
     date: string
