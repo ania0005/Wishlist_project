@@ -1,0 +1,81 @@
+/*------------------createWishlist---------- */
+.wishlist-container {
+  background-color: whitesmoke;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-size: 14px;
+  font-family: "DM Serif Display", serif;
+}
+
+.wishlist-card {
+  background-color: #d1edf8;
+  box-shadow: 0px 2px 4px rgba(53, 22, 22, 0.4);
+  padding: 20px;
+  border-radius: 15px;
+  width: 800px;
+  height: 800px;
+}
+
+.back-arrow a {
+  text-decoration: none;
+  color: #b1abab;
+}
+
+.back-arrow a:hover {
+  text-decoration: underline;
+}
+
+.input-group {
+  width: 100%;
+  border-radius: 20px;
+  margin-left: 20px;
+  padding: 7px;
+}
+.rounded-textarea::placeholder,  /* цвет внутри placeholder createWishlist*/
+input[type="date"].rounded-input,
+input.rounded-input-custom::placeholder {
+  color: #c2bfbf; 
+}
+
+label {
+  display: block;
+  margin-bottom: 15px;
+}
+
+.rounded-input {
+  background-color: white;
+  border: none;
+  border-radius: 15px;
+  font-family: "DM Serif Display", serif;
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+.rounded-textarea {
+  background-color: white;
+  border-radius: 5px;
+  width: 94%;
+  height: 150px;
+  padding: 20px;
+  font-family: "DM Serif Display", serif;
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+.save-button:hover {
+  background-color: #4294ec;
+}
+
+.file-input-text {
+  width: 200px; /* Задайте нужную ширину */
+  height: 200px;
+  justify-content: center; /* Выравнивание по горизонтали */
+  align-items: center; /* Выравнивание по вертикали */
+  display: flex;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: white; /* Белый фон */
+  cursor: pointer; /* Курсор при наведении становится указателем */
+}

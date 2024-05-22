@@ -1,12 +1,13 @@
-import Header from "../components/header/Header";
-import { Link } from "react-router-dom";
-import share from "./../img/share.jpg";
-import info from "./../img/info.jpg";
-import gift from "./../img/gift.png";
-import add from "./../img/add.jpg";
-import "../App.css";
-import AuthContext from "../contexts/AuthContext";
 import { useContext } from "react";
+import Header from "../../components/header/Header";
+import { Link } from "react-router-dom";
+import share from "../../img/share.jpg";
+import info from "../../img/info.jpg";
+import gift from "../../img/gift.png";
+import add from "../../img/add.jpg";
+import AuthContext from "../../contexts/AuthContext";
+import "./Home.css";
+
 
 const Home = () => {
   const { user} = useContext(AuthContext);

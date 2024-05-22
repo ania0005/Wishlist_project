@@ -1,9 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Footer from "./components/footer/Footer";
 import ScrollToTop from "./utils/ScrollToTop";
-import Home from "./pages/Home";
-import CreateGift from "./pages/CreateGift";
-import { PrivacyPolicy } from "./pages/PrivacyPolicy";
+
+
 import "./App.css";
 import AuthForm from "./components/Auth/AuthForm";
 import SignUpPage from "./components/SignUp/SignUpPage";
@@ -14,9 +13,13 @@ import { useEffect, useState } from "react";
 import User from "./types/index";
 import NavBar from "./components/navbar/NavBar";
 import About from "./components/About/About";
-import CreateWishlist from "./pages/CreateWishlist";
+
 import WishListPage from "./components/WishListPage/WishListPage";
 import EditGift from "./components/EditGift/EditGift";
+import { PrivacyPolicy } from "./pages/PrivacyPolicy/PrivacyPolicy";
+import CreateWishlist from "./pages/CreateWishlist/CreateWishlist";
+import CreateGift from "./pages/CreateGift/CreateGift";
+import Home from "./pages/Home/Home";
 
 
 const App: React.FC = () => {

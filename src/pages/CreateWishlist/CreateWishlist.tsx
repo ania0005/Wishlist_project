@@ -1,5 +1,6 @@
 import React, { useState, ChangeEvent } from "react";
 import { useNavigate } from "react-router-dom";
+import "./CreateWishlist.css";
 
 const CreateWishlist: React.FC = () => {
   const navigate = useNavigate();

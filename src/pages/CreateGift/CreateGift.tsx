@@ -1,5 +1,6 @@
 import React, { useState, useRef, ChangeEvent } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import "./CreateGift.css";
 
 const CreateGift: React.FC = () => {
   const navigate = useNavigate();
