@@ -1,4 +1,4 @@
-.dashboard {
+.dashboard-in-account {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -7,9 +7,12 @@
   background-color: #F1F8FF;
   background-size: contain;
   background-position: center;
+
+  padding-bottom: 100px;
+ 
 }
 
-.dashboard-header {
+.dashboard-header-in-account {
   margin: 10px;
   display: flex;
   width: 100%;
@@ -18,19 +21,18 @@
   position: sticky;
   top: 0;
   z-index: 1;
-  
- 
 }
 
-.user-profile {
+.user-profile-in-account {
   display: flex;
+  flex-direction: column-reverse; /* Изменено с flex-direction: column на flex-direction: column-reverse */
   align-items: center;
   position: absolute;
   top: 134px;
   left: 200px;
 }
 
-.user-icon {
+.user-icon-in-account {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -41,30 +43,34 @@
   background-size: contain;
   background-position: center;
   border-radius: 50%;
-  margin-right: 10px;
+  margin-bottom: 10px;
 }
 
-
-.username {
+.username-in-account {
   font-weight: bold;
+  order: 1;
+  margin-bottom: 10px;
+ 
+  
 }
 
-.wishlist-section {
+.wishlist-section-in-account {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.my-wishlists {
+.my-wishlists-in-account {
   font-size: 18px;
   margin-bottom: 10px;
   position: fixed;
-  top: 260px;
-  left: 205px;
+  top: 317px;
+  left: 185px;
   margin: 10px;
+  font-weight: bold;
 }
 
-.create-wishlist-button {
+.create-wishlist-button-in-account {
   padding: 10px 20px;
   font-size: 16px;
   text-decoration: none;
@@ -74,34 +80,43 @@
   border-radius: 10px;
   cursor: pointer;
   position: fixed;
-  top: 250px;
-  left: 342px;
+  top: 350px;
+  left: 163px;
   margin: 10px;
 }
-.create-wishlist-button:hover {
+.create-wishlist-button-in-account:hover {
   background-color: #49BAF9; 
   color: #ffffff 
 }
-.dashboard-content {
+.dashboard-content-in-account {
   max-width: 800px;
-  margin: 10px;
- 
+  margin: 10px auto; 
+  position: relative;
+  z-index: 1;
+}
+.AliceCarousel {
+  max-width: 100%; /* Ограничьте максимальную ширину карусели */
+  margin: 0 auto; /* Центрируйте карусель */
 }
 
-
-.wishlist-card-in {
-  max-width: 210px;
-  min-height:200px ;
+.wishlist-card-in-account {
+  max-width: 170px;
+  min-height:170px ;
   margin-bottom: 14px;
+  bottom: 20px;
   margin-right: auto;
   margin-top: 100px;
   font-size: 12px;
   background-color: white;
+  
 
   
 }
+.carousel-item {
+  padding: 5px;
+}
 
-.add-gift-in-card-button {
+.add-gift-in-card-button-in-account {
   margin-top: 10px;
   background-color: #49BAF9;
   color: white;
@@ -110,7 +125,7 @@
 
 
  
-.event-date {
+.event-date-in-account {
   position: row;
   z-index: 2;
   bottom: 50px; 
@@ -118,28 +133,25 @@
   color: #000000;
 }
 
-.time-left-button {
-  position: absolute;
-  margin: 10px;
-  bottom: 2px;
+.time-left-text-in-account {
+  position:static;
+  margin: 0;
+  margin-top: 5px;
+  bottom: 0;
   right: 5px;
   background-color: white;
   color: rgb(172, 64, 10);
-  border: 1px solid white;
-  width: 90px; 
-  height: 50px; 
-  border-radius:5px;
   line-height: 50px;
-  text-align: center; 
+  text-align: left; 
 }
-.time-left-button:hover {
+.time-left-button-in-account:hover {
   background-color: white; 
   color: black; 
-  border: none;
+ 
 }
 
 
-.delete-button {
+.delete-button-in-account {
   padding: 10px 20px;
   font-size: 16px;
   text-decoration: none;
@@ -149,17 +161,17 @@
   border-radius: 10px;
   cursor: pointer;
   position: fixed;
-  top: 200px;
-  left: 342px;
+  top: 280px;
+  left: 195px;
   max-width: 146px;
   text-align: left;
 }
-.delete-button:hover {
+.delete-button-in-account:hover {
   background-color: #F1F8FF; 
   color: #5c6c75; 
 }
 
-.modal {
+.modal-in-account {
   position: fixed;
   z-index: 1001;
   left: 0;
@@ -170,7 +182,7 @@
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-.modal-content {
+.modal-content-in-account {
   background-color: #fff;
   margin: 15% auto;
   padding: 20px;
@@ -179,36 +191,18 @@
   max-width: 500px;
 }
 
-.close-button {
+.close-button-in-account {
   color: #aaa;
   float: right;
   font-size: 28px;
   font-weight: bold;
 }
 
-.close-button:hover,
-.close-button:focus {
+.close-button-in-account:hover,
+.close-button-in-account:focus {
   color: black;
   text-decoration: none;
   cursor: pointer;
-}
-
-
-
-/* Стили для кнопки подтверждения в модальном окне */
-.confirm-button {
-  padding: 10px 20px;
-  font-size: 16px;
-  margin-top: 10px; /* Отступ сверху */
-  color: #F1F8FF;
-  background-color: #007bff; /* Синий цвет кнопки */
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.confirm-button:hover {
-  background-color: #0056b3; /* Темно-синий цвет при наведении */
 }
 
 
@@ -224,4 +218,56 @@
 
 .delete-account-button:hover {
   background-color: #0056b3; /* Темно-синий цвет при наведении */
+}
+
+/* Мобильная оптимизация для устройств с шириной экрана до 375px */
+@media (max-width: 375px) {
+  .dashboard-in-account,
+  .user-profile-in-account,
+  .wishlist-section-in-account {
+    flex-direction: column;
+    align-items: center;
+  }
+  .create-wishlist-button-in-account,
+  .delete-button-in-account {
+    position: static;
+    margin: 10px auto;
+  }
+  .wishlist-card-in-account {
+    max-width: 100%;
+  }
+}
+
+/* Мобильная оптимизация для устройств с шириной экрана до 425px */
+@media (max-width: 425px) {
+  .dashboard-in-account,
+  .user-profile-in-account,
+  .wishlist-section-in-account {
+    flex-direction: column;
+    align-items: center;
+  }
+  .create-wishlist-button-in-account,
+  .delete-button-in-account {
+    position: static;
+    margin: 10px auto;
+  }
+  .wishlist-card-in-account {
+    max-width: 100%;
+  }
+}
+
+/* Мобильная оптимизация для устройств с шириной экрана до 768px */
+@media (max-width: 768px) {
+  .dashboard-in-account {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* Мобильная оптимизация для устройств с шириной экрана до 1024px */
+@media (max-width: 1024px) {
+  .dashboard-in-account {
+    flex-direction: column;
+    align-items: center;
+  }
 }

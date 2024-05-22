@@ -183,26 +183,26 @@ const WishListPage = () => {
         </header>
         <main className="wishlist-content">
           {gifts.map((gift) => (
-            <Card key={gift.id} className="share-card">
-              <div className="card-content">
-                <div className="card-body">
-                  <div className="card-left">
+            <Card key={gift.id} className="gift-card">
+              <div className="gift-content">
+                <div className="gift-body">
+                  <div className="gift-left">
                     {gift.imgUrl ? (
                       <img
                         src={gift.imgUrl}
                         alt={gift.title}
-                        className="share-gift-image"
+                        className="gift-image"
                       />
                     ) : (
                       <FontAwesomeIcon
                         icon={faGift}
-                        className="share-gift-image-placeholder"
+                        className="gift-image-placeholder"
                       />
                     )}
                     {gift.url && (
                       <a
                         href={gift.url}
-                        className="share-go-to-store"
+                        className="gift-go-to-store"
                         target="_blank"
                         rel="noopener noreferrer"
                       >
@@ -210,12 +210,12 @@ const WishListPage = () => {
                       </a>
                     )}
                   </div>
-                  <div className="card-right">
-                    <div className="share-card-title">{gift.title}</div>
-                    <div className="share-card-price">
+                  <div className="gift-right">
+                    <div className="gift-card-title">{gift.title}</div>
+                    <div className="gift-card-price">
                       Price: {gift.price} {gift.currency}
                     </div>
-                    <div className="share-card-comment">
+                    <div className="gift-card-comment">
                       Comment: {gift.description}
                     </div>
                   </div>
@@ -264,6 +264,13 @@ const WishListPage = () => {
 };
 
 export default WishListPage;
+
+
+
+
+
+
+
 
 
 

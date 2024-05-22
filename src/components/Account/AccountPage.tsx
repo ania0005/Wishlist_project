@@ -12,13 +12,42 @@ import 'react-alice-carousel/lib/alice-carousel.css';
 const { Meta } = Card;
 const { Text } = Typography;
 
-
 const AccountPage = () => {
   const [username, setUsername] = useState('');
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
-  const [wishlists, setWishlists] = useState<Wishlist[]>([]); // Используем интерфейс
+  const [wishlists, setWishlists] = useState<Wishlist[]>([]);
+  const [giftCounts, setGiftCounts] = useState<{ [key: string]: number }>({});
+
+  const getGiftCount = async (wishlist: Wishlist): Promise<number> => {
+    let giftCount = 0;
+    try {
+      const response = await fetch(`api/wishlists/${wishlist.id}/gifts`);
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const gifts = await response.json();
+      giftCount = gifts.length;
+    } catch (error) {
+      console.error('Error:', error);
+    }
+    return giftCount;
+  };
+
+  useEffect(() => {
+    const fetchGiftCounts = async () => {
+      const giftCounts: { [key: string]: number } = {};
+      for (const wishlist of wishlists) {
+        const giftCount = await getGiftCount(wishlist);
+        giftCounts[wishlist.id] = giftCount;
+      }
+      setGiftCounts(giftCounts);
+    };
   
+
+    fetchGiftCounts();
+  }, [wishlists]);
+
   useEffect(() => {
     fetch('/api/users/auth/me')
       .then(response => {
@@ -30,13 +59,12 @@ const AccountPage = () => {
       .then(data => {
         if (data) {
           setUsername(data.firstName);
-          
         }
       })
       .catch(error => {
         console.error('Error:', error);
       });
-
+  
     fetch('/api/wishlists') // Получаем все вишлисты пользователя
       .then(response => {
         if (!response.ok) {
@@ -44,9 +72,15 @@ const AccountPage = () => {
         }
         return response.json(); 
       })
-      .then(data => {
+      .then(async (data: Wishlist[]) => {
         if (data) {
           setWishlists(data); // Устанавливаем вишлисты как полученные данные
+          const giftCounts: { [key: string]: number } = {};
+          for (const wishlist of data) {
+            const giftCount = await getGiftCount(wishlist);
+            giftCounts[wishlist.id] = giftCount;
+          }
+          setGiftCounts(giftCounts);
         }
       })
       .catch(error => {
@@ -54,7 +88,7 @@ const AccountPage = () => {
       });
   }, []);
   
-
+  
   const handleDeleteClick = () => {
     setShowModal(true);
   };
@@ -73,7 +107,8 @@ const AccountPage = () => {
         localStorage.removeItem('authToken'); 
         sessionStorage.clear(); 
         console.log('Account successfully deleted.');
-        navigate('/'); 
+        window.location.reload();
+        window.location.href = '/';
       } else {
         console.error('Failed to delete account.');
       }
@@ -99,61 +134,47 @@ const AccountPage = () => {
   };
   const items = wishlists.map((wishlist) => (
     <div key={wishlist.id}>
-      <Card title={wishlist.title} className="wishlist-card-in" onClick={() => handleCardClick(wishlist.id)}>
-        <Text className="event-date">{wishlist.eventDate.split('T')[0]}</Text>
+      <Card title={wishlist.title} className="wishlist-card-in-account" onClick={() => handleCardClick(wishlist.id)}>
+        <Text className="event-date-in-account">{wishlist.eventDate.split('T')[0]}</Text>
         <Meta description={wishlist.comment} />
-        {wishlist.gifts && wishlist.gifts.length > 0 ? (
-          <Fragment>
-            <List
-              itemLayout="horizontal"
-              dataSource={wishlist.gifts}
-              renderItem={(gift: Gift) => (
-                <List.Item>
-                  <List.Item.Meta
-                    title={gift.title}
-                    description={`URL: ${gift.url}`}
-                  />
-                </List.Item>
-              )}
-            />
-            <FaGift className="gift-icon" /> {/* Отображаем иконку подарка */}
-          </Fragment>
-        ) : (
-          <Button onClick={(event) => handleAddGiftClick(event, wishlist.id)} className="add-gift-in-card-button">add gift</Button>
-        )}
-        <Button className="time-left-button">Days left: {calculateDaysLeft(wishlist.eventDate)}</Button>
+        <Button onClick={(event) => handleAddGiftClick(event, wishlist.id)} className="add-gift-in-card-button-in-account">add gift</Button>
+        <p className="time-left-text-in-account">Days left: {calculateDaysLeft(wishlist.eventDate)}</p>
+        <p className="gift-count-text-in-account">Gift count: {giftCounts[wishlist.id] ?? 'Loading...'}</p>
       </Card>
     </div>
   ));
   return (
     <Fragment>
-      <div className="dashboard">
-        <header className="dashboard-header">
-          <div className="user-profile">
-            <div className="user-icon"></div>
-            <div className="username">{username}</div>
-            <div className="wishlist-section">
-              <span className="my-wishlists">My WishLists</span>
-              <Link to="/createWishList" className="create-wishlist-button">Create WishList</Link>
-              <button onClick={handleDeleteClick} className="delete-button"><GoTrash /> delete </button>
+      <div className="dashboard-in-account">
+        <header className="dashboard-header-in-account">
+          <div className="user-profile-in-account">
+            <div className="user-icon-in-account"></div>
+            <div className="username-in-account">{username}</div>
+            <div className="wishlist-section-in-account">
+              <span className="my-wishlists-in-account">My WishLists</span>
+              <Link to="/createWishList" className="create-wishlist-button-in-account">Create WishList</Link>
+              <button onClick={handleDeleteClick} className="delete-button-in-account"><GoTrash /> delete </button>
             </div>
           </div>
         </header>
-        <main className="dashboard-content"style={{ marginTop: '230px', display: 'flex', flexDirection: 'row', flexWrap: 'wrap', position: 'fixed' }}>
+        <main className="dashboard-content-in-account"style={{ marginTop: '360px', display: 'flex', flexDirection: 'row', flexWrap: 'wrap', position: 'fixed' }}>
           <AliceCarousel
             mouseTracking
             items={items}
             responsive={{
               0: { items: 1 },
-              1024: { items: 3 },
+              375:{ items: 1 },
+              425: { items:2 },
+              768: { items: 3 },
+              1024: { items: 4 },
             }}
           />
         </main>
       </div>
       {showModal && (
-        <div className="modal">
-          <div className="modal-content">
-            <span className="close-button" onClick={handleCloseModal}>×</span>
+        <div className="modal-in-account">
+          <div className="modal-content-in-account">
+            <span className="close-button-in-account" onClick={handleCloseModal}>×</span>
             <p>Do you want to delete your account?</p>
             <button onClick={handleDeleteAccount} className="delete-account-button">Delete Account</button>
           </div>

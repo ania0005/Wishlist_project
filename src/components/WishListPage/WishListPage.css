@@ -9,10 +9,9 @@
 
 .wishlist-header {
   margin-top: 100px;
-  width: 300px; /* Увеличено для размещения всех элементов */
+  width: 300px; 
   background-color: rgba(255, 255, 255, 0);
-  position:absolute;
-  z-index: 1000;
+  position: absolute;
   left: 200px;
 }
 
@@ -24,7 +23,7 @@
 }
 
 .go-to-wishlists {
-  font-size: 12px;
+  font-size: 14px;
   color: #49baf9;
   margin-bottom: 10px;
 }
@@ -32,9 +31,9 @@
 .wishlist-name {
   display: flex;
   align-items: center;
-  justify-content:flex-start;
+  justify-content: flex-start;
   font-weight: bold;
-  font-size: 28px;
+  font-size: 50px;
   margin-bottom: 10px;
   font-family: "DM Serif Display", serif;
   width: 100%;
@@ -44,6 +43,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+
 }
 
 .add-wl-button,
@@ -60,9 +60,9 @@
 .delete-wl-button {
   margin-top: 10px;
   margin-left: 20px;
-  width: 30px; /* Уменьшен размер кнопки удаления в два раза */
-  height: 24px; /* Уменьшена высота кнопки удаления */
-  font-size: 14px; /* Уменьшен размер текста */
+  width: 30px;
+  height: 24px;
+  font-size: 1px;
 }
 
 .add-wl-button:hover,
@@ -75,94 +75,172 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin-top: 280px;
+  margin-top: 330px;
 }
 
-.share-card {
-  width: 300px;
+.gift-card {
+  width: 550px;
+  height: 250px; /* Фиксированная высота карточки */
   margin: 10px;
   border-radius: 10px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-.card-content {
-  padding: 20px;
+.gift-content {
+  padding-top: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
-.card-body {
+.gift-body {
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: flex-start;
   width: 100%;
 }
 
-.card-left {
+.gift-left {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-right: 10px;
-  flex-shrink: 0; /* Предотвращает изменение размера изображения */
+  margin-right: 50px;
+  flex-shrink: 0; 
+  gap: 50px;
 }
 
-.card-right {
+.gift-right {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  flex-grow: 1; /* Позволяет текстовым элементам занимать оставшееся пространство */
+  flex-grow: 1;
 }
 
-.share-gift-image,
-.share-gift-image-placeholder {
+.gift-image,
+.gift-image-placeholder {
   width: 100px;
   height: 100px;
   object-fit: cover;
   margin-bottom: 10px;
+  color: #ccc;
 }
 
-.share-go-to-store {
+.gift-go-to-store {
   display: flex;
   align-items: center;
   margin-top: 10px;
-  font-size: 14px;
-  color: #0077b6;
+  font-size: 20px;
+  color: #49baf9;
   text-decoration: none;
 }
 
-.share-card-title {
-  font-size: 20px;
+.gift-card-title {
+  font-size: 30px;
   font-weight: bold;
   margin-bottom: 10px;
   font-family: "DM Serif Display", serif;
+  text-align: left; 
+  width: 100%;
 }
 
-.share-card-price {
-  font-size: 16px;
-  color: #49baf9;
+.gift-card-price {
+  font-size: 20px;
+  color: #078ed6;
   margin-bottom: 10px;
-  white-space: nowrap; /* Предотвращает перенос текста */
+  white-space: nowrap;
 }
 
-.share-card-comment {
-  font-size: 14px;
+.gift-card-comment {
+  font-size: 20px;
   margin-bottom: 10px;
+  text-align: left; 
+  width: 100%;
 }
 
 .arrow-icon {
   margin-left: 5px;
 }
+
 .tooltip-container {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.copy-link{
+
+.copy-link {
   background-color: #49baf9;
 }
+
+/* Мобильная адаптация */
+@media (max-width: 768px) {
+  .wishlist-header {
+    margin-top: 20px;
+    left: 10px;
+    width: auto;
+  }
+
+  .wishlist-content {
+    margin-top: 100px;
+  }
+
+  .gift-card {
+    width: 100%;
+    margin: 10px 0;
+  }
+
+  .gift-left {
+    margin-right: 20px;
+  }
+
+  .gift-right {
+    align-items: flex-start;
+  }
+
+  .add-wl-button,
+  .delete-wl-button,
+  .share-button {
+    width: 100px;
+  }
+
+  .wishlist-section {
+    align-items: center;
+  }
+
+  .gift-go-to-store {
+    font-size: 12px;
+  }
+
+  .gift-card-title {
+    font-size: 18px;
+  }
+
+  .gift-card-price {
+    font-size: 14px;
+  }
+
+  .gift-card-comment {
+    font-size: 12px;
+  }
+
+  .wishlist-name {
+    font-size: 24px;
+  }
+
+  .delete-wl-button {
+    margin-top: 0;
+    margin-left: 10px;
+  }
+}
+
+
+
+
+
 
 
 

@@ -83,7 +83,6 @@ const AuthForm: React.FC = () => {
       </p>
     </div>
     </body>
-    
   );
 };
 
