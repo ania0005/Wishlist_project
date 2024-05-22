@@ -15,7 +15,11 @@
     letter-spacing: normal;
     z-index: 1000;
 }
-
+.container {
+    margin: 0 auto; /* Размещение по центру */
+    padding: 0 15px; /* Отступы */
+    max-width: 1200px; /* Максимальная ширина */
+  }
 /* Стили для строки навигации */
 .nav-row {
     display: flex;
