@@ -11,6 +11,8 @@ import {
 import { Card, Button, Modal, Dropdown } from "antd";
 import { Gift, Wishlist } from "../../types";
 import { GoArrowUpRight } from "react-icons/go";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGift } from "@fortawesome/free-solid-svg-icons";
 
 const WishListPage = () => {
   const [title, setTitle] = useState("");
@@ -208,11 +210,11 @@ const WishListPage = () => {
                   />
                 </Dropdown>
               </div>
-              <img
-                src={gift.imageUrl}
-                alt={gift.title}
-                className="gift-image"
-              />
+              {gift.imageUrl ? (
+                        <img src={gift.imageUrl} alt={gift.title} className="gift-image" />
+                      ) : (
+                        <FontAwesomeIcon icon={faGift} className="gift-image-placeholder" />
+                      )}
               <div>
                 Price: {gift.price} {gift.currency}
               </div>
