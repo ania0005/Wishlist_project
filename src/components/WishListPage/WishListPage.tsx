@@ -99,30 +99,31 @@ const WishListPage = () => {
   };
 
   const handleShareClick = () => {
-    if (!id) return;
+    if (id) navigate(`/mywishlist/${id}`)
+  
 
-    const accessToken = localStorage.getItem("accessToken");
-    fetch(`/api/wishlists/${id}/share`, {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-      },
-    })
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        } else {
-          throw new Error("Failed to share WishList.");
-        }
-      })
-      .then((data) => {
-        const uuid = data.uuid;
-        console.log(`WishList successfully shared. UUID: ${uuid}`);
-        navigate(`/wishlist-share/${uuid}`);
-      })
-      .catch((error) => {
-        console.error("Error sharing WishList:", error);
-      });
+    // const accessToken = localStorage.getItem("accessToken");
+    // fetch(`/api/wishlists/${id}/share`, {
+    //   method: "POST",
+    //   headers: {
+    //     Authorization: `Bearer ${accessToken}`,
+    //   },
+    // })
+    //   .then((response) => {
+    //     if (response.ok) {
+    //       return response.json();
+    //     } else {
+    //       throw new Error("Failed to share WishList.");
+    //     }
+    //   })
+    //   .then((data) => {
+    //     const uuid = data.uuid;
+    //     console.log(`WishList successfully shared. UUID: ${uuid}`);
+    //     navigate(`/wishlist-share/${uuid}`);
+    //   })
+    //   .catch((error) => {
+    //     console.error("Error sharing WishList:", error);
+    //   });
   };
 
   const handleEditGift = (gift: Gift) => {
