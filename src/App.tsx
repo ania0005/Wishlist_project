@@ -20,6 +20,7 @@ import { PrivacyPolicy } from "./pages/PrivacyPolicy/PrivacyPolicy";
 import CreateWishlist from "./pages/CreateWishlist/CreateWishlist";
 import CreateGift from "./pages/CreateGift/CreateGift";
 import Home from "./pages/Home/Home";
+import SharePage from "./components/SharePage/SharePage";
 
 
 const App: React.FC = () => {
@@ -52,6 +53,7 @@ const App: React.FC = () => {
             <Route path="/wishlist/:id" element={<WishListPage />} />
             <Route path="/signup" element={<SignUpPage />} />
             <Route path="*" element={<NoPageFound />} />
+            <Route path="/mywishlist/:id" element={<SharePage />} />
           </Routes>
           <Footer />
         </Router>

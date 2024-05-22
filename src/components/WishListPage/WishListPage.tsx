@@ -195,35 +195,40 @@ const WishListPage = () => {
         </header>
         <main className="wishlist-content">
           {gifts.map((gift) => (
-            <Card key={gift.id} title={gift.title} className="wishlist-card-in">
-              <div style={{ position: "relative" }}>
-                <Dropdown menu={{ items: giftMenu(gift) }} trigger={["click"]}>
-                  <MoreOutlined
-                    style={{
-                      position: "absolute",
-                      top: 0,
-                      right: 0,
-                      fontSize: "24px",
-                      fontFamily: "DM Serif Display",
-                      cursor: "pointer",
-                    }}
-                  />
-                </Dropdown>
+            <Card key={gift.id} className="share-card">
+              <div className="card-content">
+                <div className="card-body">
+                  <div className="card-left">
+                    {gift.imgUrl ? (
+                      <img src={gift.imgUrl} alt={gift.title} className="share-gift-image" />
+                    ) : (
+                      <FontAwesomeIcon icon={faGift} className="share-gift-image-placeholder" />
+                    )}
+                    {gift.url && (
+                      <a href={gift.url} className="share-go-to-store" target="_blank" rel="noopener noreferrer">
+                        To the store <GoArrowUpRight className="arrow-icon" />
+                      </a>
+                    )}
+                  </div>
+                  <div className="card-right">
+                    <div className="share-card-title">{gift.title}</div>
+                    <div className="share-card-price">Price: {gift.price} {gift.currency}</div>
+                    <div className="share-card-comment">Comment: {gift.description}</div>
+                  </div>
+                  <Dropdown menu={{ items: giftMenu(gift) }} trigger={["click"]}>
+                    <MoreOutlined
+                      style={{
+                        position: "absolute",
+                        top: 24, // 24px вместо 0px
+                        right: 8,
+                        fontSize: "24px",
+                        fontFamily: "DM Serif Display",
+                        cursor: "pointer",
+                      }}
+                    />
+                  </Dropdown>
+                </div>
               </div>
-              {gift.imageUrl ? (
-                        <img src={gift.imageUrl} alt={gift.title} className="gift-image" />
-                      ) : (
-                        <FontAwesomeIcon icon={faGift} className="gift-image-placeholder" />
-                      )}
-              <div>
-                Price: {gift.price} {gift.currency}
-              </div>
-              <div>Comment: {gift.description}</div>
-              {gift.url && (
-                <a href={gift.url} className="go-to-store" target="_blank" rel="noopener noreferrer">
-                  To the store <GoArrowUpRight className="arrow-icon" />
-                </a>
-              )}
             </Card>
           ))}
         </main>
@@ -242,10 +247,4 @@ const WishListPage = () => {
 };
 
 export default WishListPage;
-
-
-
-
-
-
 

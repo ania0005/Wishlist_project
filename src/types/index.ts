@@ -11,7 +11,7 @@ export interface Gift {
     price: number
     description: string
     url: string
-    imageUrl: string 
+    imgUrl: string 
     currency: string
     isReserved: boolean
     wishlist: Wishlist
