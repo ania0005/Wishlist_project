@@ -56,6 +56,14 @@ const CreateGift: React.FC = () => {
       setErrorMessage("Please enter a price for the gift.");
       return;
     }
+    if (giftComment.length > 50) {
+      setErrorMessage("Comment too long. Please shorten your comment.");
+      return;
+    }
+    if (giftName.length > 18) {
+      setErrorMessage("Name too long. Please shorten name.");
+      return;
+    }
 
     await saveGift();
   };

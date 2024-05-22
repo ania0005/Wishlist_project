@@ -164,23 +164,19 @@ const WishListPage = () => {
       <div className="wishlist">
         <header className="wishlist-header">
           <div className="wishlist-profile">
+            <Link to="/dashboard" className="go-to-wishlists">
+              <ArrowLeftOutlined /> Go to wishlists
+            </Link>
             <div className="wishlist-name">
-              <Link to="/dashboard" className="go-to-wishlists">
-                <ArrowLeftOutlined /> Go to wishlists
-              </Link>
-              <br />
               {title}
-            </div>
-            <div className="wishlist-section">
               <Button
                 onClick={handleDeleteClick}
                 className="delete-wl-button"
                 icon={<DeleteOutlined />}
               />
-              <Button
-                onClick={handleAddGiftClick}
-                className="add-wl-button"
-              >
+            </div>
+            <div className="wishlist-section">
+              <Button onClick={handleAddGiftClick} className="add-wl-button">
                 Add gift
               </Button>
               <Button
@@ -200,26 +196,42 @@ const WishListPage = () => {
                 <div className="card-body">
                   <div className="card-left">
                     {gift.imgUrl ? (
-                      <img src={gift.imgUrl} alt={gift.title} className="share-gift-image" />
+                      <img
+                        src={gift.imgUrl}
+                        alt={gift.title}
+                        className="share-gift-image"
+                      />
                     ) : (
-                      <FontAwesomeIcon icon={faGift} className="share-gift-image-placeholder" />
+                      <FontAwesomeIcon
+                        icon={faGift}
+                        className="share-gift-image-placeholder"
+                      />
                     )}
                     {gift.url && (
-                      <a href={gift.url} className="share-go-to-store" target="_blank" rel="noopener noreferrer">
+                      <a
+                        href={gift.url}
+                        className="share-go-to-store"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
                         To the store <GoArrowUpRight className="arrow-icon" />
                       </a>
                     )}
                   </div>
                   <div className="card-right">
                     <div className="share-card-title">{gift.title}</div>
-                    <div className="share-card-price">Price: {gift.price} {gift.currency}</div>
-                    <div className="share-card-comment">Comment: {gift.description}</div>
+                    <div className="share-card-price">
+                      Price: {gift.price} {gift.currency}
+                    </div>
+                    <div className="share-card-comment">
+                      Comment: {gift.description}
+                    </div>
                   </div>
                   <Dropdown menu={{ items: giftMenu(gift) }} trigger={["click"]}>
                     <MoreOutlined
                       style={{
                         position: "absolute",
-                        top: 24, // 24px вместо 0px
+                        top: 24,
                         right: 8,
                         fontSize: "24px",
                         fontFamily: "DM Serif Display",
@@ -247,4 +259,6 @@ const WishListPage = () => {
 };
 
 export default WishListPage;
+
+
 

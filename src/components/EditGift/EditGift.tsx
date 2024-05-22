@@ -78,6 +78,14 @@ const EditGift: React.FC = () => {
       setErrorMessage("Please enter the gift price.");
       return;
     }
+    if (giftComment.length > 50) {
+      setErrorMessage("Comment too long. Please shorten your comment.");
+      return;
+    }
+    if (giftName.length > 18) {
+      setErrorMessage("Name too long. Please shorten name.");
+      return;
+    }
 
     await updateGift();
       navigate(`/wishlist/${wishlistId}`);

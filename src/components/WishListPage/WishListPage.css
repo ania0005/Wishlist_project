@@ -9,9 +9,9 @@
 
 .wishlist-header {
   margin-top: 100px;
-  width: 170px;
+  width: 300px; /* Увеличено для размещения всех элементов */
   background-color: rgba(255, 255, 255, 0);
-  position: fixed;
+  position:absolute;
   z-index: 1000;
   left: 200px;
 }
@@ -23,24 +23,27 @@
   padding: 10px;
 }
 
+.go-to-wishlists {
+  font-size: 12px;
+  color: #49baf9;
+  margin-bottom: 10px;
+}
+
 .wishlist-name {
+  display: flex;
+  align-items: center;
+  justify-content:flex-start;
   font-weight: bold;
   font-size: 28px;
   margin-bottom: 10px;
   font-family: "DM Serif Display", serif;
+  width: 100%;
 }
 
 .wishlist-section {
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
-  margin-top: 10px;
-}
-
-.go-to-wishlists {
-  font-size: 12px;
-  color: #49baf9;
-  
+  align-items: flex-start;
 }
 
 .add-wl-button,
@@ -54,6 +57,14 @@
   margin-bottom: 10px;
 }
 
+.delete-wl-button {
+  margin-top: 10px;
+  margin-left: 20px;
+  width: 30px; /* Уменьшен размер кнопки удаления в два раза */
+  height: 24px; /* Уменьшена высота кнопки удаления */
+  font-size: 14px; /* Уменьшен размер текста */
+}
+
 .add-wl-button:hover,
 .delete-wl-button:hover,
 .share-button:hover {
@@ -64,7 +75,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin-top: 200px;
+  margin-top: 280px;
 }
 
 .share-card {
@@ -85,19 +96,24 @@
 
 .card-body {
   display: flex;
-  flex-direction: row; /* Изменено на row для горизонтального выравнивания */
+  flex-direction: row;
   align-items: center;
-}
-
-.card-left,
-.card-right {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start; /* Выравнивание текста по левому краю */
+  width: 100%;
 }
 
 .card-left {
-  margin-right: 10px; /* Добавлено расстояние между изображением и текстом */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-right: 10px;
+  flex-shrink: 0; /* Предотвращает изменение размера изображения */
+}
+
+.card-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex-grow: 1; /* Позволяет текстовым элементам занимать оставшееся пространство */
 }
 
 .share-gift-image,
@@ -111,7 +127,7 @@
 .share-go-to-store {
   display: flex;
   align-items: center;
-  margin-top: 10px; /* Изменено на margin-top для отступа сверху */
+  margin-top: 10px;
   font-size: 14px;
   color: #0077b6;
   text-decoration: none;
@@ -128,6 +144,7 @@
   font-size: 16px;
   color: #49baf9;
   margin-bottom: 10px;
+  white-space: nowrap; /* Предотвращает перенос текста */
 }
 
 .share-card-comment {
@@ -138,6 +155,8 @@
 .arrow-icon {
   margin-left: 5px;
 }
+
+
 
 
 
