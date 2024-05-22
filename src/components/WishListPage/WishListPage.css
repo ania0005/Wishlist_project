@@ -155,8 +155,14 @@
 .arrow-icon {
   margin-left: 5px;
 }
-
-
+.tooltip-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.copy-link{
+  background-color: #49baf9;
+}
 
 
 

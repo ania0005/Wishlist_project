@@ -8,7 +8,7 @@ import {
   ShareAltOutlined,
   MoreOutlined,
 } from "@ant-design/icons";
-import { Card, Button, Modal, Dropdown } from "antd";
+import { Card, Button, Modal, Dropdown, message } from "antd";
 import { Gift, Wishlist } from "../../types";
 import { GoArrowUpRight } from "react-icons/go";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -17,6 +17,7 @@ import { faGift } from "@fortawesome/free-solid-svg-icons";
 const WishListPage = () => {
   const [title, setTitle] = useState("");
   const [showModal, setShowModal] = useState(false);
+  const [showShareModal, setShowShareModal] = useState(false);
   const navigate = useNavigate();
   const [gifts, setGifts] = useState<Gift[]>([]);
   const [wishlist, setWishlist] = useState<Wishlist | undefined>();
@@ -99,31 +100,21 @@ const WishListPage = () => {
   };
 
   const handleShareClick = () => {
-    if (id) navigate(`/mywishlist/${id}`)
-  
+    setShowShareModal(true);
+  };
 
-    // const accessToken = localStorage.getItem("accessToken");
-    // fetch(`/api/wishlists/${id}/share`, {
-    //   method: "POST",
-    //   headers: {
-    //     Authorization: `Bearer ${accessToken}`,
-    //   },
-    // })
-    //   .then((response) => {
-    //     if (response.ok) {
-    //       return response.json();
-    //     } else {
-    //       throw new Error("Failed to share WishList.");
-    //     }
-    //   })
-    //   .then((data) => {
-    //     const uuid = data.uuid;
-    //     console.log(`WishList successfully shared. UUID: ${uuid}`);
-    //     navigate(`/wishlist-share/${uuid}`);
-    //   })
-    //   .catch((error) => {
-    //     console.error("Error sharing WishList:", error);
-    //   });
+  const handleCopyLink = () => {
+    if (id) {
+      const link = `http://localhost:3000/mywishlist/${id}`;
+      navigator.clipboard.writeText(link)
+        .then(() => {
+          setShowShareModal(false);
+          message.success('Link copied', 2);
+        })
+        .catch((error) => {
+          console.error("Failed to copy link:", error);
+        });
+    }
   };
 
   const handleEditGift = (gift: Gift) => {
@@ -254,12 +245,27 @@ const WishListPage = () => {
             <p>Do you really want to delete this wishlist?</p>
           </Modal>
         )}
+        {showShareModal && (
+          <Modal
+            open={showShareModal}
+            onCancel={() => setShowShareModal(false)}
+            footer={[
+              <Button key="copy" onClick={handleCopyLink} className="copy-link">
+                Copy
+              </Button>,
+            ]}
+          >
+            <p>Copy link?</p>
+          </Modal>
+        )}
       </div>
     </Fragment>
   );
 };
 
 export default WishListPage;
+
+
 
 
 
