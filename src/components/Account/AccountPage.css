@@ -7,7 +7,7 @@
   background-color: #F1F8FF;
   background-size: contain;
   background-position: center;
-
+  padding-right: 20px;
   padding-bottom: 100px;
  
 }
@@ -27,7 +27,7 @@
   display: flex;
   flex-direction: column-reverse; /* Изменено с flex-direction: column на flex-direction: column-reverse */
   align-items: center;
-  position: absolute;
+  position: fixed;
   top: 134px;
   left: 200px;
 }
@@ -44,6 +44,7 @@
   background-position: center;
   border-radius: 50%;
   margin-bottom: 10px;
+  z-index: 2;
 }
 
 .username-in-account {
@@ -68,6 +69,7 @@
   left: 185px;
   margin: 10px;
   font-weight: bold;
+  z-index: 3;
 }
 
 .create-wishlist-button-in-account {
@@ -93,13 +95,17 @@
   margin: 10px auto; 
   position: relative;
   z-index: 1;
+  padding-bottom: 100px;
 }
 .AliceCarousel {
-  max-width: 100%; /* Ограничьте максимальную ширину карусели */
-  margin: 0 auto; /* Центрируйте карусель */
+  margin: 0 auto; 
+  width: 100%;
+  padding: 0 15px; 
+  box-sizing: border-box; 
 }
 
 .wishlist-card-in-account {
+  padding-top: 20px; 
   max-width: 170px;
   min-height:170px ;
   margin-bottom: 14px;
@@ -108,13 +114,12 @@
   margin-top: 100px;
   font-size: 12px;
   background-color: white;
+  margin: 0 5px; 
   
 
   
 }
-.carousel-item {
-  padding: 5px;
-}
+
 
 .add-gift-in-card-button-in-account {
   margin-top: 10px;
@@ -236,6 +241,10 @@
   .wishlist-card-in-account {
     max-width: 100%;
   }
+
+  .AliceCarousel {
+    width: 50%; /* Уменьшаем ширину карусели для мобильных устройств */
+  }
 }
 
 /* Мобильная оптимизация для устройств с шириной экрана до 425px */
@@ -254,6 +263,11 @@
   .wishlist-card-in-account {
     max-width: 100%;
   }
+
+
+  .AliceCarousel {
+    width: 50%; /* Уменьшаем ширину карусели для мобильных устройств */
+  }
 }
 
 /* Мобильная оптимизация для устройств с шириной экрана до 768px */
@@ -261,6 +275,13 @@
   .dashboard-in-account {
     flex-direction: column;
     align-items: center;
+     margin-top: 20px;
+    left: 10px;
+    width: auto;
+  }
+
+  .AliceCarousel {
+    width: 70%; /* Уменьшаем ширину карусели для планшетов */
   }
 }
 
@@ -269,5 +290,9 @@
   .dashboard-in-account {
     flex-direction: column;
     align-items: center;
+  }
+
+  .AliceCarousel {
+    width: 90%; /* Уменьшаем ширину карусели для планшетов */
   }
 }

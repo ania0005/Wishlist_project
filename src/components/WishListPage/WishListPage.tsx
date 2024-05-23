@@ -56,7 +56,7 @@ const WishListPage: React.FC = () => {
       if (reservationStatus) {
         setGifts(prevGifts =>
           prevGifts.map(prevGift =>
-            prevGift.id === gift.id ? { ...prevGift, reserved: reservationStatus === 'reserved' } : prevGift
+            prevGift.id === gift.id ? { ...prevGift, isReserved: reservationStatus === 'reserved' } : prevGift
           )
         );
       }
@@ -125,7 +125,6 @@ const WishListPage: React.FC = () => {
   ];
 
   return (
-
     <Fragment>
       <div className="wishlist">
         <header className="wishlist-header">
@@ -214,9 +213,14 @@ const WishListPage: React.FC = () => {
           <Modal
             open={showModal}
             onCancel={handleCloseModal}
-            onOk={handleDeleteWishList}
+            footer={null}  // Убираем footer чтобы кастомизировать его
           >
             <p>Do you really want to delete this wishlist?</p>
+            <div className="modal-footer">
+              <Button onClick={handleDeleteWishList} className="delete-wl-confirm-button">
+                OK
+              </Button>
+            </div>
           </Modal>
         )}
         {showShareModal && (
@@ -238,6 +242,8 @@ const WishListPage: React.FC = () => {
 };
 
 export default WishListPage;
+
+
 
 
 
