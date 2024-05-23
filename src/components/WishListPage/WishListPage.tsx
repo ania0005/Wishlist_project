@@ -1,20 +1,17 @@
 import { useState, useEffect, Fragment } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import "./WishListPage.css";
-import "../../App.css";
-import {
-  DeleteOutlined,
-  ArrowLeftOutlined,
-  ShareAltOutlined,
-  MoreOutlined,
-} from "@ant-design/icons";
 import { Card, Button, Modal, Dropdown, message } from "antd";
+import { DeleteOutlined, ArrowLeftOutlined, ShareAltOutlined, MoreOutlined } from "@ant-design/icons";
 import { Gift, Wishlist } from "../../types";
 import { GoArrowUpRight } from "react-icons/go";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGift } from "@fortawesome/free-solid-svg-icons";
+import moment from "moment";
 
-const WishListPage = () => {
+import "./WishListPage.css";
+import "../../App.css";
+
+const WishListPage: React.FC = () => {
   const [title, setTitle] = useState("");
   const [showModal, setShowModal] = useState(false);
   const [showShareModal, setShowShareModal] = useState(false);
@@ -26,132 +23,109 @@ const WishListPage = () => {
   useEffect(() => {
     if (!id) return;
 
-    fetch(`/api/wishlists/${id}`)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        return response.json();
-      })
-      .then((data) => {
-        if (data) {
-          setWishlist(data);
-          setTitle(data.title);
-        }
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
+    const fetchWishlist = async () => {
+      try {
+        const response = await fetch(`/api/wishlists/${id}`);
+        if (!response.ok) throw new Error("Network response was not ok");
+        const data = await response.json();
+        setWishlist(data);
+        setTitle(data.title);
+      } catch (error) {
+        console.error("Error fetching wishlist:", error);
+      }
+    };
+
+    const fetchGifts = async () => {
+      try {
+        const response = await fetch(`/api/wishlists/${id}/gifts`);
+        if (!response.ok) throw new Error("Network response was not ok");
+        const data = await response.json();
+        setGifts(data);
+      } catch (error) {
+        console.error("Error fetching gifts:", error);
+      }
+    };
+
+    fetchWishlist();
+    fetchGifts();
   }, [id]);
 
   useEffect(() => {
+    gifts.forEach(gift => {
+      const reservationStatus = localStorage.getItem(`gift_${gift.id}_reservation`);
+      if (reservationStatus) {
+        setGifts(prevGifts =>
+          prevGifts.map(prevGift =>
+            prevGift.id === gift.id ? { ...prevGift, isReserved: reservationStatus === 'reserved' } : prevGift
+          )
+        );
+      }
+    });
+  }, [gifts]);
+
+  const handleDeleteClick = () => setShowModal(true);
+
+  const handleAddGiftClick = () => id && navigate(`/wishlist/${id}/createGift`);
+
+  const handleCloseModal = () => setShowModal(false);
+
+  const handleDeleteWishList = async () => {
     if (!id) return;
 
-    fetch(`/api/wishlists/${id}/gifts`)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        return response.json();
-      })
-      .then((data) => {
-        if (data) {
-          setGifts(data);
-        }
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
-  }, [id]);
-
-  const handleDeleteClick = () => {
-    setShowModal(true);
-  };
-
-  const handleAddGiftClick = () => {
-    if (id) navigate(`/wishlist/${id}/createGift`);
-  };
-
-  const handleCloseModal = () => {
-    setShowModal(false);
-  };
-
-  const handleDeleteWishList = () => {
-    if (!id) return;
-
-    fetch(`/api/wishlists/${id}`, {
-      method: "DELETE",
-    })
-      .then((response) => {
-        if (response.ok) {
-          document.cookie =
-            "accessToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-          localStorage.removeItem("accessToken");
-          sessionStorage.clear();
-          console.log("WishList successfully deleted.");
-          navigate("/dashboard");
-        } else {
-          console.error("Failed to delete WishList.");
-        }
-      })
-      .catch((error) => {
-        console.error("Error deleting WishList:", error);
-      });
-  };
-
-  const handleShareClick = () => {
-    setShowShareModal(true);
-  };
-
-  const handleCopyLink = () => {
-    if (id) {
-      const link = `http://localhost:3000/mywishlist/${id}`;
-      navigator.clipboard.writeText(link)
-        .then(() => {
-          setShowShareModal(false);
-          message.success('Link copied', 2);
-        })
-        .catch((error) => {
-          console.error("Failed to copy link:", error);
-        });
+    try {
+      const response = await fetch(`/api/wishlists/${id}`, { method: "DELETE" });
+      if (response.ok) {
+        document.cookie = "accessToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        localStorage.removeItem("accessToken");
+        sessionStorage.clear();
+        navigate("/dashboard");
+      } else {
+        console.error("Failed to delete WishList.");
+      }
+    } catch (error) {
+      console.error("Error deleting WishList:", error);
     }
   };
 
-  const handleEditGift = (gift: Gift) => {
-    if (gift.id) navigate(`/gift/${gift.id}/editGift`);
+  const handleShareClick = () => setShowShareModal(true);
+
+  const handleCopyLink = async () => {
+    if (!id) return;
+
+    try {
+      const response = await fetch(`/api/wishlists/${id}/share`, { method: "POST" });
+      const data = await response.json();
+      const link = `${window.location.origin}/mywishlist/${data.uuid}`;
+      await navigator.clipboard.writeText(link);
+      setShowShareModal(false);
+      message.success('Link copied', 2);
+    } catch (error) {
+      console.error("Failed to copy link:", error);
+    }
   };
 
-  const handleDeleteGift = (gift: Gift) => {
-    fetch(`/api/gifts/${gift.id}`, {
-      method: "DELETE",
-    })
-      .then((response) => {
-        if (response.ok) {
-          setGifts(gifts.filter((g) => g.id !== gift.id));
-          console.log("Gift successfully deleted.");
-        } else {
-          console.error("Failed to delete Gift.");
-        }
-      })
-      .catch((error) => {
-        console.error("Error deleting Gift:", error);
-      });
+  const handleEditGift = (gift: Gift) => gift.id && navigate(`/gift/${gift.id}/editGift`);
+
+  const handleDeleteGift = async (gift: Gift) => {
+    try {
+      const response = await fetch(`/api/gifts/${gift.id}`, { method: "DELETE" });
+      if (response.ok) {
+        setGifts(gifts.filter(g => g.id !== gift.id));
+      } else {
+        console.error("Failed to delete Gift.");
+      }
+    } catch (error) {
+      console.error("Error deleting Gift:", error);
+    }
   };
 
   const giftMenu = (gift: Gift) => [
-    {
-      key: "edit",
-      label: "Edit",
-      onClick: () => handleEditGift(gift),
-    },
-    {
-      key: "delete",
-      label: "Delete",
-      onClick: () => handleDeleteGift(gift),
-    },
+    { key: "edit", label: "Edit", onClick: () => handleEditGift(gift) },
+    { key: "delete", label: "Delete", onClick: () => handleDeleteGift(gift) },
   ];
 
   return (
+
     <Fragment>
       <div className="wishlist">
         <header className="wishlist-header">
@@ -264,6 +238,7 @@ const WishListPage = () => {
 };
 
 export default WishListPage;
+
 
 
 

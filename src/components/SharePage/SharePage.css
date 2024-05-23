@@ -1,17 +1,33 @@
+.wishlist {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  background-color: #f1f8ff;
+  padding: 5%  17% 0 17%;
+  font-family: "DM Serif Display", serif;
+
+    
+}
+
+.share-body {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+}
 .share-header {
   flex-direction: column;
-  margin: 6% 0 1% 19%;
   display: flex;
   width: 100%;
+  padding: 1%;
  
 }
 .share-content {
-  padding: 100px 0 100px 100px;
-  width: 90%;
-  max-width: 2500px;
+  width: 100%;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: center;
 }
 
 .share-event-date {
@@ -28,22 +44,26 @@
 .date {
   font-size: 24px;
   margin-right: 20px;
+  
 }
 
 .days-left {
   font-size: 14px;
   color: white;
+  
 }
 
 .share-title {
   font-size: 50px;
   font-weight: bold;
-  padding-bottom: 20px;
+  
 }
 
 .share-description {
   margin-top: 10px;
   font-size: 26px;
+  padding-bottom: 10px;
+
 }
 
 .sort-options {
@@ -53,48 +73,56 @@
 .share-gift-cards {
   display:flex;
   flex-wrap: wrap;
-  gap: 25px;
+  gap: 35px;
+  justify-content: left;
 }
 
 .share-card {
-  display: flex;
-  background-color: white;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  padding: 10px;
-  font-size: 18px;
-  width: 550px;
-  height: 300px;
-  margin-bottom: 20px;
+  
+  width: 480px;
+  height: 280px; 
+  margin: 10px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   position: relative;
-}
-
-.card-content {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  font-family: "DM Serif Display", serif;
+
+
 }
 
-.card-body {
+.share-card-content {
   display: flex;
-  width: 100%;
-  justify-content:left;
+  flex-direction: column;
+  align-items: center;
+  justify-content: left;
 }
 
-.card-left {
+.share-card-body {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  width: 100%;
+
+}
+
+.share-card-left {
   flex: 1;
   display: flex;
   flex-direction: column;
-  margin-right: 70px;
+  padding-right: 30px;
 }
 
 .share-gift-image {
   width: 100%;
   height: 100px;
   object-fit: cover;
-  margin-bottom: 10px;
 }
 
 .share-gift-image-placeholder {
-  font-size: 7em; /* Слишком большой шрифт */
+  font-size: 7em; 
   color: #ccc;
   width: 100%;
   text-align: left;
@@ -111,11 +139,11 @@
   text-decoration: none;
   position: absolute;
   line-height: 0;
-  top: 255px;
+  top: 220px;
   width: 100%; /* Adjust width to fit within the parent */
 }
 
-.card-right {
+.share-card-right {
   flex: 2;
   display: flex;
   flex-direction: column;
@@ -139,21 +167,23 @@
   margin-bottom: 30px;
 }
 
-.reserve-button {
+.share-reserve-button {
   background-color: #49baf9;
   color: white;
   border: none;
   cursor: pointer;
-  padding: 33px;
+  padding: 24px;
   text-align: center;
   font-size: 26px;
   position: absolute;
   line-height: 0;
-  top: 235px;
-  width: 350px; /* Adjust width to fit within the parent */
+  top: 210px;
+  width: 260px; /* Adjust width to fit within the parent */
+  font-family: "DM Serif Display", serif;
+
 }
 
-.reserve-button.reserved {
+.share-reserve-button.reserved {
   background-color: grey;
 }
 

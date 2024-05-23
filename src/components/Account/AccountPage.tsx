@@ -151,7 +151,7 @@ const AccountPage = () => {
             <div className="user-icon-in-account"></div>
             <div className="username-in-account">{username}</div>
             <div className="wishlist-section-in-account">
-              <span className="my-wishlists-in-account">My WishLists</span>
+              <span className="my-wishlists-in-account">My Wishlists</span>
               <Link to="/createWishList" className="create-wishlist-button-in-account">Create WishList</Link>
               <button onClick={handleDeleteClick} className="delete-button-in-account"><GoTrash /> delete </button>
             </div>

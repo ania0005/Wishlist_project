@@ -53,7 +53,7 @@ const App: React.FC = () => {
             <Route path="/wishlist/:id" element={<WishListPage />} />
             <Route path="/signup" element={<SignUpPage />} />
             <Route path="*" element={<NoPageFound />} />
-            <Route path="/mywishlist/:id" element={<SharePage />} />
+            <Route path="/mywishlist/:uuid" element={<SharePage />} />
           </Routes>
           <Footer />
         </Router>

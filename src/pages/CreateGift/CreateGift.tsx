@@ -127,7 +127,7 @@ const CreateGift: React.FC = () => {
         <h2 className="title-custom">Add a gift</h2>
         <div className="link-input-custom">
           <label className="title-1-custom" htmlFor="gift-link-custom">
-            Link where you can buy a gift
+            Link where you can buy a gift <span className="required-icon">❄</span>
           </label>
           <input
             type="text"
@@ -176,7 +176,7 @@ const CreateGift: React.FC = () => {
           <div className="left-column">
             <div className="input-group-custom">
               <label className="title-1-custom" htmlFor="gift-name-custom">
-                Name
+                Name <span className="required-icon">❄</span>
               </label>
               <input
                 type="text"
@@ -190,7 +190,7 @@ const CreateGift: React.FC = () => {
 
             <div className="input-group-custom">
               <label className="title-1-custom" htmlFor="gift-price-custom">
-                Price
+                Price <span className="required-icon">❄</span>
               </label>
               <div className="currency-input">
                 <input
@@ -225,15 +225,17 @@ const CreateGift: React.FC = () => {
             </div>
           </div>
         </div>
+        {errorMessage && <p className="error-message">{errorMessage}</p>}
         <div className="input-group-custom">
           <button className="save-button-custom" onClick={handleSaveClick}>
             Save
           </button>
+          <p className="required-field-note">❄ - Field Required</p>
         </div>
-        {errorMessage && <p className="error-message">{errorMessage}</p>}
       </div>
     </div>
   );
 };
 
 export default CreateGift;
+

@@ -1,7 +1,7 @@
 /* ------------CreateGift---------------- */
 
 .wishlist-container-custom {
-    background-color: whitesmoke;
+    background-color: #F1F8FF;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -138,5 +138,16 @@
   .right-column {
     margin-top: 20px;
   }
+  .required-field-note {
+    margin-top: 15px;
+    font-size: 12px;
+    font-family: "DM Serif Display", serif;
+    color: #555;
+  }
   
+  .required-icon {
+    color: #777474;
+    font-size: 12px;
+    vertical-align: middle;
+  }
   /*-------------------------------------------  */

@@ -67,9 +67,7 @@ const CreateWishlist: React.FC = () => {
     currentMonth < 10 ? "0" + currentMonth : currentMonth
   }-${currentDay < 10 ? "0" + currentDay : currentDay}`;
 
-  // Устанавливаем максимальную дату на 50 лет вперед от текущей
-  const maxDate = new Date(currentYear + 50, currentMonth - 1, currentDay); // Уменьшаем месяц на 1, так как в JavaScript месяцы начинаются с 0
-
+  const maxDate = new Date(currentYear + 50, currentMonth - 1, currentDay);
   const maxYear = maxDate.getFullYear();
   const maxMonth = maxDate.getMonth() + 1;
   const maxDay = maxDate.getDate();
@@ -101,10 +99,10 @@ const CreateWishlist: React.FC = () => {
         <span className="back-arrow">
           <a href="/dashboard">← Back</a>
         </span>
-        <h2 className="title-custom"> Create a wishlist</h2>
+        <h2 className="title-custom">Create a wishlist</h2>
         <div className="input-group">
           <label className="title-1-custom" htmlFor="wishlist-name">
-            Wishlist name
+            Wishlist name <span className="required-icon">❄</span>
           </label>
           <input
             type="text"
@@ -128,7 +126,7 @@ const CreateWishlist: React.FC = () => {
         </div>
         <div className="input-group">
           <label htmlFor="event-date" className="title-1-custom">
-            Event date
+            Event date <span className="required-icon">❄</span>
           </label>
           <input
             type="date"
@@ -137,6 +135,8 @@ const CreateWishlist: React.FC = () => {
             lang="en"
             value={wishlistDate}
             onChange={handleDateChange}
+            min={currentDateFormatted}
+            max={maxDateFormatted}
           />
         </div>
         {errorMessage && <p className="error-message">{errorMessage}</p>}
@@ -144,6 +144,7 @@ const CreateWishlist: React.FC = () => {
           <button className="save-button-custom" onClick={handleSaveClick}>
             Save
           </button>
+          <p className="required-field-note">❄ - Field Required</p>
         </div>
       </div>
     </div>
@@ -151,6 +152,3 @@ const CreateWishlist: React.FC = () => {
 };
 
 export default CreateWishlist;
-
-
-
