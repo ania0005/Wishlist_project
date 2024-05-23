@@ -56,7 +56,7 @@ const WishListPage: React.FC = () => {
       if (reservationStatus) {
         setGifts(prevGifts =>
           prevGifts.map(prevGift =>
-            prevGift.id === gift.id ? { ...prevGift, isReserved: reservationStatus === 'reserved' } : prevGift
+            prevGift.id === gift.id ? { ...prevGift, reserved: reservationStatus === 'reserved' } : prevGift
           )
         );
       }

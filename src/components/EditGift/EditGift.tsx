@@ -28,7 +28,7 @@ const EditGift: React.FC = () => {
         setGiftPrice(data.price.toString());
         setGiftComment(data.description);
         setCurrency(data.currency);
-        setGiftIsReserved(data.isReserved);
+        setGiftIsReserved(data.reserved);
         setWishlistId(data.wishlist.id)
       })
       .catch((error) => {
@@ -45,7 +45,7 @@ const EditGift: React.FC = () => {
         url: giftLink,
         price: parseFloat(giftPrice),
         description: giftComment,
-        isReserved: giftIsReserved,
+        reserved: giftIsReserved,
         imgUrl: giftImgUrl,
         currency: currency,
       };

@@ -1,7 +1,7 @@
 import { useState, useEffect, Fragment } from "react";
 import { useParams } from "react-router-dom";
 import { Card, Button } from "antd";
-import { Gift } from "../../types";
+import { Gift, Wishlist } from "../../types";
 import { GoArrowUpRight } from "react-icons/go";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGift } from "@fortawesome/free-solid-svg-icons";
@@ -11,78 +11,96 @@ import "./SharePage.css";
 
 const SharePage: React.FC = () => {
   const [title, setTitle] = useState("");
-  const [eventDate, setEventDate] = useState<moment.Moment | null>(null);
+  const [eventDate, setEventDate] = useState<string>("");
   const [gifts, setGifts] = useState<Gift[]>([]);
   const [description, setDescription] = useState("");
-  const { uuid } = useParams<{ uuid: string }>();
+  const [wishlist, setWishlist] = useState<Wishlist>();
+  const { id } = useParams();
 
   useEffect(() => {
-    const fetchShareData = async () => {
-      try {
-        const response = await fetch(`/api/wishlists/share/${uuid}`);
+    fetch(`/api/wishlists/${id}`)
+      .then((response) => {
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
-        const data = await response.json();
-        setTitle(data.title);
-        setDescription(data.description);
-        setEventDate(moment(data.eventDate));
-      } catch (error) {
-        console.error("Error fetching share data:", error);
-      }
-    };
-    fetchShareData();
-  }, [uuid]);
-
-  useEffect(() => {
-    const fetchGifts = async () => {
-      try {
-        const response = await fetch(`/api/wishlists/share/${uuid}`);
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
+        return response.json();
+      })
+      .then((data) => {
+        if (data) {
+          setWishlist(data);
+          setEventDate(data.eventDate);
+          setTitle(data.title);
+          setDescription(data.description);
         }
-        const data = await response.json();
-        if (data.gifts) {
-          const updatedGifts = data.gifts.map((gift: Gift) => ({
-            ...gift,
-            isReserved: localStorage.getItem(`gift_${gift.id}_reservation`) === "reserved",
-          }));
-          setGifts(updatedGifts);
-        }
-      } catch (error) {
-        console.error("Error fetching gifts:", error);
-      }
-    };
-    fetchGifts();
-  }, [uuid]);
-
-  const handleReserveClick = async (id: string) => {
-    try {
-      const updatedGifts = gifts.map((gift) =>
-        gift.id === id ? { ...gift, isReserved: !gift.isReserved } : gift
-      );
-      setGifts(updatedGifts);
-      localStorage.setItem(`gift_${id}_reservation`, updatedGifts.find((gift) => gift.id === id)?.isReserved ? "reserved" : "unreserved");
-      
-      await fetch(`/api/wishlists/share/${uuid}/reserve/${id}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
+      })
+      .catch((error) => {
+        console.error("Error:", error);
       });
-    } catch (error) {
-      console.error("Error updating reservation:", error);
+  }, [id]);
+
+  useEffect(() => {
+    if (wishlist) {
+      fetch(`/api/wishlists/${id}/gifts`)
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }
+          return response.json();
+        })
+        .then((data) => {
+          if (data) {
+            setGifts(data.map((gift: Gift) => ({ ...gift, isReserved: gift.isReserved || false })));
+          }
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
     }
+  }, [wishlist, id]);
+
+  const handleReserveClick = (giftId: string) => {
+    const updatedGifts = gifts.map((gift) =>
+      gift.id === giftId ? { ...gift, isReserved: !gift.isReserved } : gift
+    );
+
+    const updatedGift = updatedGifts.find((gift) => gift.id === giftId);
+
+    // Make the API call to update the reservation status in the backend
+    fetch(`/api/gifts/${giftId}/reserve`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ isReserved: updatedGift?.isReserved }),
+    })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .then((data) => {
+      if (data.success) {
+        // Update the state only if the API call was successful
+        setGifts(updatedGifts);
+      } else {
+        // Handle the case where the reservation update failed
+        console.error('Failed to update reservation status');
+      }
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
   };
 
-  const calculateDaysLeft = (): string => {
-    if (!eventDate) return "";
+  const calculateDaysLeft = (eventDate: string) => {
     const now = moment();
-    const daysLeft = eventDate.diff(now, "days");
+    const event = moment(eventDate);
+    const daysLeft = event.diff(now, "days");
     if (daysLeft < 0) {
-      return `Event has expired`;
+      return `Event date has passed (${Math.abs(daysLeft)} days ago)`;
     } else if (daysLeft === 0) {
-      return "Event today";
+      return "Event has expired";
     }
     return `in ${daysLeft} day(s)`;
   };
@@ -94,25 +112,35 @@ const SharePage: React.FC = () => {
           <div className="share-event-date">
             {eventDate && (
               <div className="days-left-container">
-                <div className="date">{eventDate.format("DD/MM/YYYY")}</div>
+                <div className="date">
+                  {new Date(eventDate).toLocaleDateString('en-GB', {
+                    day: '2-digit',
+                    month: '2-digit',
+                    year: 'numeric',
+                  })}
+                </div>
                 <div className="days-left" style={{ backgroundColor: "orange", padding: "5px", borderRadius: "5px" }}>
-                  {calculateDaysLeft()}
+                  {calculateDaysLeft(eventDate)}
                 </div>
               </div>
             )}
           </div>
           <div>
-            <div className="share-title">{title}</div>
-            <div className="share-description">{description}</div>
+            <div className="share-title">
+              {title}
+            </div>
+            <div className="share-description">
+              {description}
+            </div>
           </div>
         </header>
         <main className="share-content">
           <div className="share-gift-cards">
             {gifts.map((gift) => (
               <Card key={gift.id} className="share-card">
-                <div className="share-card-content">
-                  <div className="share-body">
-                    <div className="share-card-left">
+                <div className="card-content">
+                  <div className="card-body">
+                    <div className="card-left">
                       {gift.imgUrl ? (
                         <img src={gift.imgUrl} alt={gift.title} className="share-gift-image" />
                       ) : (
@@ -122,15 +150,15 @@ const SharePage: React.FC = () => {
                         <a href={gift.url} className="share-go-to-store" target="_blank" rel="noopener noreferrer">
                           To the store <GoArrowUpRight className="arrow-icon" />
                         </a>
-                      )}
+                      )}  
                     </div>
-                    <div className="share-card-right">
+                    <div className="card-right">
                       <div className="share-card-title">{gift.title}</div>
                       <div className="share-card-price">Price: {gift.price} {gift.currency}</div>
                       <div className="share-card-comment">Comment: {gift.description}</div>
                       <Button
                         onClick={() => handleReserveClick(gift.id)}
-                        className={`share-reserve-button ${gift.isReserved ? "reserved" : ""}`}
+                        className={`reserve-button ${gift.isReserved ? "reserved" : ""}`}
                       >
                         {gift.isReserved ? "Reserved" : "Reserve"}
                       </Button>
@@ -147,6 +175,3 @@ const SharePage: React.FC = () => {
 };
 
 export default SharePage;
-
-
-
