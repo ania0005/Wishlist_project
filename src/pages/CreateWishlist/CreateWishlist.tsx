@@ -102,7 +102,7 @@ const CreateWishlist: React.FC = () => {
         <h2 className="title-custom">Create a wishlist</h2>
         <div className="input-group">
           <label className="title-1-custom" htmlFor="wishlist-name">
-            Wishlist name <span className="required-icon">❄</span>
+            Wishlist name <span className="required-icon">*</span>
           </label>
           <input
             type="text"
@@ -126,7 +126,7 @@ const CreateWishlist: React.FC = () => {
         </div>
         <div className="input-group">
           <label htmlFor="event-date" className="title-1-custom">
-            Event date <span className="required-icon">❄</span>
+            Event date <span className="required-icon">*</span>
           </label>
           <input
             type="date"
@@ -144,7 +144,7 @@ const CreateWishlist: React.FC = () => {
           <button className="save-button-custom" onClick={handleSaveClick}>
             Save
           </button>
-          <p className="required-field-note">❄ - Field Required</p>
+          <p className="required-field-note">* - Field Required</p>
         </div>
       </div>
     </div>

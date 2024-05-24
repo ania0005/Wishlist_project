@@ -13,6 +13,7 @@ import "../../App.css";
 
 const WishListPage: React.FC = () => {
   const [title, setTitle] = useState("");
+  const [comment, setComment] = useState("");
   const [showModal, setShowModal] = useState(false);
   const [showShareModal, setShowShareModal] = useState(false);
   const navigate = useNavigate();
@@ -30,6 +31,7 @@ const WishListPage: React.FC = () => {
         const data = await response.json();
         setWishlist(data);
         setTitle(data.title);
+        setComment(data.description);
       } catch (error) {
         console.error("Error fetching wishlist:", error);
       }
@@ -64,14 +66,10 @@ const WishListPage: React.FC = () => {
   }, [gifts]);
 
   const handleDeleteClick = () => setShowModal(true);
-
   const handleAddGiftClick = () => id && navigate(`/wishlist/${id}/createGift`);
-
   const handleCloseModal = () => setShowModal(false);
-
   const handleDeleteWishList = async () => {
     if (!id) return;
-
     try {
       const response = await fetch(`/api/wishlists/${id}`, { method: "DELETE" });
       if (response.ok) {
@@ -132,18 +130,12 @@ const WishListPage: React.FC = () => {
             <Link to="/dashboard" className="go-to-wishlists">
               <ArrowLeftOutlined /> Go to wishlists
             </Link>
-            <div className="wishlist-name">
-              {title}
+            <div className="wishlist-buttons">
               <Button
                 onClick={handleDeleteClick}
                 className="delete-wl-button"
                 icon={<DeleteOutlined />}
               />
-            </div>
-            <div className="wishlist-section">
-              <Button onClick={handleAddGiftClick} className="add-wl-button">
-                Add gift
-              </Button>
               <Button
                 onClick={handleShareClick}
                 className="share-button"
@@ -151,7 +143,14 @@ const WishListPage: React.FC = () => {
               >
                 Share list
               </Button>
+              <Button onClick={handleAddGiftClick} className="add-wl-button">
+                Add gift
+              </Button>
             </div>
+            <div className="wishlist-name">
+              {title}
+            </div>
+            {comment && <div className="wishlist-comment">{comment}</div>}
           </div>
         </header>
         <main className="wishlist-content">
@@ -213,7 +212,7 @@ const WishListPage: React.FC = () => {
           <Modal
             open={showModal}
             onCancel={handleCloseModal}
-            footer={null}  // Убираем footer чтобы кастомизировать его
+            footer={null}
           >
             <p>Do you really want to delete this wishlist?</p>
             <div className="modal-footer">
@@ -242,6 +241,8 @@ const WishListPage: React.FC = () => {
 };
 
 export default WishListPage;
+
+
 
 
 

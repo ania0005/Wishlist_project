@@ -14,22 +14,15 @@
     text-align: center;
     margin-bottom: 20px;
   }
-  
-  .input-group {
-    margin-bottom: 20px;
-  }
-  
-  .input-group label {
-    display: block;
-    margin-bottom: 5px;
-  }
-  
   .input-group input {
-    width: 94%;
+    width: 100%;
+    box-sizing: border-box; 
     padding: 10px;
     border: 1px solid #f7efef;
     border-radius: 4px;
   }
+  
+  
   
   .consent-text {
     font-size: 0.8em; 
@@ -57,7 +50,7 @@
   }
   
   .auth-container a {
-    color: #5cb85c; /* Цвет ссылки такой же, как у кнопки */
+    color: #5cb85c; 
     text-decoration: none;
   }
   
@@ -67,19 +60,70 @@
   
   /* Стили сообщения об ошибке */
   .error-message {
-    color: #d9534f; /* Красный цвет текста */
+    color: #d9534f;
     text-align: center;
     margin-bottom: 20px;
   }
   body {
     display: flex;
     flex-direction: column;
-    min-height: 93vh; /* Занимает всю высоту видимой области страницы */
+    min-height: 93vh; 
     margin: 0;
     padding: 0;
     letter-spacing: -0.5px;
     font-size: 20px;
     font-family: "DM Serif Display", serif;
-    background-color: #F1F8FF; /* Голубой цвет фона страницы */
+    background-color: #F1F8FF; 
   }
+  .password-input input {
+    box-sizing: border-box;
+    padding-right: 37px; 
+  }
+  
+  .eye-icon {
+    position: absolute;
+    top: 50%;
+    right: 6px; 
+    margin-right: 3px;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+  }
+  
+ 
+@media (max-width: 375px) {
+  .auth-container {
+    width: 70%;
+  }
+  .eye-icon {
+    display: none;
+  }
+}
+
+@media (max-width: 425px) {
+  .auth-container {
+    width: 70%;
+  }
+  .eye-icon {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .auth-container {
+    width: 70%;
+  }
+  .eye-icon {
+    left: 50px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .auth-container {
+    width: 80%;
+  }
+  .eye-icon {
+    left: 90px;
+  }
+}
   
