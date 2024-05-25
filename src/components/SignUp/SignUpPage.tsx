@@ -120,7 +120,7 @@ const SignUpPage: React.FC = () => {
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Qwerty123!"
               required
-              style={{ paddingRight: "50px" }} // ÑƒÐ²ÐµÐ»Ð¸Ñ‡ÑŒÑ‚Ðµ ÑÑ‚Ð¾ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ðµ, Ñ‡Ñ‚Ð¾Ð±Ñ‹ Ð¾ÑÑ‚Ð°Ð²Ð¸Ñ‚ÑŒ Ð¼ÐµÑÑ‚Ð¾ Ð´Ð»Ñ ÐºÐ½Ð¾Ð¿ÐºÐ¸
+              style={{ paddingRight: "50px" }} 
             />
             <button
               className="eye-icon"
