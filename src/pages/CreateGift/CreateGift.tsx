@@ -56,11 +56,11 @@ const CreateGift: React.FC = () => {
       setErrorMessage("Please enter a price for the gift.");
       return;
     }
-    if (giftComment.length > 50) {
+    if (giftComment.length > 60) {
       setErrorMessage("Comment too long. Please shorten your comment.");
       return;
     }
-    if (giftName.length > 18) {
+    if (giftName.length > 125) {
       setErrorMessage("Name too long. Please shorten name.");
       return;
     }

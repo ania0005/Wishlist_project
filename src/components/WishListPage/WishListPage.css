@@ -88,8 +88,8 @@
 }
 
 .gift-card {
-  width: 530px;
-  height: 300px;
+  width: 480px;
+  height: 280px;
   margin: 10px;
   border-radius: 10px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
@@ -100,7 +100,7 @@
 }
 
 .gift-content {
-  padding-top: 20px;
+  padding-top: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -118,7 +118,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-right: 50px;
+  margin-right: 10px;
   flex-shrink: 0; 
   gap: 50px;
 }
@@ -142,14 +142,15 @@
 .gift-go-to-store {
   display: flex;
   align-items: center;
-  margin-top: 10px;
+  margin-top: 40px;
   font-size: 20px;
   color: #49baf9;
   text-decoration: none;
+  font-family: "DM Serif Display", serif;
 }
 
 .gift-card-title {
-  font-size: 30px;
+  font-size: 25px;
   font-weight: bold;
   margin-bottom: 10px;
   font-family: "DM Serif Display", serif;
@@ -162,13 +163,15 @@
   color: #078ed6;
   margin-bottom: 10px;
   white-space: nowrap;
+  font-family: "DM Serif Display", serif;
 }
 
 .gift-card-comment {
-  font-size: 20px;
+  font-size: 18px;
   margin-bottom: 10px;
   text-align: left; 
   width: 100%;
+  font-family: "DM Serif Display", serif;
 }
 
 .arrow-icon {
