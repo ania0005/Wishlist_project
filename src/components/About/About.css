@@ -4,6 +4,7 @@ body{
     text-align: justify;
     letter-spacing: 1px;
     background-color: #F1F8FF;
+    font-family: "DM Serif Display", serif;
 
 }
 .about-page {
@@ -12,20 +13,18 @@ body{
   }
   
   .sub-title {
-    font-size: 54px;
+    font-size: 40px;
   }
   
   .paragraph {
-    font-size: 24px;
+    font-size: 20px;
     line-height: 1.5;
     padding-top: 20px;
     padding-bottom: 80px;
 
   }  
   .paragraph-first {
-    font-size: 32px;
+    font-size: 28px;
     line-height: 1.5;
     padding-bottom: 90px;
-    font-weight: bold;
-
   }  
