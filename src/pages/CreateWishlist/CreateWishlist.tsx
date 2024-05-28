@@ -40,7 +40,9 @@ const CreateWishlist: React.FC = () => {
       return;
     }
     if (!wishlistDate.trim()) {
-      setErrorMessage("Please enter a valid date within the range from today to the next 50 years.");
+      setErrorMessage(
+        "Please enter a valid date within the range from today to the next 50 years."
+      );
       return;
     }
 
@@ -50,7 +52,9 @@ const CreateWishlist: React.FC = () => {
     maxDate.setFullYear(currentDate.getFullYear() + 50);
 
     if (inputDateObject < currentDate || inputDateObject > maxDate) {
-      setErrorMessage("Please enter a valid date within the range from today to the next 50 years.");
+      setErrorMessage(
+        "Please enter a valid date within the range from today to the next 50 years."
+      );
       return;
     }
 

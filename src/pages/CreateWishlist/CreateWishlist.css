@@ -1,6 +1,5 @@
-/*------------------createWishlist---------- */
 .wishlist-container {
-  background-color: #F1F8FF;
+  background-color: #f1f8ff;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -34,16 +33,16 @@
   padding: 7px;
 }
 
-.rounded-textarea::placeholder,  /* цвет внутри placeholder createWishlist */
+.rounded-textarea::placeholder,
 input[type="date"].rounded-input,
 input.rounded-input-custom::placeholder {
-  color: #c2bfbf; 
+  color: #c2bfbf;
 }
 
 label {
   display: block;
   margin-bottom: 15px;
-  position: relative; /* добавлено для позиционирования значка */
+  position: relative;
 }
 
 .required-icon {
@@ -79,15 +78,15 @@ label {
 }
 
 .file-input-text {
-  width: 200px; /* Задайте нужную ширину */
+  width: 200px;
   height: 200px;
-  justify-content: center; /* Выравнивание по горизонтали */
-  align-items: center; /* Выравнивание по вертикали */
+  justify-content: center;
+  align-items: center;
   display: flex;
   padding: 10px;
   border-radius: 5px;
-  background-color: white; /* Белый фон */
-  cursor: pointer; /* Курсор при наведении становится указателем */
+  background-color: white;
+  cursor: pointer;
 }
 
 .required-field-note {
@@ -96,4 +95,3 @@ label {
   margin-left: 20px;
   margin-bottom: 10px;
 }
-

@@ -4,7 +4,6 @@ import { useNavigate, useParams } from "react-router-dom";
 const EditGift: React.FC = () => {
   const navigate = useNavigate();
   const [giftImgUrl, setGiftImgUrl] = useState<string>("");
-
   const [giftName, setGiftName] = useState<string>("");
   const [giftLink, setGiftLink] = useState<string>("");
   const [giftPrice, setGiftPrice] = useState<string>("");
@@ -29,7 +28,7 @@ const EditGift: React.FC = () => {
         setGiftComment(data.description);
         setCurrency(data.currency);
         setGiftIsReserved(data.reserved);
-        setWishlistId(data.wishlist.id)
+        setWishlistId(data.wishlist.id);
       })
       .catch((error) => {
         console.error("Error fetching gift data:", error);
@@ -88,8 +87,7 @@ const EditGift: React.FC = () => {
     }
 
     await updateGift();
-      navigate(`/wishlist/${wishlistId}`);
-    
+    navigate(`/wishlist/${wishlistId}`);
   };
 
   const handleImgUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -226,5 +224,3 @@ const EditGift: React.FC = () => {
 };
 
 export default EditGift;
-
-

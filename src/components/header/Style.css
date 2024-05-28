@@ -1,72 +1,67 @@
 .header {
-
-	display: flex;
-	justify-content: left;
-	align-items: center;
-	background-color: white;
-	background-image: url('./../../img/Photo01.jpg');
-	background-repeat: no-repeat; /* Отключаем повторение текстуры */
-    background-size: cover; /* Масштабируем изображение так, чтобы оно полностью покрыло фон */
-    background-position: center; /* Центрируем изображение */
-	color: white;	
-	height: 1400px;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  background-color: white;
+  background-image: url("./../../img/Photo01.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  color: white;
+  height: 1400px;
 }
 
 .header__wrapper {
-    margin-left: 100px; /* Добавляем отступ слева */
-    max-width: 100%;
-    text-align: left; /* Выравнивание текста по левому краю */
+  margin-left: 100px;
+  max-width: 100%;
+  text-align: left;
 }
-
 .header__wrapper * {
-    margin: 0; /* Сбрасываем внутренние отступы для всех вложенных элементов */
+  margin: 0;
 }
 
 .header__title {
-	margin-bottom: 20px;
-	font-size: 50px;
-	font-weight: 700;
-	line-height: 1.4;
-	color: white;
-	font-family: "DM Serif Display", serif;
+  margin-bottom: 20px;
+  font-size: 50px;
+  font-weight: 700;
+  line-height: 1.4;
+  color: white;
+  font-family: "DM Serif Display", serif;
 }
 
 .header__title strong {
-	font-size: 100px;
-	font-weight: 700;
-	
+  font-size: 100px;
+  font-weight: 700;
 }
 
 .header__title em {
-	font-style: normal;
-	color: white;
-
-	
+  font-style: normal;
+  color: white;
 }
 
 .header__text {
-	margin-bottom: 40px;
-	font-size: 30px;
-	line-height: 1.333;
-	color: white;
-	font-family: "DM Serif Display", serif;
+  margin-bottom: 40px;
+  font-size: 30px;
+  line-height: 1.333;
+  color: white;
+  font-family: "DM Serif Display", serif;
 }
 
 .header__text p + p {
-	margin-top: 0.5em;
+  margin-top: 0.5em;
 }
 
 .create_list_button {
-	background-color: #ad286b; /* Розовый цвет */
-	color: #FFFFFF; /* Белый цвет текста */
-	border: none; /* Убираем границы */
-	border-radius: 10px; /* Закругленные углы */
-	padding: 10px 40px; /* Отступы внутри кнопки */
-	box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2); /* Тень вправо */
-	cursor: pointer; /* Курсор при наведении */
-	transition: box-shadow 0.3s ease; /* Плавное изменение тени */
-	box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.3); /* Увеличиваем тень при наведении */
-	font-family: "DM Serif Display", serif;
-	font-size: 20px;
-	width: 60%;
+  background-color: #ad286b;
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 40px;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
+  cursor: pointer; /* Курсор при наведении */
+  transition: box-shadow 0.3s ease;
+  box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.3);
+  font-family: "DM Serif Display", serif;
+  font-size: 20px;
+  width: 60%;
 }

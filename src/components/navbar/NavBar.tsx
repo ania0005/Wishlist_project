@@ -10,23 +10,25 @@ const NavBar = () => {
 
   const navigate = useNavigate();
   const { user, setUser } = useContext(AuthContext);
- 
+
   const handleLogout = async () => {
     try {
-      const response = await fetch("/api/users/logout", {    
+      const response = await fetch("/api/users/logout", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
       });
-      
+
       if (response.ok) {
-        if(setUser){setUser(undefined)};
+        if (setUser) {
+          setUser(undefined);
+        }
         navigate("/");
       } else {
         console.error("Failed to log out:", response.statusText);
       }
-    } catch (error:any) {
+    } catch (error: any) {
       console.error("Error when logging out of your account:", error.message);
     }
   };
@@ -58,7 +60,7 @@ const NavBar = () => {
                 About us
               </NavLink>
             </li>
-            {user? ( // Если пользователь зарегистрирован
+            {user ? (
               <>
                 <li className="nav-list__item">
                   <NavLink
@@ -83,7 +85,6 @@ const NavBar = () => {
                 </li>
               </>
             ) : (
-              // Если пользователь не зарегистрирован
               <>
                 <li className="nav-list__item">
                   <NavLink

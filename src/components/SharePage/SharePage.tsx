@@ -6,7 +6,6 @@ import { GoArrowUpRight } from "react-icons/go";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGift } from "@fortawesome/free-solid-svg-icons";
 import moment from "moment";
-
 import "./SharePage.css";
 
 const SharePage: React.FC = () => {
@@ -58,8 +57,13 @@ const SharePage: React.FC = () => {
         gift.id === id ? { ...gift, reserved: !gift.reserved } : gift
       );
       setGifts(updatedGifts);
-      localStorage.setItem(`gift_${id}_reservation`, updatedGifts.find((gift) => gift.id === id)?.reserved ? "reserved" : "unreserved");
-      
+      localStorage.setItem(
+        `gift_${id}_reservation`,
+        updatedGifts.find((gift) => gift.id === id)?.reserved
+          ? "reserved"
+          : "unreserved"
+      );
+
       await fetch(`/api/wishlists/share/${uuid}/reserve/${id}`, {
         method: "PUT",
         headers: {
@@ -91,7 +95,14 @@ const SharePage: React.FC = () => {
             {eventDate && (
               <div className="days-left-container">
                 <div className="date">{eventDate.format("DD/MM/YYYY")}</div>
-                <div className="days-left" style={{ backgroundColor: "orange", padding: "5px", borderRadius: "5px" }}>
+                <div
+                  className="days-left"
+                  style={{
+                    backgroundColor: "orange",
+                    padding: "5px",
+                    borderRadius: "5px",
+                  }}
+                >
                   {calculateDaysLeft()}
                 </div>
               </div>
@@ -110,23 +121,41 @@ const SharePage: React.FC = () => {
                   <div className="share-body">
                     <div className="share-card-left">
                       {gift.imgUrl ? (
-                        <img src={gift.imgUrl} alt={gift.title} className="share-gift-image" />
+                        <img
+                          src={gift.imgUrl}
+                          alt={gift.title}
+                          className="share-gift-image"
+                        />
                       ) : (
-                        <FontAwesomeIcon icon={faGift} className="share-gift-image-placeholder" />
+                        <FontAwesomeIcon
+                          icon={faGift}
+                          className="share-gift-image-placeholder"
+                        />
                       )}
                       {gift.url && (
-                        <a href={gift.url} className="share-go-to-store" target="_blank" rel="noopener noreferrer">
+                        <a
+                          href={gift.url}
+                          className="share-go-to-store"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
                           To the store <GoArrowUpRight className="arrow-icon" />
                         </a>
                       )}
                     </div>
                     <div className="share-card-right">
                       <div className="share-card-title">{gift.title}</div>
-                      <div className="share-card-price">Price: {gift.price} {gift.currency}</div>
-                      <div className="share-card-comment">Comment: {gift.description}</div>
+                      <div className="share-card-price">
+                        Price: {gift.price} {gift.currency}
+                      </div>
+                      <div className="share-card-comment">
+                        Comment: {gift.description}
+                      </div>
                       <Button
                         onClick={() => handleReserveClick(gift.id)}
-                        className={`share-reserve-button ${gift.reserved ? "reserved" : ""}`}
+                        className={`share-reserve-button ${
+                          gift.reserved ? "reserved" : ""
+                        }`}
                       >
                         {gift.reserved ? "Reserved" : "Reserve"}
                       </Button>

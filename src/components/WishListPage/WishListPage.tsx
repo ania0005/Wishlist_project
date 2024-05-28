@@ -1,13 +1,16 @@
 import { useState, useEffect, Fragment } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { Card, Button, Modal, Dropdown, message } from "antd";
-import { DeleteOutlined, ArrowLeftOutlined, ShareAltOutlined, MoreOutlined } from "@ant-design/icons";
-import { Gift, Wishlist } from "../../types";
+import {
+  DeleteOutlined,
+  ArrowLeftOutlined,
+  ShareAltOutlined,
+  MoreOutlined,
+} from "@ant-design/icons";
+import { Gift } from "../../types";
 import { GoArrowUpRight } from "react-icons/go";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGift } from "@fortawesome/free-solid-svg-icons";
-import moment from "moment";
-
 import "./WishListPage.css";
 import "../../App.css";
 
@@ -18,7 +21,6 @@ const WishListPage: React.FC = () => {
   const [showShareModal, setShowShareModal] = useState(false);
   const navigate = useNavigate();
   const [gifts, setGifts] = useState<Gift[]>([]);
-  const [wishlist, setWishlist] = useState<Wishlist | undefined>();
   const { id } = useParams<{ id: string }>();
 
   useEffect(() => {
@@ -29,7 +31,6 @@ const WishListPage: React.FC = () => {
         const response = await fetch(`/api/wishlists/${id}`);
         if (!response.ok) throw new Error("Network response was not ok");
         const data = await response.json();
-        setWishlist(data);
         setTitle(data.title);
         setComment(data.description);
       } catch (error) {
@@ -53,12 +54,16 @@ const WishListPage: React.FC = () => {
   }, [id]);
 
   useEffect(() => {
-    gifts.forEach(gift => {
-      const reservationStatus = localStorage.getItem(`gift_${gift.id}_reservation`);
+    gifts.forEach((gift) => {
+      const reservationStatus = localStorage.getItem(
+        `gift_${gift.id}_reservation`
+      );
       if (reservationStatus) {
-        setGifts(prevGifts =>
-          prevGifts.map(prevGift =>
-            prevGift.id === gift.id ? { ...prevGift, isReserved: reservationStatus === 'reserved' } : prevGift
+        setGifts((prevGifts) =>
+          prevGifts.map((prevGift) =>
+            prevGift.id === gift.id
+              ? { ...prevGift, isReserved: reservationStatus === "reserved" }
+              : prevGift
           )
         );
       }
@@ -71,9 +76,12 @@ const WishListPage: React.FC = () => {
   const handleDeleteWishList = async () => {
     if (!id) return;
     try {
-      const response = await fetch(`/api/wishlists/${id}`, { method: "DELETE" });
+      const response = await fetch(`/api/wishlists/${id}`, {
+        method: "DELETE",
+      });
       if (response.ok) {
-        document.cookie = "accessToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        document.cookie =
+          "accessToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
         localStorage.removeItem("accessToken");
         sessionStorage.clear();
         navigate("/dashboard");
@@ -86,29 +94,32 @@ const WishListPage: React.FC = () => {
   };
 
   const handleShareClick = () => setShowShareModal(true);
-
   const handleCopyLink = async () => {
     if (!id) return;
-
     try {
-      const response = await fetch(`/api/wishlists/${id}/share`, { method: "POST" });
+      const response = await fetch(`/api/wishlists/${id}/share`, {
+        method: "POST",
+      });
       const data = await response.json();
       const link = `${window.location.origin}/mywishlist/${data.uuid}`;
       await navigator.clipboard.writeText(link);
       setShowShareModal(false);
-      message.success('Link copied', 2);
+      message.success("Link copied", 2);
     } catch (error) {
       console.error("Failed to copy link:", error);
     }
   };
 
-  const handleEditGift = (gift: Gift) => gift.id && navigate(`/gift/${gift.id}/editGift`);
+  const handleEditGift = (gift: Gift) =>
+    gift.id && navigate(`/gift/${gift.id}/editGift`);
 
   const handleDeleteGift = async (gift: Gift) => {
     try {
-      const response = await fetch(`/api/gifts/${gift.id}`, { method: "DELETE" });
+      const response = await fetch(`/api/gifts/${gift.id}`, {
+        method: "DELETE",
+      });
       if (response.ok) {
-        setGifts(gifts.filter(g => g.id !== gift.id));
+        setGifts(gifts.filter((g) => g.id !== gift.id));
       } else {
         console.error("Failed to delete Gift.");
       }
@@ -147,9 +158,7 @@ const WishListPage: React.FC = () => {
                 Add gift
               </Button>
             </div>
-            <div className="wishlist-name">
-              {title}
-            </div>
+            <div className="wishlist-name">{title}</div>
             {comment && <div className="wishlist-comment">{comment}</div>}
           </div>
         </header>
@@ -191,7 +200,10 @@ const WishListPage: React.FC = () => {
                       Comment: {gift.description}
                     </div>
                   </div>
-                  <Dropdown menu={{ items: giftMenu(gift) }} trigger={["click"]}>
+                  <Dropdown
+                    menu={{ items: giftMenu(gift) }}
+                    trigger={["click"]}
+                  >
                     <MoreOutlined
                       style={{
                         position: "absolute",
@@ -209,14 +221,13 @@ const WishListPage: React.FC = () => {
           ))}
         </main>
         {showModal && (
-          <Modal
-            open={showModal}
-            onCancel={handleCloseModal}
-            footer={null}
-          >
+          <Modal open={showModal} onCancel={handleCloseModal} footer={null}>
             <p>Do you really want to delete this wishlist?</p>
             <div className="modal-footer">
-              <Button onClick={handleDeleteWishList} className="delete-wl-confirm-button">
+              <Button
+                onClick={handleDeleteWishList}
+                className="delete-wl-confirm-button"
+              >
                 OK
               </Button>
             </div>
@@ -241,20 +252,3 @@ const WishListPage: React.FC = () => {
 };
 
 export default WishListPage;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

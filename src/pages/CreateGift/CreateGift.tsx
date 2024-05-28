@@ -9,7 +9,6 @@ const CreateGift: React.FC = () => {
   const [giftLink, setGiftLink] = useState<string>("");
   const [giftPrice, setGiftPrice] = useState<string>("");
   const [giftComment, setGiftComment] = useState<string>("");
-  const [giftIsReserved, setGiftIsReserved] = useState<boolean>(true);
   const [errorMessage, setErrorMessage] = useState<string>("");
   const [currency, setCurrency] = useState<string>("EUR");
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -22,11 +21,11 @@ const CreateGift: React.FC = () => {
         description: giftComment,
         price: parseFloat(giftPrice),
         url: giftLink,
-        imgUrl: giftImgUrl, 
+        imgUrl: giftImgUrl,
         currency: currency,
-        isReserved: giftIsReserved,
+        isReserved: true,
       };
-  
+
       const response = await fetch(`/api/wishlists/${id}/gifts`, {
         method: "POST",
         headers: {
@@ -34,9 +33,8 @@ const CreateGift: React.FC = () => {
         },
         body: JSON.stringify(giftData),
       });
-  
+
       if (!response.ok) {
-        const errorData = await response.json();
         throw new Error("Failed to save gift");
       }
 
@@ -48,7 +46,9 @@ const CreateGift: React.FC = () => {
 
   const handleSaveClick = async () => {
     if (!giftName.trim() && !giftLink.trim()) {
-      setErrorMessage("Please enter either a gift name or a link where you can buy the gift.");
+      setErrorMessage(
+        "Please enter either a gift name or a link where you can buy the gift."
+      );
       return;
     }
 
@@ -127,7 +127,8 @@ const CreateGift: React.FC = () => {
         <h2 className="title-custom">Add a gift</h2>
         <div className="link-input-custom">
           <label className="title-1-custom" htmlFor="gift-link-custom">
-            Link where you can buy a gift <span className="required-icon">*</span>
+            Link where you can buy a gift{" "}
+            <span className="required-icon">*</span>
           </label>
           <input
             type="text"
@@ -238,4 +239,3 @@ const CreateGift: React.FC = () => {
 };
 
 export default CreateGift;
-

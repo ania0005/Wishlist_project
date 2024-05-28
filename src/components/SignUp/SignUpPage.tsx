@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import "./SignUpPage.css";
 import { useNavigate } from "react-router-dom";
 import { Eye, EyeOff } from "react-feather";
+import "./SignUpPage.css";
 
 const SignUpPage: React.FC = () => {
   const [firstName, setFirstName] = useState("");
@@ -44,11 +44,10 @@ const SignUpPage: React.FC = () => {
         }
         return;
       }
-      
+
       const data = await response.json();
       console.log("Successful authorization:", data);
 
-      
       alert("Confirm your email in your inbox");
 
       localStorage.setItem("username", data.username);
@@ -120,14 +119,14 @@ const SignUpPage: React.FC = () => {
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Qwerty123!"
               required
-              style={{ paddingRight: "50px" }} 
+              style={{ paddingRight: "50px" }}
             />
             <button
               className="eye-icon"
               onClick={handleEyeClickPassword}
               style={{
                 position: "absolute",
-                right: "30px", 
+                right: "30px",
                 top: "50%",
                 transform: "translateY(-50%)",
                 background: "none",
@@ -144,7 +143,6 @@ const SignUpPage: React.FC = () => {
             </button>
           </div>
         </div>
-
         <div className="input-group">
           <label htmlFor="confirm-password">Confirm Password*</label>
           <div style={{ position: "relative" }}>
@@ -162,7 +160,7 @@ const SignUpPage: React.FC = () => {
               onClick={handleEyeClickConfirmPassword}
               style={{
                 position: "absolute",
-                right: "30px", 
+                right: "30px",
                 top: "50%",
                 transform: "translateY(-50%)",
                 background: "none",
@@ -190,7 +188,6 @@ const SignUpPage: React.FC = () => {
           </button>
         </div>
       </form>
-
       <p>
         Already have an account? <a href="/login">Log In</a>
       </p>

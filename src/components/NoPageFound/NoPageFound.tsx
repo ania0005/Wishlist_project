@@ -1,5 +1,5 @@
 import React from 'react';
-import './styles.css'; // Подключаем стили
+import './styles.css';
 
 const NoPageFound: React.FC = () => {
   return (

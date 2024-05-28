@@ -87,7 +87,7 @@ const AuthForm: React.FC = () => {
               onClick={handleEyeClick}
               style={{
                 position: "absolute",
-                right: "30px", 
+                right: "30px",
                 top: "50%",
                 transform: "translateY(-50%)",
                 background: "none",
@@ -123,5 +123,3 @@ const AuthForm: React.FC = () => {
 };
 
 export default AuthForm;
-
-
