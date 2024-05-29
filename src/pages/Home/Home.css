@@ -11,7 +11,6 @@
 
 .title {
   color: black;
-
   font-family: "Prata", serif;
   font-size: 40px;
   margin-bottom: 40px;
@@ -76,7 +75,6 @@ img {
 
 .content-left h2 {
   color: black;
-
   font-family: "Prata", serif;
   font-size: 42px;
   margin-bottom: 80px;
@@ -101,9 +99,11 @@ img {
   box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.3);
   font-family: "DM Serif Display", serif;
 }
+
 .content-left button:hover {
   background-color: #6a1b9a;
 }
+
 .content-right {
   width: 50%;
   text-align: right;
@@ -114,6 +114,102 @@ img {
   height: auto;
   border-radius: 10px;
 }
+
 .section {
   padding: 0px 0px 80px;
 }
+
+/* Media Queries for Tablets */
+@media (max-width: 1024px) {
+  .purple-box, .pink-box {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .content-left {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .content-left h2 {
+    font-size: 36px;
+    margin-bottom: 40px;
+  }
+
+  .content-left p {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+  .content-left button {
+    width: 100%;
+  }
+
+  .content-right {
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .content-right img {
+    max-width: 80%;
+  }
+
+  .columns-container {
+    flex-direction: column;
+  }
+}
+
+/* Media Queries for Smartphones */
+@media (max-width: 768px) {
+  .pink-box {
+    padding: 20px;
+  }
+
+  .title {
+    font-size: 32px;
+    margin-bottom: 20px;
+  }
+
+  .columns-container {
+    gap: 10px;
+  }
+
+  .image-container {
+    margin-bottom: 20px;
+  }
+
+  .white-rectangle-text {
+    font-size: 18px;
+    padding: 8px;
+  }
+
+  .purple-box {
+    padding: 20px;
+  }
+
+  .content-left h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+  }
+
+  .content-left p {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+
+  .content-left button {
+    padding: 15px;
+    font-size: 18px;
+    margin-top: 30px;
+  }
+
+  .content-right img {
+    max-width: 100%;
+  }
+
+  .bottom-white-rectangle {
+    height: 80px;
+  }
+}
+
