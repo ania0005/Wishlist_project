@@ -139,7 +139,7 @@ const SharePage: React.FC = () => {
                           target="_blank"
                           rel="noopener noreferrer"
                         >
-                          To the store <GoArrowUpRight className="arrow-icon" />
+                          To the store<GoArrowUpRight className="arrow-icon" />
                         </a>
                       )}
                     </div>

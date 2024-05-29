@@ -187,7 +187,7 @@ const WishListPage: React.FC = () => {
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        To the store <GoArrowUpRight className="arrow-icon" />
+                        To the store<GoArrowUpRight className="arrow-icon-w" />
                       </a>
                     )}
                   </div>

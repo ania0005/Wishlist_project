@@ -169,7 +169,7 @@ const SignUpPage: React.FC = () => {
                 height: "50px",
               }}
             >
-              {showPassword ? (
+              {showConfirmPassword ? (
                 <Eye style={{ color: "black" }} />
               ) : (
                 <EyeOff style={{ color: "black" }} />
