@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import AuthContext from "../../contexts/AuthContext";
 import { Eye, EyeOff } from "react-feather";
 
+
 const AuthForm: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -63,6 +64,7 @@ const AuthForm: React.FC = () => {
   };
 
   return (
+    <body>
     <div className="auth-container">
       <h2>Log In</h2>
       {error && <p className="error-message">{error}</p>}
@@ -129,6 +131,7 @@ const AuthForm: React.FC = () => {
         Don't have an account? <a href="/#/signup">Sign Up</a>
       </p>
     </div>
+    </body>
   );
 };
 
