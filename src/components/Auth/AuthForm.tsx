@@ -117,7 +117,7 @@ const AuthForm: React.FC = () => {
 
         <p className="consent-text">
           By entering the resource, you automatically consent to the processing
-          of personal data. <a href="/privacy-policy"> Personal Policy</a>
+          of personal data. <a href="/#/privacy-policy"> Personal Policy</a>
         </p>
         <div className="center">
           <button className="save-button" type="submit">
@@ -126,7 +126,7 @@ const AuthForm: React.FC = () => {
         </div>
       </form>
       <p>
-        Don't have an account? <a href="/signup">Sign Up</a>
+        Don't have an account? <a href="/#/signup">Sign Up</a>
       </p>
     </div>
   );
