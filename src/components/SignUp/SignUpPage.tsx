@@ -221,7 +221,7 @@ const SignUpPage: React.FC = () => {
         <p className="consent-text">
           By entering the resource, you automatically consent to the processing
           of personal data.
-          <a href="/#/privacy-policy"> Personal Policy</a>
+          <a href="/#/privacy-policy"> Privacy Policy</a>
         </p>
         <div className="center">
           <button className="save-button" type="submit" ref={signUpButtonRef}>
