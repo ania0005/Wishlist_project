@@ -101,7 +101,7 @@ const WishListPage: React.FC = () => {
         method: "POST",
       });
       const data = await response.json();
-      const link = `${window.location.origin}/mywishlist/${data.uuid}`;
+      const link = `${window.location.origin}/#/mywishlist/${data.uuid}`;
       await navigator.clipboard.writeText(link);
       setShowShareModal(false);
       message.success("Link copied", 2);
