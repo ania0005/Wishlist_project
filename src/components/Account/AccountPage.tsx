@@ -130,6 +130,11 @@ const AccountPage = () => {
     const event = moment(eventDate);
     return event.diff(now, "days");
   };
+
+  const formatDate = (dateString: string) => {
+    return moment(dateString).format("DD MMMM YYYY");
+  };
+
   const items = wishlists.map((wishlist) => (
     <div key={wishlist.id}>
       <Card
@@ -138,7 +143,7 @@ const AccountPage = () => {
         onClick={() => handleCardClick(wishlist.id)}
       >
         <Text className="event-date-in-account">
-          {wishlist.eventDate.split("T")[0]}
+          {formatDate(wishlist.eventDate)}
         </Text>
         <Meta description={wishlist.comment} />
         <Button
@@ -156,6 +161,7 @@ const AccountPage = () => {
       </Card>
     </div>
   ));
+
   return (
     <Fragment>
       <div className="dashboard-in-account">
@@ -221,3 +227,4 @@ const AccountPage = () => {
 };
 
 export default AccountPage;
+

@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
+import "./SignUpPage.css";
 import { useNavigate } from "react-router-dom";
 import { Eye, EyeOff } from "react-feather";
-import "./SignUpPage.css";
 
 const SignUpPage: React.FC = () => {
   const [firstName, setFirstName] = useState("");
@@ -13,7 +13,42 @@ const SignUpPage: React.FC = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
+  const lastNameRef = useRef<HTMLInputElement | null>(null);
+  const emailRef = useRef<HTMLInputElement | null>(null);
+  const passwordRef = useRef<HTMLInputElement | null>(null);
+  const confirmPasswordRef = useRef<HTMLInputElement | null>(null);
+  const signUpButtonRef = useRef<HTMLButtonElement | null>(null);
+
   const navigate = useNavigate();
+
+  const handleKeyDown = (
+    event: React.KeyboardEvent<HTMLInputElement>,
+    ref: React.RefObject<HTMLInputElement | HTMLButtonElement>
+  ) => {
+    if (event.key === "Enter") {
+      event.preventDefault(); 
+      if (document.activeElement === emailRef.current) {
+        passwordRef.current?.focus();
+      } else if (document.activeElement === passwordRef.current) { 
+        confirmPasswordRef.current?.focus();
+      } else {
+        ref.current?.focus();
+      }
+    }
+  };
+    
+  const handleEnterOnConfirmPassword = (
+    event: React.KeyboardEvent<HTMLInputElement>
+  ) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      
+      if (document.activeElement === confirmPasswordRef.current) {
+        signUpButtonRef.current?.click();
+      }
+    }
+  };
+  
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -36,15 +71,8 @@ const SignUpPage: React.FC = () => {
       });
 
       if (!response.ok) {
-        const data = await response.json();
-        if (data.message) {
-          setError(data.message);
-        } else {
-          setError(`Error: ${response.status}`);
-        }
-        return;
+        throw new Error(`Error: ${response.status}`);
       }
-
       const data = await response.json();
       console.log("Successful authorization:", data);
 
@@ -61,12 +89,15 @@ const SignUpPage: React.FC = () => {
     event: React.MouseEvent<HTMLButtonElement>
   ) => {
     event.preventDefault();
+    event.stopPropagation(); 
     setShowPassword(!showPassword);
   };
+
   const handleEyeClickConfirmPassword = (
     event: React.MouseEvent<HTMLButtonElement>
   ) => {
     event.preventDefault();
+    event.stopPropagation(); 
     setShowConfirmPassword(!showConfirmPassword);
   };
 
@@ -84,6 +115,7 @@ const SignUpPage: React.FC = () => {
             id="first-name"
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
+            onKeyDown={(e) => handleKeyDown(e, lastNameRef)}
             placeholder="your name"
             required
           />
@@ -95,7 +127,9 @@ const SignUpPage: React.FC = () => {
             id="last-name"
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
+            onKeyDown={(e) => handleKeyDown(e, emailRef)}
             placeholder="your last name"
+            ref={lastNameRef} 
           />
         </div>
         <div className="input-group">
@@ -105,8 +139,10 @@ const SignUpPage: React.FC = () => {
             id="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            onKeyDown={(e) => handleKeyDown(e, passwordRef)} 
             placeholder="john@example.com"
             required
+            ref={emailRef} 
           />
         </div>
         <div className="input-group">
@@ -117,9 +153,11 @@ const SignUpPage: React.FC = () => {
               id="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              onKeyDown={(e) => handleKeyDown(e, confirmPasswordRef)}
               placeholder="Qwerty123!"
               required
-              style={{ paddingRight: "50px" }}
+              style={{ paddingRight: "80px" }} 
+              ref={passwordRef} 
             />
             <button
               className="eye-icon"
@@ -143,6 +181,7 @@ const SignUpPage: React.FC = () => {
             </button>
           </div>
         </div>
+
         <div className="input-group">
           <label htmlFor="confirm-password">Confirm Password*</label>
           <div style={{ position: "relative" }}>
@@ -151,9 +190,11 @@ const SignUpPage: React.FC = () => {
               id="confirm-password"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
+              onKeyDown={handleEnterOnConfirmPassword} 
               placeholder="Qwerty123!"
               required
               style={{ paddingRight: "50px" }}
+              ref={confirmPasswordRef} 
             />
             <button
               className="eye-icon"
@@ -183,11 +224,12 @@ const SignUpPage: React.FC = () => {
           <a href="/privacy-policy"> Personal Policy</a>
         </p>
         <div className="center">
-          <button className="save-button" type="submit">
+          <button className="save-button" type="submit" ref={signUpButtonRef}>
             Sign Up
           </button>
         </div>
       </form>
+
       <p>
         Already have an account? <a href="/login">Log In</a>
       </p>
@@ -196,3 +238,4 @@ const SignUpPage: React.FC = () => {
 };
 
 export default SignUpPage;
+
