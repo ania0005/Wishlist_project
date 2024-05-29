@@ -13,6 +13,20 @@ const AuthForm: React.FC = () => {
   const navigate = useNavigate();
   const { setUser } = useContext(AuthContext);
 
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>, field: string) => {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      if (field === 'email') {
+        const passwordInput = document.getElementById('password') as HTMLInputElement;
+        passwordInput && passwordInput.focus();
+      } else if (field === 'password') {
+        const loginButton = document.querySelector('.save-button') as HTMLButtonElement;
+        loginButton && loginButton.click();
+      }
+    }
+  };
+
+
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
@@ -26,13 +40,7 @@ const AuthForm: React.FC = () => {
       });
 
       if (!response.ok) {
-        const data = await response.json();
-        if (data.message) {
-          setError(data.message);
-        } else {
-          setError(`Error: ${response.status}`);
-        }
-        return;
+        throw new Error(`Error: ${response.status}`);
       }
 
       const data = await response.json();
@@ -68,6 +76,7 @@ const AuthForm: React.FC = () => {
             onChange={(e) => setEmail(e.target.value)}
             placeholder="john@example.com"
             required
+            onKeyDown={(e) => handleKeyDown(e, 'email')}
           />
         </div>
         <div className="input-group">
@@ -81,13 +90,14 @@ const AuthForm: React.FC = () => {
               placeholder="Qwerty123!"
               required
               style={{ paddingRight: "50px" }}
+              onKeyDown={(e) => handleKeyDown(e, 'password')}
             />
             <button
               className="eye-icon"
               onClick={handleEyeClick}
               style={{
                 position: "absolute",
-                right: "30px",
+                right: "30px", 
                 top: "50%",
                 transform: "translateY(-50%)",
                 background: "none",
