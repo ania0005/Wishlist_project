@@ -101,7 +101,7 @@ const CreateWishlist: React.FC = () => {
     <div className="wishlist-container">
       <div className="wishlist-card">
         <span className="back-arrow">
-          <a href="/dashboard">← Back</a>
+          <a href="/#/dashboard">← Back</a>
         </span>
         <h2 className="title-custom">Create a wishlist</h2>
         <div className="input-group">
