@@ -3,8 +3,8 @@
   max-width: 600px;
   margin: 205px auto;
   padding: 15px;
-  background-color: #ffffff; /* Белый цвет формы */
-  border-radius: 10px; /* Скругленные углы */
+  background-color: #ffffff;
+  border-radius: 10px; 
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 

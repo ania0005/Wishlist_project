@@ -35,7 +35,7 @@ const CreateGift: React.FC = () => {
       });
 
       if (!response.ok) {
-        throw new Error("Failed to save gift");
+        throw new Error("Failed to save gift, url of the image is too long, choose another image. ");
       }
 
       navigate(`/wishlist/${id}`);
@@ -45,9 +45,15 @@ const CreateGift: React.FC = () => {
   };
 
   const handleSaveClick = async () => {
-    if (!giftName.trim() && !giftLink.trim()) {
+    if (!giftName.trim()) {
       setErrorMessage(
-        "Please enter either a gift name or a link where you can buy the gift."
+        "Please enter a gift name."
+      );
+      return;
+    }
+    if (!giftLink.trim()) {
+      setErrorMessage(
+        "Please enter a link where you can buy the gift."
       );
       return;
     }

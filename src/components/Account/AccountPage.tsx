@@ -133,7 +133,7 @@ const AccountPage = () => {
   const items = wishlists.map((wishlist) => (
     <div key={wishlist.id}>
       <Card
-        title={wishlist.title}
+        title={<span className="custom-title">{wishlist.title}</span>}
         className="wishlist-card-in-account"
         onClick={() => handleCardClick(wishlist.id)}
       >
@@ -145,7 +145,7 @@ const AccountPage = () => {
           onClick={(event) => handleAddGiftClick(event, wishlist.id)}
           className="add-gift-in-card-button-in-account"
         >
-          add gift
+          Add gift
         </Button>
         <p className="time-left-text-in-account">
           Days left: {calculateDaysLeft(wishlist.eventDate)}
@@ -161,35 +161,29 @@ const AccountPage = () => {
       <div className="dashboard-in-account">
         <header className="dashboard-header-in-account">
           <div className="user-profile-in-account">
-            <div className="user-icon-in-account"></div>
             <div className="username-in-account">{username}</div>
             <div className="wishlist-section-in-account">
-              <span className="my-wishlists-in-account">My Wishlists</span>
-              <Link
-                to="/createWishList"
-                className="create-wishlist-button-in-account"
-              >
-                Create WishList
-              </Link>
+              <div className="user-icon-in-account"></div>
               <button
                 onClick={handleDeleteClick}
                 className="delete-button-in-account"
+                style={{ zIndex: 2 }}
               >
-                <GoTrash /> delete{" "}
+                <GoTrash /> delete account
               </button>
             </div>
           </div>
         </header>
-        <main
-          className="dashboard-content-in-account"
-          style={{
-            marginTop: "360px",
-            display: "flex",
-            flexDirection: "row",
-            flexWrap: "wrap",
-            position: "fixed",
-          }}
-        >
+        <main className="dashboard-content-in-account">
+          <div className="wishlist-section-in-account">
+            <span className="my-wishlists-in-account">My Wishlists</span>
+            <Link
+              to="/createWishList"
+              className="create-wishlist-button-in-account"
+            >
+              Create WishList
+            </Link>
+          </div>
           <AliceCarousel
             mouseTracking
             items={items}
@@ -198,7 +192,7 @@ const AccountPage = () => {
               375: { items: 1 },
               425: { items: 2 },
               768: { items: 3 },
-              1024: { items: 4 },
+              1024: { items: 3 },
             }}
           />
         </main>

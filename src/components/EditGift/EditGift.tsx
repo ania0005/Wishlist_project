@@ -59,20 +59,27 @@ const EditGift: React.FC = () => {
 
       if (response.ok) {
         console.log("Gift updated successfully.");
+        navigate(`/wishlist/${wishlistId}`);
       } else {
         setErrorMessage("Failed to update gift. Please try again.");
       }
     } catch (error) {
       console.error("Error updating gift:", error);
+      setErrorMessage("An error occurred while updating the gift. Please try again.");
     }
   };
 
   const handleSaveClick = async () => {
-    if (!giftName.trim() && !giftLink.trim()) {
-      setErrorMessage("Please enter a gift name or purchase link.");
+    setErrorMessage(""); // Clear previous error messages
+
+    if (!giftName.trim()) {
+      setErrorMessage("Please enter a gift name.");
       return;
     }
-
+    if (!giftLink.trim()) {
+      setErrorMessage("Please enter a link where you can buy the gift.");
+      return;
+    }
     if (!giftPrice.trim()) {
       setErrorMessage("Please enter the gift price.");
       return;
@@ -85,9 +92,12 @@ const EditGift: React.FC = () => {
       setErrorMessage("Name too long. Please shorten name.");
       return;
     }
+    if (giftImgUrl.length > 80000) {
+      setErrorMessage("Image is too large. Please choose a smaller image.");
+      return;
+    }
 
     await updateGift();
-    navigate(`/wishlist/${wishlistId}`);
   };
 
   const handleImgUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -96,7 +106,12 @@ const EditGift: React.FC = () => {
       const reader = new FileReader();
       reader.onload = (event) => {
         if (event.target && event.target.result) {
-          setGiftImgUrl(event.target.result as string);
+          const result = event.target.result as string;
+          if (result.length > 80000) {
+            setErrorMessage("Url of the image is too large. Please choose another image.");
+          } else {
+            setGiftImgUrl(result);
+          }
         }
       };
       reader.readAsDataURL(file);

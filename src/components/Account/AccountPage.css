@@ -56,17 +56,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 20px;
 }
 
 .my-wishlists-in-account {
-  font-size: 18px;
+  margin-top: 280px;
+  font-size: 22px;
   margin-bottom: 10px;
-  position: fixed;
-  top: 317px;
-  left: 185px;
-  margin: 10px;
   font-weight: bold;
-  z-index: 3;
 }
 
 .create-wishlist-button-in-account {
@@ -78,22 +75,25 @@
   border: 1px solid #49baf9;
   border-radius: 10px;
   cursor: pointer;
-  position: fixed;
-  top: 350px;
-  left: 163px;
-  margin: 10px;
+  margin-bottom: 10px;
 }
+
 .create-wishlist-button-in-account:hover {
   background-color: #49baf9;
   color: #ffffff;
 }
+
 .dashboard-content-in-account {
   max-width: 800px;
   margin: 10px auto;
   position: relative;
   z-index: 1;
   padding-bottom: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
+
 .AliceCarousel {
   margin: 0 auto;
   width: 100%;
@@ -101,32 +101,50 @@
   box-sizing: border-box;
 }
 
+.AliceCarousel .alice-carousel__wrapper {
+  margin: 0 10px;
+}
+
 .wishlist-card-in-account {
   padding-top: 20px;
-  max-width: 170px;
-  min-height: 170px;
+  max-width: calc(100% - 20px);
+  width: 340px;
+  height: 300px;
   margin-bottom: 14px;
-  bottom: 20px;
-  margin-right: auto;
-  margin-top: 100px;
-  font-size: 12px;
+  font-size: 22px;
   background-color: white;
+  text-align: center;
   margin: 0 5px;
+  border-radius: 15px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
+.custom-title {
+  font-size: 24px;
+  font-family: "DM Serif Display", serif;
+}
 .add-gift-in-card-button-in-account {
-  margin-top: 10px;
+  width: 105px;
+  margin: 15px;
+  margin-top: 30px;
+  padding: auto;
   background-color: #49baf9;
   color: white;
-  font-size: 12px;
+  font-size: 18px;
+  font-family: "DM Serif Display", serif;
 }
-
+.gift-count-text-in-account {
+  font-family: "DM Serif Display", serif;
+  font-size: 20px;
+}
 .event-date-in-account {
   position: row;
   z-index: 2;
   bottom: 50px;
   left: 5px;
   color: #000000;
+  font-family: "DM Serif Display", serif;
+  font-size: 20px;
 }
 
 .time-left-text-in-account {
@@ -138,11 +156,14 @@
   background-color: white;
   color: rgb(172, 64, 10);
   line-height: 50px;
-  text-align: left;
+  text-align: center;
+  font-family: "DM Serif Display", serif;
 }
+
 .time-left-button-in-account:hover {
   background-color: white;
   color: black;
+  font-family: "DM Serif Display", serif;
 }
 
 .delete-button-in-account {
@@ -154,12 +175,9 @@
   border: 1px solid #f1f8ff;
   border-radius: 10px;
   cursor: pointer;
-  position: fixed;
-  top: 280px;
-  left: 195px;
-  max-width: 146px;
-  text-align: left;
+  max-width: 180px;
 }
+
 .delete-button-in-account:hover {
   background-color: #f1f8ff;
   color: #5c6c75;
@@ -225,9 +243,6 @@
     position: static;
     margin: 10px auto;
   }
-  .wishlist-card-in-account {
-    max-width: 100%;
-  }
 
   .AliceCarousel {
     width: 50%;
@@ -245,9 +260,6 @@
   .delete-button-in-account {
     position: static;
     margin: 10px auto;
-  }
-  .wishlist-card-in-account {
-    max-width: 100%;
   }
 
   .AliceCarousel {

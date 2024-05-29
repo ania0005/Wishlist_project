@@ -174,7 +174,8 @@
   font-family: "DM Serif Display", serif;
 }
 
-.arrow-icon {
+.arrow-icon-w {
+  width: 10%;
   margin-left: 5px;
 }
 
