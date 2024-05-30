@@ -18,7 +18,7 @@ const CreateWishlist: React.FC = () => {
         },
         body: JSON.stringify({
           title: wishlistName,
-          description: wishlistComment,
+          description: wishlistComment || null,
           eventDate: wishlistDate,
         }),
       });
