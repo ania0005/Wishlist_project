@@ -59,7 +59,7 @@ const EditGift: React.FC = () => {
 
       if (response.ok) {
         console.log("Gift updated successfully.");
-        navigate(`/wishlist/${wishlistId}`);
+        navigate(`/#/wishlist/${wishlistId}`);
       } else {
         setErrorMessage("Failed to update gift. Please try again.");
       }
