@@ -1,11 +1,12 @@
 body {
-  font-family: Roboto, sans-serif;
-  font-weight: 500;
+  font-family: Arial, sans-serif; /* Изменен шрифт на более читаемый */
+  font-weight: 400; /* Увеличена толщина шрифта */
   text-align: justify;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px; /* Уменьшено расстояние между буквами для лучшей читаемости */
   background-color: #f1f8ff;
-  font-family: "DM Serif Display", serif;
+  font-family: "DM Serif Display", serif; /* Если этот шрифт все же нужен */
 }
+
 .about-page {
   padding: 8% 17% 0 17%;
 }
@@ -15,13 +16,14 @@ body {
 }
 
 .paragraph {
-  font-size: 24px;
-  line-height: 1.5;
+  font-size: 26px; /* Увеличен размер шрифта */
+  line-height: 1.75; /* Увеличено межстрочное расстояние для улучшения читаемости */
   padding-top: 20px;
   padding-bottom: 80px;
+  font-family: Georgia, serif; /* Изменен шрифт на более читаемый */
 }
+
 .paragraph-first {
-  font-size: 28px;
-  line-height: 1.5;
-  padding-bottom: 90px;
+  font-size: 30px; /* Увеличен размер шрифта */
+  line-height: 1.75;
 }
