@@ -22,7 +22,7 @@ const Header = () => {
           wishlist creation service
         </h1>
         <div className="header__text">
-          <p>Share your wishes with your friends and receive only “must-have” gifts.</p>
+          <p>Share your wishes with your friends <br/> and receive only “must-have” gifts.</p>
         </div>
         <button
           className="create_list_button"
