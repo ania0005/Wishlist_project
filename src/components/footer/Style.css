@@ -32,3 +32,39 @@
 .privacy-policy {
   margin-right: 40px;
 }
+
+/* Media queries for responsive footer */
+@media (max-width: 768px) {
+  .footer {
+    padding: 10px 15px;
+    font-size: 10px;
+
+  }
+  .privacy-policy {
+    margin-right: 20px;
+  }
+  .github_logo img {
+    width: 30px; /* Уменьшение значка для экранов до 768px */
+  }
+}
+
+@media (max-width: 480px) {
+  .footer {
+    padding: 10px;
+    font-size: 10px;
+    margin: 0;
+  }
+  .footer__wrapper {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .footer__right {
+    margin-left: 0;
+  }
+  .privacy-policy {
+    margin-right: 10px;
+  }
+  .github_logo img {
+    width: 20px; /* Уменьшение значка для экранов до 480px */
+  }
+}

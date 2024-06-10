@@ -31,7 +31,6 @@
 
 .header__title strong {
   font-size: 100px;
-  font-weight: 700;
 }
 
 .header__title em {
@@ -64,4 +63,60 @@
   font-family: "DM Serif Display", serif;
   font-size: 20px;
   width: 60%;
+}
+
+/* Media queries for responsive design */
+@media (max-width: 768px) {
+  .header {
+    height: auto; /* Изменено на auto */
+    padding: 20px; /* Добавлено вместо маргина */
+    text-align: center; /* Добавлено */
+  }
+  
+  .header__wrapper {
+    margin-left: 20px; /* Уменьшено для мобильной версии */
+    margin-right: 20px; /* Уменьшено для мобильной версии */
+  }
+
+  .header__title {
+    font-size: 36px; /* Уменьшено для мобильной версии */
+    margin-bottom: 10px; /* Уменьшено для мобильной версии */
+  }
+
+  .header__title strong {
+    font-size: 72px; /* Уменьшено для мобильной версии */
+  }
+
+  .header__text {
+    font-size: 18px; /* Уменьшено для мобильной версии */
+    margin-bottom: 20px; /* Уменьшено для мобильной версии */
+  }
+
+  .create_list_button {
+    padding: 10px 30px; /* Уменьшено для мобильной версии */
+    font-size: 16px; /* Уменьшено для мобильной версии */
+    width: 80%; /* Изменено для мобильной версии */
+  }
+}
+
+@media (max-width: 480px) {
+  .header__title {
+    margin-top: 40%;
+    font-size: 24px; /* Уменьшено для мобильной версии */
+  }
+
+  .header__title strong {
+    font-size: 28px; /* Уменьшено для мобильной версии */
+  }
+
+  .header__text {
+    font-size: 14px; /* Уменьшено для мобильной версии */
+    margin-bottom: 15px; /* Уменьшено для мобильной версии */
+  }
+
+  .create_list_button {
+    padding: 8px 25px; /* Уменьшено для мобильной версии */
+    font-size: 14px; /* Уменьшено для мобильной версии */
+    width: 90%; /* Изменено для мобильной версии */
+  }
 }
