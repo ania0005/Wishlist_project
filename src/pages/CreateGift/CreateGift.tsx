@@ -128,7 +128,7 @@ const CreateGift: React.FC = () => {
     <div className="wishlist-container-custom">
       <div className="wishlist-card-custom">
         <span className="back-arrow-custom">
-          <a href={`/wishlist/${id}`}>&#8592; Back</a>
+          <a href={`/#/wishlist/${id}`}>&#8592; Back</a>
         </span>
         <h2 className="title-custom">Add a gift</h2>
         <div className="link-input-custom">

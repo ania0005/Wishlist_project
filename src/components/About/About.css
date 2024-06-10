@@ -1,11 +1,12 @@
 body {
-  font-family: Roboto, sans-serif;
-  font-weight: 500;
+  font-family: Arial, sans-serif; 
+  font-weight: 400; 
   text-align: justify;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px; 
   background-color: #f1f8ff;
-  font-family: "DM Serif Display", serif;
+  font-family: "DM Serif Display", serif; 
 }
+
 .about-page {
   padding: 8% 17% 0 17%;
 }
@@ -15,13 +16,14 @@ body {
 }
 
 .paragraph {
-  font-size: 24px;
-  line-height: 1.5;
+  font-size: 26px;
+  line-height: 1.75;
   padding-top: 20px;
   padding-bottom: 80px;
+  font-family: Georgia, serif;
 }
+
 .paragraph-first {
-  font-size: 28px;
-  line-height: 1.5;
-  padding-bottom: 90px;
+  font-size: 30px; 
+  line-height: 1.75;
 }

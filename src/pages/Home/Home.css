@@ -112,6 +112,7 @@ img {
 .section {
   padding: 0px 0px 80px;
 }
+
 /* Media queries for responsive design */
 @media (max-width: 1024px) {
   .purple-box {
@@ -127,118 +128,26 @@ img {
 
   .content-left p {
     font-size: 18px;
-    margin-bottom: 20px;
+=======
+
+/* Media Queries for Tablets */
+@media (max-width: 1024px) {
+  .purple-box, .pink-box {
+    flex-direction: column;
+    height: auto;
   }
 
-  .content-left button {
-    padding: 15px;
+  .content-left {
     width: 100%;
-    margin-top: 20px;
+    margin-left: 0;
   }
 
-  .content-right img {
-    max-width: 70%;
-  }
-
-  .pink-box {
-    padding: 30px;
-    margin: 70px auto;
-  }
-
-  .title {
+  .content-left h2 {
     font-size: 36px;
-    margin-bottom: 30px;
-  }
-
-  .white-rectangle-text {
-    font-size: 18px;
-  }
-  .image-container {
-    display: flex;
-    justify-content: center;
-  }
-}
-
-@media (max-width: 768px) {
-  .purple-box {
-    padding: 20px;
-    margin: 50px auto;
-  }
-
-  .content-left h2 {
-    font-size: 28px;
-    margin-bottom: 15px;
+    margin-bottom: 40px;
   }
 
   .content-left p {
-    font-size: 16px;
-    margin-bottom: 15px;
-  }
-
-  .content-left button {
-    padding: 12px;
-    margin-top: 15px;
-  }
-
-  .content-right img {
-    max-width: 80%;
-  }
-  .pink-box {
-    padding: 20px;
-    margin: 50px auto;
-  }
-
-  .title {
-    font-size: 28px;
-    margin-bottom: 20px;
-  }
-
-  .white-rectangle-text {
-    font-size: 16px;
-  }
-}
-
-@media (max-width: 480px) {
-  .purple-box {
-    padding: 10px;
-  }
-
-  .content-left h2 {
     font-size: 20px;
-    margin-bottom: 10px;
-  }
 
-  .content-left p {
-    font-size: 12px;
-    margin-bottom: 10px;
-  }
-
-  .content-left button {
-    padding: 10px;
-    margin-top: 10px;
-  }
-
-  .content-right img {
-    max-width: 100%;
-  }
-  .pink-box {
-    padding: 10px;
-    margin: 30px auto;
-  }
-
-  .title {
-    font-size: 22px;
-    margin-bottom: 10px;
-  }
-
-  .white-rectangle-text {
-    font-size: 12px;
-    margin: 15px;
-  }
-  .image-container {
-    display: flex;
-    justify-content: center;
-    max-width: 91%;
-  }
-  
 }

@@ -102,6 +102,7 @@ const SignUpPage: React.FC = () => {
   };
 
   return (
+    <body>
     <div className="auth-container">
       <h2>Sign Up</h2>
 
@@ -221,7 +222,7 @@ const SignUpPage: React.FC = () => {
         <p className="consent-text">
           By entering the resource, you automatically consent to the processing
           of personal data.
-          <a href="/privacy-policy"> Personal Policy</a>
+          <a href="/#/privacy-policy"> Personal Policy</a>
         </p>
         <div className="center">
           <button className="save-button" type="submit" ref={signUpButtonRef}>
@@ -231,9 +232,10 @@ const SignUpPage: React.FC = () => {
       </form>
 
       <p>
-        Already have an account? <a href="/login">Log In</a>
+        Already have an account? <a href="/#/login">Log In</a>
       </p>
-    </div>
+    </div>#
+    </body>
   );
 };
 

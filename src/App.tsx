@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import Footer from "./components/footer/Footer";
 import ScrollToTop from "./utils/ScrollToTop";
 import AuthForm from "./components/Auth/AuthForm";
@@ -17,7 +17,6 @@ import CreateGift from "./pages/CreateGift/CreateGift";
 import Home from "./pages/Home/Home";
 import SharePage from "./components/SharePage/SharePage";
 import NoPageFound from "./components/NoPageFound/NoPageFound";
-
 
 const App: React.FC = () => {
   const [user, setUser] = useState<User | undefined>(undefined);
