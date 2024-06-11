@@ -112,130 +112,61 @@ img {
 .section {
   padding: 0px 0px 80px;
 }
-
-/* Media Queries for Tablets */
+/* Media queries for responsive design */
 @media (max-width: 1024px) {
-  .purple-box, .pink-box {
-    flex-direction: column;
+  .purple-box {
+    padding: 30px;
+    margin: 70px auto;
     height: auto;
-  }
-
-  .content-left {
-    width: 100%;
-    margin-left: 0;
   }
 
   .content-left h2 {
     font-size: 36px;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
   }
 
   .content-left p {
-    font-size: 20px;
+    font-size: 18px;
     margin-bottom: 20px;
   }
 
   .content-left button {
+    padding: 15px;
     width: 100%;
-  }
-
-  .content-right {
-    width: 100%;
-    text-align: center;
     margin-top: 20px;
   }
 
   .content-right img {
-    max-width: 80%;
+    max-width: 70%;
   }
 
-  .columns-container {
-    flex-direction: column;
+  .pink-box {
+    padding: 30px;
+    margin: 70px auto;
+  }
+
+  .title {
+    font-size: 36px;
+    margin-bottom: 30px;
+  }
+
+  .white-rectangle-text {
+    font-size: 18px;
+  }
+  .image-container {
+    display: flex;
+    justify-content: center;
   }
 }
 
 @media (max-width: 768px) {
-  .pink-box {
-    padding: 20px;
-  }
-
-  .title {
-    font-size: 32px;
-    margin-bottom: 20px;
-  }
-
-  .columns-container {
-    gap: 10px;
-  }
-
-  .image-container {
-    margin-bottom: 20px;
-  }
-
-  .white-rectangle-text {
-    font-size: 18px;
-    padding: 8px;
-  }
-
   .purple-box {
     padding: 20px;
+    margin: 50px auto;
   }
 
   .content-left h2 {
     font-size: 28px;
-    margin-bottom: 20px;
-  }
-
-  .content-left p {
-    font-size: 18px;
-    margin-bottom: 20px;
-  }
-
-  .content-left button {
-    padding: 15px;
-    font-size: 18px;
-    margin-top: 30px;
-  }
-
-  .content-right img {
-    max-width: 100%;
-  }
-
-  .bottom-white-rectangle {
-    height: 80px;
-  }
-}
-
-/* Media Queries for small smartphones (max-width: 425px) */
-@media (max-width: 425px) {
-  .pink-box {
-    padding: 15px;
-  }
-
-  .title {
-    font-size: 28px;
-    margin-bottom: 15px;
-  }
-
-  .columns-container {
-    gap: 8px;
-  }
-
-  .image-container {
-    margin-bottom: 15px;
-  }
-
-  .white-rectangle-text {
-    font-size: 16px;
-    padding: 6px;
-  }
-
-  .purple-box {
-    padding: 15px;
-  }
-
-  .content-left h2 {
-    font-size: 24px;
     margin-bottom: 15px;
   }
 
@@ -246,43 +177,28 @@ img {
 
   .content-left button {
     padding: 12px;
-    font-size: 16px;
-    margin-top: 20px;
+    margin-top: 15px;
   }
 
   .content-right img {
-    max-width: 100%;
+    max-width: 80%;
   }
-
-  .bottom-white-rectangle {
-    height: 70px;
-  }
-}
-
-/* Media Queries for very small smartphones (max-width: 375px) */
-@media (max-width: 375px) {
   .pink-box {
-    padding: 10px;
+    padding: 20px;
+    margin: 50px auto;
   }
 
   .title {
-    font-size: 24px;
-    margin-bottom: 10px;
-  }
-
-  .columns-container {
-    gap: 5px;
-  }
-
-  .image-container {
-    margin-bottom: 10px;
+    font-size: 28px;
+    margin-bottom: 20px;
   }
 
   .white-rectangle-text {
-    font-size: 14px;
-    padding: 4px;
+    font-size: 16px;
   }
+}
 
+@media (max-width: 480px) {
   .purple-box {
     padding: 10px;
   }
@@ -293,21 +209,36 @@ img {
   }
 
   .content-left p {
-    font-size: 14px;
+    font-size: 12px;
     margin-bottom: 10px;
   }
 
   .content-left button {
     padding: 10px;
-    font-size: 14px;
-    margin-top: 15px;
+    margin-top: 10px;
   }
 
   .content-right img {
     max-width: 100%;
   }
-
-  .bottom-white-rectangle {
-    height: 60px;
+  .pink-box {
+    padding: 10px;
+    margin: 30px auto;
   }
+
+  .title {
+    font-size: 22px;
+    margin-bottom: 10px;
+  }
+
+  .white-rectangle-text {
+    font-size: 12px;
+    margin: 15px;
+  }
+  .image-container {
+    display: flex;
+    justify-content: center;
+    max-width: 91%;
+  }
+  
 }

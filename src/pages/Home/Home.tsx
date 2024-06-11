@@ -1,8 +1,8 @@
 import Header from "../../components/header/Header";
-import share from "../../img/share.jpg";
-import info from "../../img/info.jpg";
+import share from "../../img/share.png";
+import info from "../../img/info.png";
 import gift from "../../img/gift.png";
-import add from "../../img/add.jpg";
+import add from "../../img/add.png";
 import "./Home.css";
 
 const Home = () => {
