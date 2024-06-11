@@ -1,36 +1,37 @@
 import { NavLink, useNavigate } from "react-router-dom";
+import { GoPerson } from "react-icons/go";
 import "./style.css";
-
+import { useContext } from "react";
+import AuthContext from "../../contexts/AuthContext";
 
 const NavBar = () => {
   const activeLink = "nav-list__link nav-list__link--active";
   const normalLink = "nav-list__link";
 
   const navigate = useNavigate();
-
-  const logOut = async () => {
-    try {
-      localStorage.removeItem("authToken");
-      navigate("/login"); 
-    } catch (error) {      
-      console.error("Logout error: ", error);
-    }
-  };
-  
+  const { user, setUser } = useContext(AuthContext);
 
   const handleLogout = async () => {
     try {
-      await logOut();
-      localStorage.removeItem("authToken");
-      navigate("/");
+      const response = await fetch("/api/users/logout", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (response.ok) {
+        if (setUser) {
+          setUser(undefined);
+        }
+        navigate("/");
+      } else {
+        console.error("Failed to log out:", response.statusText);
+      }
     } catch (error: any) {
-      console.error("Ошибка при выходе из аккаунта:", error.message);
+      console.error("Error when logging out of your account:", error.message);
     }
   };
-
-  // Проверяем, зарегистрирован ли пользователь
-  const isAuthenticated = localStorage.getItem("authToken");
-  
   return (
     <nav className="nav">
       <div className="container">
@@ -59,7 +60,7 @@ const NavBar = () => {
                 About us
               </NavLink>
             </li>
-            {isAuthenticated ? ( // Если пользователь зарегистрирован
+            {user ? (
               <>
                 <li className="nav-list__item">
                   <NavLink
@@ -72,8 +73,18 @@ const NavBar = () => {
                     Log Out
                   </NavLink>
                 </li>
+                <li className="nav-list__item">
+                  <NavLink
+                    to="/dashboard"
+                    className={({ isActive }) =>
+                      isActive ? activeLink : normalLink
+                    }
+                  >
+                    <GoPerson />
+                  </NavLink>
+                </li>
               </>
-            ) : ( // Если пользователь не зарегистрирован
+            ) : (
               <>
                 <li className="nav-list__item">
                   <NavLink
@@ -104,4 +115,4 @@ const NavBar = () => {
   );
 };
 
-export default NavBar; 
+export default NavBar;

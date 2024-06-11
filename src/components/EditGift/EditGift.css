@@ -1,0 +1,113 @@
+.wishlist-container-custom {
+    background-color: whitesmoke;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .title-custom {
+    font-size: 50px;
+    margin-top: 20px;
+    margin-left: 20px;
+  }
+  
+  .title-1-custom {
+    font-size: 20px;
+    font-family: "DM Serif Display", serif;
+    margin: 15px auto 10px;
+    width: 100%;
+  }
+  
+  .wishlist-card-custom {
+    background-color: #d1edf8;
+    box-shadow: 0px 2px 4px rgba(53, 22, 22, 0.4);
+    padding: 30px;
+    border-radius: 15px;
+    width: 800px;
+    height: 800px;
+  }
+  
+  .back-arrow-custom {
+    font-size: 20px;
+    display: block;
+    margin-bottom: 20px;
+  }
+  
+  .link-input-custom,
+  .input-group-1 {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .img-input-custom {
+    background-color: #e0e0e0;
+    padding: 10px;
+    border: 1px dashed #ccc;
+    text-align: center;
+    cursor: pointer;
+  }
+  
+  .img-input-custom img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+  
+  .file-input-custom {
+    display: none;
+  }
+  
+  .input-group-custom {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+  }
+  
+  .rounded-input-custom,
+  .rounded-textarea-custom,
+  .currency-select {
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    font-size: 16px;
+  }
+  
+  .rounded-textarea-custom {
+    height: 100px;
+    resize: none;
+  }
+  
+  .currency-input {
+    display: flex;
+    align-items: center;
+  }
+  
+  .currency-select {
+    margin-left: 10px;
+  }
+  
+  .save-button-custom {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+  
+  .error-message {
+    color: red;
+    margin-top: 10px;
+  }
+  
+  .left-column {
+    flex: 1;
+    padding-right: 20px;
+  }
+  
+  .right-column {
+    flex: 1;
+    padding-left: 20px;
+  }
+  

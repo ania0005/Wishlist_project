@@ -1,99 +1,190 @@
-.dashboard {
+.dashboard-in-account {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
   min-height: 100vh;
-  background-color: #F1F8FF;
+  background-color: #f1f8ff;
   background-size: contain;
   background-position: center;
+  padding-right: 20px;
+  padding-bottom: 100px;
 }
 
-.dashboard-header {
+.dashboard-header-in-account {
+  margin: 10px;
+  display: flex;
   width: 100%;
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  position: fixed;
+  position: sticky;
   top: 0;
-  z-index: 1000;
+  z-index: 1;
 }
 
-.user-profile {
+.user-profile-in-account {
   display: flex;
+  flex-direction: column-reverse;
   align-items: center;
   position: fixed;
   top: 134px;
   left: 200px;
 }
 
-.user-icon {
+.user-icon-in-account {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100px;
   height: 100px;
-  background-image: url('../../../src/img/avatar.jpg');
+  background-image: url("../../../src/img/avatar.jpg");
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
   border-radius: 50%;
-  margin-right: 10px;
+  margin-bottom: 10px;
+  z-index: 2;
 }
 
+.username-in-account {
+  font-weight: bold;
+  order: 1;
+  margin-bottom: 10px;
+}
 
-.username {
+.wishlist-section-in-account {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.my-wishlists-in-account {
+  margin-top: 280px;
+  font-size: 26px;
+  margin-bottom: 10px;
   font-weight: bold;
 }
 
-.wishlist-section {
+.create-wishlist-button-in-account {
+  padding: 10px 20px;
+  font-size: 16px;
+  text-decoration: none;
+  color: #49baf9;
+  background-color: #f1f8ff;
+  border: 1px solid #49baf9;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.create-wishlist-button-in-account:hover {
+  background-color: #49baf9;
+  color: #ffffff;
+}
+
+.dashboard-content-in-account {
+  max-width: 800px;
+  margin: 10px auto;
+  position: relative;
+  z-index: 1;
+  padding-bottom: 100px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.my-wishlists {
+.AliceCarousel {
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 15px;
+  box-sizing: border-box;
+}
+
+.AliceCarousel .alice-carousel__wrapper {
+  margin: 0 10px;
+}
+
+.wishlist-card-in-account {
+  padding-top: 20px;
+  max-width: calc(100% - 20px);
+  width: 340px;
+  height: 330px;
+  margin-bottom: 14px;
+  font-size: 22px;
+  background-color: white;
+  text-align: center;
+  margin: 0 5px;
+  border-radius: 15px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.custom-title {
+  font-size: 24px;
+  font-family: "DM Serif Display", serif;
+}
+.add-gift-in-card-button-in-account {
+  width: 105px;
+  height: 50px;
+  margin: 15px;
+  margin-top: 30px;
+  padding: auto;
+  background-color: #49baf9;
+  color: white;
   font-size: 18px;
-  margin-bottom: 10px;
-  position: fixed;
-  top: 260px;
-  left: 205px;
+  font-family: "DM Serif Display", serif;
+}
+.gift-count-text-in-account {
+  font-family: "DM Serif Display", serif;
+  font-size: 20px;
+}
+.event-date-in-account {
+  position: row;
+  z-index: 2;
+  bottom: 50px;
+  left: 5px;
+  color: #000000;
+  font-family: "DM Serif Display", serif;
+  font-size: 20px;
 }
 
-.create-wishlist-button {
-  padding: 10px 20px;
-  font-size: 16px;
-  text-decoration: none;
-  color: #49BAF9;
-  background-color: #F1F8FF;
-  border: 1px solid #49BAF9;
-  border-radius: 10px;
-  cursor: pointer;
-  position: fixed;
-  top: 250px;
-  left: 342px;
+.time-left-text-in-account {
+  position: static;
+  margin: 0;
+  margin-top: 5px;
+  bottom: 0;
+  right: 5px;
+  background-color: white;
+  color: rgb(172, 64, 10);
+  line-height: 50px;
+  text-align: center;
+  font-family: "DM Serif Display", serif;
 }
 
-.delete-button {
+.time-left-button-in-account:hover {
+  background-color: white;
+  color: black;
+  font-family: "DM Serif Display", serif;
+}
+
+.delete-button-in-account {
   padding: 10px 20px;
   font-size: 16px;
   text-decoration: none;
   color: #95abb8;
-  background-color: #F1F8FF;
-  border: 1px solid #F1F8FF;
+  background-color: #f1f8ff;
+  border: 1px solid #f1f8ff;
   border-radius: 10px;
   cursor: pointer;
-  position: fixed;
-  top: 200px;
-  left: 342px;
-  max-width: 146px;
-  text-align: left;
-}
-.delete-button:hover {
-  background-color: #F1F8FF; /* Цвет фона при наведении */
-  color: #5c6c75; /* Цвет текста при наведении */
+  max-width: 180px;
 }
 
-.modal {
+.delete-button-in-account:hover {
+  background-color: #f1f8ff;
+  color: #5c6c75;
+}
+
+.modal-in-account {
   position: fixed;
   z-index: 1001;
   left: 0;
@@ -104,7 +195,7 @@
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-.modal-content {
+.modal-content-in-account {
   background-color: #fff;
   margin: 15% auto;
   padding: 20px;
@@ -113,55 +204,91 @@
   max-width: 500px;
 }
 
-.close-button {
+.close-button-in-account {
   color: #aaa;
   float: right;
   font-size: 28px;
   font-weight: bold;
 }
 
-.close-button:hover,
-.close-button:focus {
+.close-button-in-account:hover,
+.close-button-in-account:focus {
   color: black;
   text-decoration: none;
   cursor: pointer;
 }
 
-.dashboard-content {
-  padding-top: 140px;
-  width: 100%;
-  max-width: 800px;
-  margin: auto;
-  padding: 20px;
-}
-
-/* Стили для кнопки подтверждения в модальном окне */
-.confirm-button {
-  padding: 10px 20px;
-  font-size: 16px;
-  margin-top: 10px; /* Отступ сверху */
-  color: #F1F8FF;
-  background-color: #007bff; /* Синий цвет кнопки */
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.confirm-button:hover {
-  background-color: #0056b3; /* Темно-синий цвет при наведении */
-}
-
-
 .delete-account-button {
   padding: 10px 20px;
   font-size: 16px;
-  color: #F1F8FF;
-  background-color: #007bff; /* Синий цвет кнопки */
+  color: #f1f8ff;
+  background-color: #007bff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
 }
 
 .delete-account-button:hover {
-  background-color: #0056b3; /* Темно-синий цвет при наведении */
+  background-color: #0056b3;
+}
+
+@media (max-width: 375px) {
+  .dashboard-in-account,
+  .user-profile-in-account,
+  .wishlist-section-in-account {
+    flex-direction: column;
+    align-items: center;
+  }
+  .create-wishlist-button-in-account,
+  .delete-button-in-account {
+    position: static;
+    margin: 10px auto;
+  }
+
+  .AliceCarousel {
+    width: 50%;
+  }
+}
+
+@media (max-width: 425px) {
+  .dashboard-in-account,
+  .user-profile-in-account,
+  .wishlist-section-in-account {
+    flex-direction: column;
+    align-items: center;
+  }
+  .create-wishlist-button-in-account,
+  .delete-button-in-account {
+    position: static;
+    margin: 10px auto;
+  }
+
+  .AliceCarousel {
+    width: 50%;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard-in-account {
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    left: 10px;
+    width: auto;
+  }
+
+  .AliceCarousel {
+    width: 70%;
+  }
+}
+
+@media (max-width: 1024px) {
+  .dashboard-in-account {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .AliceCarousel {
+    width: 90%;
+  }
 }

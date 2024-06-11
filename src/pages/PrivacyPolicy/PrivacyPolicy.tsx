@@ -1,4 +1,4 @@
-import React from "react";
+import "./PrivacyPolicy.css";
 
 export const PrivacyPolicy = () => {
   return (
@@ -7,7 +7,8 @@ export const PrivacyPolicy = () => {
         <span style={{ fontWeight: "bold", fontSize: "larger" }}>
           PrivacyPolicy
         </span>
-        <br/><br/>
+        <br />
+        <br />
         WishList - PRIVACY POLICY Revised: Mai, 2 2024 OUR PRIVACY COMMITMENT
         Ait, Inc., and its subsidiaries and affiliates, including
         http://localhost:3000/ (collectively, “Cohort 34”) respect the privacy
