@@ -34,7 +34,18 @@
 .privacyPolicy {
   margin-right: 40px;
 }
-
+@media (max-width: 912px) {
+  .footer {
+    padding: 10px 15px;
+    font-size: 10px;
+  }
+  .privacyPolicy {
+    margin-right: 20px;
+  }
+  .github_logo img {
+    width: 30px; /* Уменьшение значка для экранов до 768px */
+  }
+}
 /* Media queries for responsive footer */
 @media (max-width: 768px) {
   .footer {
