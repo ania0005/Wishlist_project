@@ -11,7 +11,7 @@ import { Gift } from "../../types";
 import { GoArrowUpRight } from "react-icons/go";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGift } from "@fortawesome/free-solid-svg-icons";
-import "./WishListPage.css";
+import styles from "./WishListPage.module.css";
 import "../../App.css";
 
 const WishListPage: React.FC = () => {
@@ -135,68 +135,68 @@ const WishListPage: React.FC = () => {
 
   return (
     <Fragment>
-      <div className="wishlist">
-        <header className="wishlist-header">
-          <div className="wishlist-profile">
-            <Link to="/dashboard" className="go-to-wishlists">
+      <div className={styles.wishlist}>
+        <header className={styles.wishlistHeader}>
+          <div className={styles.wishlistProfile}>
+            <Link to="/dashboard" className={styles.goToWishlists}>
               <ArrowLeftOutlined /> Go to wishlists
             </Link>
-            <div className="wishlist-buttons">
+            <div className={styles.wishlistButtons}>
               <Button
                 onClick={handleDeleteClick}
-                className="delete-wl-button"
+                className={styles.deleteWlButton}
                 icon={<DeleteOutlined />}
               />
               <Button
                 onClick={handleShareClick}
-                className="share-button"
+                className={styles.shareButton}
                 icon={<ShareAltOutlined />}
               >
                 Share list
               </Button>
-              <Button onClick={handleAddGiftClick} className="add-wl-button">
+              <Button onClick={handleAddGiftClick} className={styles.addWlButton}>
                 Add gift
               </Button>
             </div>
-            <div className="wishlist-name">{title}</div>
-            {comment && <div className="wishlist-comment">{comment}</div>}
+            <div className={styles.wishlistName}>{title}</div>
+            {comment && <div className={styles.wishlistComment}>{comment}</div>}
           </div>
         </header>
-        <main className="wishlist-content">
+        <main className={styles.wishlistContent}>
           {gifts.map((gift) => (
-            <Card key={gift.id} className="gift-card">
-              <div className="gift-content">
-                <div className="gift-body">
-                  <div className="gift-left">
+            <Card key={gift.id} className={styles.giftCard}>
+              <div className={styles.giftContent}>
+                <div className={styles.giftBody}>
+                  <div className={styles.giftLeft}>
                     {gift.imgUrl ? (
                       <img
                         src={gift.imgUrl}
                         alt={gift.title}
-                        className="gift-image"
+                        className={styles.giftImage}
                       />
                     ) : (
                       <FontAwesomeIcon
                         icon={faGift}
-                        className="gift-image-placeholder"
+                        className={styles.giftImagePlaceholder}
                       />
                     )}
                     {gift.url && (
                       <a
                         href={gift.url}
-                        className="gift-go-to-store"
+                        className={styles.giftGoToStore}
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        To the store<GoArrowUpRight className="arrow-icon-w" />
+                        To the store<GoArrowUpRight className={styles.arrowIconW} />
                       </a>
                     )}
                   </div>
-                  <div className="gift-right">
-                    <div className="gift-card-title">{gift.title}</div>
-                    <div className="gift-card-price">
+                  <div className={styles.giftRight}>
+                    <div className={styles.giftCardTitle}>{gift.title}</div>
+                    <div className={styles.giftCardPrice}>
                       Price: {gift.price} {gift.currency}
                     </div>
-                    <div className="gift-card-comment">
+                    <div className={styles.giftCardComment}>
                       Comment: {gift.description}
                     </div>
                   </div>
@@ -223,10 +223,10 @@ const WishListPage: React.FC = () => {
         {showModal && (
           <Modal open={showModal} onCancel={handleCloseModal} footer={null}>
             <p>Do you really want to delete this wishlist?</p>
-            <div className="modal-footer">
+            <div className={styles.modalFooter}>
               <Button
                 onClick={handleDeleteWishList}
-                className="delete-wl-confirm-button"
+                className={styles.deleteWlConfirmButton}
               >
                 OK
               </Button>
@@ -238,7 +238,7 @@ const WishListPage: React.FC = () => {
             open={showShareModal}
             onCancel={() => setShowShareModal(false)}
             footer={[
-              <Button key="copy" onClick={handleCopyLink} className="copy-link">
+              <Button key="copy" onClick={handleCopyLink} className={styles.copyLink}>
                 Copy
               </Button>,
             ]}
@@ -252,3 +252,7 @@ const WishListPage: React.FC = () => {
 };
 
 export default WishListPage;
+
+
+
+
