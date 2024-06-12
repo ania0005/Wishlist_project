@@ -12,6 +12,7 @@ const Footer = () => {
             <a href="/#/privacy-policy">Privacy Policy</a>
           </li>
         </ul>
+        
         <ul className={styles.footer__right}>
           <li>Linkstraße 2/8 Etage, 10785 Berlin, AIT-TR</li>
         </ul>
