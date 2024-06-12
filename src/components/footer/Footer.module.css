@@ -26,7 +26,7 @@
 .footer__right {
   list-style-type: none;
   display: flex;
-  margin-left: 30px;
+  margin-left: auto; /* Перемещаем в самый правый край */
 }
 
 .social__item {
@@ -62,13 +62,18 @@
     align-items: flex-start;
   }
   .footer__right {
+    margin-left: 0; /* Добавлен отступ между элементами */
+    margin-top: 5px;
+  }
+  .social__item {
     margin-left: 0;
   }
   .github_logo {
-    margin-top: 10px;
+    margin-top: 5px;
+    margin-left: 0;
   }
   .github_logo img {
-    width: 20px; 
+    width: 15px; 
   }
 }
 
