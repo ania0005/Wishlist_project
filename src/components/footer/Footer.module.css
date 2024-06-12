@@ -16,6 +16,7 @@
   list-style-type: none;
   display: flex;
   align-items: center;
+  margin-left: 10px;
 }
 
 .footer__left {
@@ -25,28 +26,18 @@
 .footer__right {
   list-style-type: none;
   display: flex;
+  margin-left: 30px;
 }
 
 .social__item {
-  margin-left: 20px;
+  margin-left: 10px;
 }
 
 .privacyPolicy {
   margin-right: 40px;
 }
-@media (max-width: 912px) {
-  .footer {
-    padding: 10px 15px;
-    font-size: 10px;
-  }
-  .privacyPolicy {
-    margin-right: 20px;
-  }
-  .github_logo img {
-    width: 30px; /* Уменьшение значка для экранов до 768px */
-  }
-}
-/* Media queries for responsive footer */
+
+
 @media (max-width: 768px) {
   .footer {
     padding: 10px 15px;
@@ -56,79 +47,28 @@
     margin-right: 20px;
   }
   .github_logo img {
-    width: 30px; /* Уменьшение значка для экранов до 768px */
+    width: 30px;
   }
 }
 
 @media (max-width: 480px) {
   .footer {
     padding: 10px;
-    font-size: 10px;
-    margin: 0;
-  }
-  .footer__wrapper {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .footer__left {
-    order: 1;
-    width: 100%;
-  }
-  .footer__right {
-    order: 2;
-    margin-top: 10px;
-    width: 100%;
-    justify-content: space-between;
-  }
-  .github_logo {
-    order: 3;
-    margin-top: 10px;
-    width: 100%;
-    justify-content: flex-start;
-  }
-  .privacyPolicy {
-    margin-right: 10px;
-  }
-  .github_logo img {
-    width: 20px; /* Уменьшение значка для экранов до 480px */
-  }
-}
-
-@media (max-width: 350px) {
-  .footer {
-    padding: 5px;
     font-size: 8px;
-    margin: 0;
+    margin-top: 90px;
   }
   .footer__wrapper {
     flex-direction: column;
     align-items: flex-start;
   }
-  .footer__left {
-    order: 1;
-    width: 100%;
-  }
   .footer__right {
-    order: 2;
-    margin-top: 5px;
-    width: 100%;
-    justify-content: space-between;
+    margin-left: 0;
   }
   .github_logo {
-    order: 3;
-    margin-top: 5px;
-    width: 100%;
-    justify-content: flex-start;
-  }
-  .privacyPolicy {
-    margin-right: 5px;
+    margin-top: 10px;
   }
   .github_logo img {
-    width: 15px; /* Уменьшение значка для экранов до 350px */
+    width: 20px; 
   }
 }
-
-
-
-
 

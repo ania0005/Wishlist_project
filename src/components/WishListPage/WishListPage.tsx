@@ -154,7 +154,10 @@ const WishListPage: React.FC = () => {
               >
                 Share list
               </Button>
-              <Button onClick={handleAddGiftClick} className={styles.addWlButton}>
+              <Button
+                onClick={handleAddGiftClick}
+                className={styles.addWlButton}
+              >
                 Add gift
               </Button>
             </div>
@@ -187,16 +190,36 @@ const WishListPage: React.FC = () => {
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        To the store<GoArrowUpRight className={styles.arrowIconW} />
+                        To the store
+                        <GoArrowUpRight className={styles.arrowIconW} />
                       </a>
                     )}
                   </div>
                   <div className={styles.giftRight}>
-                    <div className={styles.giftCardTitle}>{gift.title}</div>
-                    <div className={styles.giftCardPrice}>
+                    <div
+                      className={`${styles.giftCardTitle} ${
+                        gift.title.length > 15 ? styles.smallFontTitle : ""
+                      }`}
+                    >
+                      {gift.title}
+                    </div>
+                    <div
+                      className={`${styles.giftCardPrice} ${
+                        gift.price.toString().length > 8
+                          ? styles.smallFontTitle
+                          : ""
+                      }`}
+                    >
                       Price: {gift.price} {gift.currency}
                     </div>
-                    <div className={styles.giftCardComment}>
+
+                    <div
+                      className={`${styles.giftCardComment} ${
+                        gift.description.length > 25
+                          ? styles.smallFontComment
+                          : ""
+                      }`}
+                    >
                       Comment: {gift.description}
                     </div>
                   </div>
@@ -238,7 +261,11 @@ const WishListPage: React.FC = () => {
             open={showShareModal}
             onCancel={() => setShowShareModal(false)}
             footer={[
-              <Button key="copy" onClick={handleCopyLink} className={styles.copyLink}>
+              <Button
+                key="copy"
+                onClick={handleCopyLink}
+                className={styles.copyLink}
+              >
                 Copy
               </Button>,
             ]}
@@ -252,7 +279,3 @@ const WishListPage: React.FC = () => {
 };
 
 export default WishListPage;
-
-
-
-

@@ -14,18 +14,17 @@ const Footer = () => {
         </ul>
         <ul className={styles.footer__right}>
           <li>Linkstraße 2/8 Etage, 10785 Berlin, AIT-TR</li>
-
-          <ul className={styles.github_logo}>
-            <li className={styles.social__item}>
-              <a
-                href="https://github.com/ania0005/Wishlist_project"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <img src={gitHub} alt="Link" />
-              </a>
-            </li>
-          </ul>
+        </ul>
+        <ul className={styles.github_logo}>
+          <li className={styles.social__item}>
+            <a
+              href="https://github.com/ania0005/Wishlist_project"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src={gitHub} alt="Link" />
+            </a>
+          </li>
         </ul>
       </div>
     </footer>
