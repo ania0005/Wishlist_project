@@ -76,7 +76,7 @@ body {
   background-color: #f1f8ff;
 }
 
-.password-input input {
+.password-input  {
   box-sizing: border-box;
   padding-right: 37px;
 }

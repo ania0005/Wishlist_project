@@ -16,6 +16,8 @@
 
 .input-group {
   margin-bottom: 5px;
+  margin-left: 3%;
+  width: 100%;
 }
 
 .input-group label {
