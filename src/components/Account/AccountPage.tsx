@@ -210,7 +210,6 @@ const AccountPage = () => {
               className="close-button-in-account"
               onClick={handleCloseModal}
             >
-              ×
             </span>
             <p>Do you want to delete your account?</p>
             <button

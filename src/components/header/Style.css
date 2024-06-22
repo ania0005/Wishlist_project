@@ -68,8 +68,8 @@
 /* Media queries for responsive design */
 @media (max-width: 768px) {
   .header {
-    height: auto; /* Изменено на auto */
-    padding: 20px; /* Добавлено вместо маргина */
+    height: 100%; /* Изменено на auto */
+    padding: 20px; 
     text-align: center; /* Добавлено */
   }
   
@@ -80,11 +80,11 @@
 
   .header__title {
     font-size: 36px; /* Уменьшено для мобильной версии */
-    margin-bottom: 10px; /* Уменьшено для мобильной версии */
+    margin-top: 70%; /* Уменьшено для мобильной версии */
   }
 
   .header__title strong {
-    font-size: 72px; /* Уменьшено для мобильной версии */
+    font-size: 42px; /* Уменьшено для мобильной версии */
   }
 
   .header__text {
@@ -100,6 +100,12 @@
 }
 
 @media (max-width: 480px) {
+  .header {
+    height: 100%; /* Изменено на auto */
+    padding: 0px; 
+    text-align: center; /* Добавлено */
+  }
+
   .header__title {
     margin-top: 40%;
     font-size: 24px; /* Уменьшено для мобильной версии */

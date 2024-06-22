@@ -104,7 +104,7 @@ const CreateWishlist: React.FC = () => {
           <a href="/#/dashboard">← Back</a>
         </span>
         <h2 className="title-custom">Create a wishlist</h2>
-        <div className="input-group">
+        <div className="input-group-create">
           <label className="title-1-custom" htmlFor="wishlist-name">
             Wishlist name <span className="required-icon">*</span>
           </label>

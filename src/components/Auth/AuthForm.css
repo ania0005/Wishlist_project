@@ -5,6 +5,7 @@
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
+
 .center {
   justify-content: center;
   display: flex;
@@ -12,12 +13,12 @@
 
 .auth-container h2 {
   text-align: center;
-  margin-bottom: 20px;
+  font-size: 20px; /* Default font size */
 }
+
 .input-group input {
   width: 100%;
   box-sizing: border-box;
-  padding: 10px;
   border: 1px solid #f7efef;
   border-radius: 4px;
 }
@@ -25,7 +26,8 @@
 .consent-text {
   font-size: 0.8em;
   text-align: center;
-  margin-bottom: 20px;
+  margin: 20px;
+  max-width: 93%;
 }
 
 button {
@@ -61,6 +63,7 @@ button:hover {
   text-align: center;
   margin-bottom: 20px;
 }
+
 body {
   display: flex;
   flex-direction: column;
@@ -72,6 +75,7 @@ body {
   font-family: "DM Serif Display", serif;
   background-color: #f1f8ff;
 }
+
 .password-input input {
   box-sizing: border-box;
   padding-right: 37px;
@@ -80,45 +84,61 @@ body {
 .eye-icon {
   position: absolute;
   top: 50%;
-  right: 6px;
-  margin-right: 3px;
+  right: 10px; /* Adjusted to ensure it appears in the right place */
   transform: translateY(-50%);
   background: none;
   border: none;
 }
 
-@media (max-width: 375px) {
-  .auth-container {
-    width: 70%;
-  }
-  .eye-icon {
-    display: none;
-  }
-}
 
-@media (max-width: 425px) {
-  .auth-container {
-    width: 70%;
-  }
-  .eye-icon {
-    display: none;
-  }
-}
-
-@media (max-width: 768px) {
-  .auth-container {
-    width: 70%;
-  }
-  .eye-icon {
-    display: none;
-  }
-}
 
 @media (max-width: 1024px) {
   .auth-container {
-    width: 80%;
+    width: 80%; /* Adjusted width for tablet */
+    margin: 0; /* Reduced margin */
+    font-size: 20px; /* Reduced font size for tablet */
   }
+
+  .auth-container h2 {
+    font-size: 15px; /* Default font size for larger screens */
+    margin-bottom: 20px; /* Default margin for larger screens */
+  }
+
+  .input-group input {
+    padding: 10px; /* Default padding for larger screens */
+  }
+
+  .consent-text {
+    font-size: 0.8em; /* Default font size for larger screens */
+  }
+
   .eye-icon {
-    left: 90px;
+    right: 10px; /* Default position for eye icon */
   }
 }
+@media (max-width: 425px) {
+  .auth-container {
+    width: 90%; /* Adjusted width for mobile */
+    padding: 20px;
+    margin: 5px auto; /* Reduced margin */
+    margin-top: 20px; /* Added margin-top for shifting form upwards */
+    font-size: 10px; /* Reduced font size for mobile */
+  }
+  
+  .auth-container h2 {
+    font-size: 10px; /* Reduced font size for mobile */
+    margin-bottom: 10px; /* Adjusted margin for mobile */
+  }
+
+ 
+  .consent-text {
+    font-size: 0.7em; /* Further reduced font size for mobile */
+  }
+
+  .eye-icon {
+    right: 10px;
+  }
+
+
+}
+

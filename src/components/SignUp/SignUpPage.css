@@ -46,6 +46,7 @@
   cursor: pointer;
   transition: background-color 0.3s;
 }
+
 .input-group input::placeholder {
   color: #c2bfbf;
 }
@@ -80,21 +81,24 @@ button:hover {
   margin-bottom: 20px;
 }
 
-@media (max-width: 375px) {
-  .auth-container {
-    width: 70%;
-  }
-  .eye-icon {
-    display: none;
-  }
-}
-
 @media (max-width: 425px) {
   .auth-container {
-    width: 70%;
+    width: 80%;
+    margin: 80px auto;
+    padding: 10px;
   }
-  .eye-icon {
-    display: none;
+
+  .auth-container h2 {
+    font-size: 28px;
+  }
+
+ 
+  .save-button {
+    width: 100%;
+  }
+
+  .consent-text {
+    font-size: 0.7em;
   }
 }
 
@@ -102,16 +106,32 @@ button:hover {
   .auth-container {
     width: 70%;
   }
-  .eye-icon {
-    display: none;
+
+  .auth-container h2 {
+    font-size: 32px;
+  }
+
+  .input-group  {
+    margin-left: 3%;
+    width: 100%;
+  }
+
+  .save-button {
+    width: 100%;
+  }
+
+  .consent-text {
+    font-size: 0.75em;
   }
 }
 
 @media (max-width: 1024px) {
   .auth-container {
-    width: 80%;
+    width: 90%;
   }
-  .eye-icon {
-    left: 90px;
+
+  .auth-container h2 {
+    font-size: 26px;
+    padding: 0;
   }
 }

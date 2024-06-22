@@ -234,7 +234,7 @@ const SignUpPage: React.FC = () => {
       <p>
         Already have an account? <a href="/#/login">Log In</a>
       </p>
-    </div>#
+    </div>
     </body>
   );
 };
