@@ -64,24 +64,29 @@
 
 @media (max-width: 480px) {
   .footer {
-    padding: 10px;
-    font-size: 10px;
-    margin-top: 90px;
+    padding: 15px;
+    font-size: 8px;
+    margin-top: auto;
   }
   .footer__wrapper {
     flex-direction: column;
     align-items: flex-start;
   }
   .footer__right {
-    margin-left: 0; /* Добавлен отступ между элементами */
+    margin-left: 50%; /* Добавлен отступ между элементами */
     margin-top: 5px;
+    position: absolute;
   }
   .social__item {
     margin-left: 0;
+
   }
+
+  
   .github_logo {
-    margin-top: 5px;
-    margin-left: 0;
+    margin-left: 43%;
+    position: absolute;
+
   }
   .github_logo img {
     width: 15px; 
