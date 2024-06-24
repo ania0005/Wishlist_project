@@ -13,9 +13,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGift } from "@fortawesome/free-solid-svg-icons";
 import styles from "./WishListPage.module.css";
 import "../../App.css";
+import moment from "moment";
 
 const WishListPage: React.FC = () => {
   const [title, setTitle] = useState("");
+  const [eventDate, setEventDate] = useState<moment.Moment | null>(null);
   const [comment, setComment] = useState("");
   const [showModal, setShowModal] = useState(false);
   const [showShareModal, setShowShareModal] = useState(false);
@@ -33,6 +35,7 @@ const WishListPage: React.FC = () => {
         const data = await response.json();
         setTitle(data.title);
         setComment(data.description);
+        setEventDate(moment(data.eventDate));
       } catch (error) {
         console.error("Error fetching wishlist:", error);
       }
@@ -127,7 +130,17 @@ const WishListPage: React.FC = () => {
       console.error("Error deleting Gift:", error);
     }
   };
-
+  const calculateDaysLeft = (): string => {
+    if (!eventDate) return "";
+    const now = moment();
+    const daysLeft = eventDate.diff(now, "days");
+    if (daysLeft < 0) {
+      return `Event has expired`;
+    } else if (daysLeft === 0) {
+      return "Event today";
+    }
+    return `in ${daysLeft} day(s)`;
+  };
   const giftMenu = (gift: Gift) => [
     { key: "edit", label: "Edit", onClick: () => handleEditGift(gift) },
     { key: "delete", label: "Delete", onClick: () => handleDeleteGift(gift) },
@@ -161,8 +174,26 @@ const WishListPage: React.FC = () => {
                 Add gift
               </Button>
             </div>
+            
             <div className={styles.wishlistName}>{title}</div>
             {comment && <div className={styles.wishlistComment}>{comment}</div>}
+            <div className={styles.event_date}>
+            {eventDate && (
+              <div className={styles.days_left_container}>
+                <div className={styles.date}>{eventDate.format("DD/MM/YYYY")}</div>
+                <div
+                  className={styles.days_left}
+                  style={{
+                    backgroundColor: "orange",
+                    padding: "5px",
+                    borderRadius: "5px",
+                  }}
+                >
+                  {calculateDaysLeft()}
+                </div>
+              </div>
+            )}
+          </div>
           </div>
         </header>
         <main className={styles.wishlistContent}>

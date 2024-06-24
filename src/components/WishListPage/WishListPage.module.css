@@ -80,7 +80,7 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
-  margin-top: 100px;
+  margin-top: 30px;
   width: 87%;
   padding: 0 20px;
 }
@@ -180,7 +180,24 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
-
+.event_date{
+  display: flex;
+  align-items: center;
+  padding-bottom: 16px;
+}
+.days_left_container{
+  display: flex;
+  align-items: flex-start;
+  
+}
+.date{
+  font-size: 20px;
+  margin-right: 16px;
+}
+.days_left{
+  font-size: 14px;
+  color: white;
+}
 .giftCardComment {
   font-size: 16px;
   margin-bottom: 10px;
@@ -202,8 +219,6 @@
   width: 10%;
   margin-left: 5px;
 }
-
-
 
 .copyLink {
   background-color: #49baf9;
@@ -284,7 +299,14 @@
     width: 100%;
     margin: 10px 0;
   }
-
+  .giftCardTitle {
+    margin-bottom: 5px !important;
+    font-size: 18px;
+  }
+  .giftCardPrice {
+    margin-bottom: 5px !important;
+    font-size: 14px;
+  }
   .giftLeft {
     margin-right: 20px;
   }
@@ -305,14 +327,6 @@
 
   .giftGoToStore {
     font-size: 12px;
-  }
-
-  .giftCardTitle {
-    font-size: 18px;
-  }
-
-  .giftCardPrice {
-    font-size: 14px;
   }
 
   .giftCardComment {
@@ -346,7 +360,14 @@
     width: 100%;
     margin: 10px 0;
   }
-
+  .giftCardTitle {
+    margin-bottom: 5px !important;
+    font-size: 18px;
+  }
+  .giftCardPrice {
+    margin-bottom: 5px !important;
+    font-size: 14px;
+  }
   .giftLeft {
     margin-right: 20px;
   }
@@ -369,14 +390,6 @@
     font-size: 12px;
   }
 
-  .giftCardTitle {
-    font-size: 18px;
-  }
-
-  .giftCardPrice {
-    font-size: 14px;
-  }
-
   .giftCardComment {
     font-size: 12px;
   }
@@ -396,17 +409,21 @@
     left: 10px;
     
   }
-
   .wishlistContent {
     margin-top: 20px;
     grid-template-columns: repeat(1, 1fr);
     width:auto;
 
   }
-
   .giftCard {
     width: 100%;
     margin: 10px 0;
+  }
+  .giftCardTitle {
+    margin-bottom: 5px !important;
+  }
+  .giftCardPrice {
+    margin-bottom: 5px !important;
   }
 }
 
@@ -428,12 +445,12 @@
     margin: 10px 0;
   }
   .giftCardTitle {
+    margin-bottom: 5px !important;
     font-size: 14px;
   }
-
   .giftCardPrice {
-    font-size: 12
-    px;
+    margin-bottom: 5px !important;
+    font-size: 12px;
   }
 
   .giftCardComment {

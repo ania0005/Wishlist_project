@@ -12,11 +12,11 @@ body {
 }
 
 .sub-title {
-  font-size: 40px;
+  font-size: 17px;
 }
 
 .paragraph {
-  font-size: 26px;
+  font-size: 14px;
   line-height: 1.75;
   padding-top: 20px;
   padding-bottom: 80px;
@@ -24,7 +24,7 @@ body {
 }
 
 .paragraph-first {
-  font-size: 30px; 
+  font-size: 20px; 
   line-height: 1.75;
 }
 /* Медиазапрос для мобильных устройств */
@@ -34,17 +34,17 @@ body {
   }
 
   .sub-title {
-    font-size: 24px;
+    font-size: 15px;
   }
 
   .paragraph {
-    font-size: 18px;
+    font-size: 12px;
     padding-top: 10px;
     padding-bottom: 40px;
   }
 
   .paragraph-first {
-    font-size: 20px;
+    font-size: 18px;
   }
 }
 
@@ -55,11 +55,11 @@ body {
   }
 
   .sub-title {
-    font-size: 20px;
+    font-size: 14px;
   }
 
   .paragraph {
-    font-size: 14px;
+    font-size: 10px;
     padding-top: 10px;
     padding-bottom: 30px;
   }
