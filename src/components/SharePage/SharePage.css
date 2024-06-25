@@ -180,34 +180,94 @@
   background-color: grey;
 }
 
-@media (max-width: 768px) {
+
+@media (max-width: 430px) {
   .share-header {
-    left: 0;
+    margin-top: 80px;
+    left: 10px;
+  }
+  .share-content {
+    margin-top: 15px;
+    grid-template-columns: repeat(1, 1fr);
+    width:auto;
+  }
+  .share-card {
     width: 100%;
-    margin-top: 50px;
-    background-color: rgba(255, 255, 255, 0.9);
+    margin: 10px 0;
+  }
+  .share-card-title {
+    margin-bottom: 5px !important;
+  }
+  .share-card-price {
+    margin-bottom: 5px !important;
+  }
+  .share-card-comment {
+    margin-bottom: 30px;
+    font-size: 1;
+  }
+  .share-reserve-button {
+    top: auto;
+    bottom: 10px;
+  }
+  .share-title {
+    font-size: 30px;
+  }
+  
+  .date {
+    font-size: 14px;
+  }
+  
+  .days-left {
+    font-size: 10px;
   }
 
+  .share-description{
+    font-size: 12px;
+  }
+  
   .share-content {
-    padding-top: 100px;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
   }
-
+  
   .share-card {
-    flex: 1 1 100%;
-    margin-bottom: 20px;
+    width: 100%;
+    max-width: 100%;
+    height: 200px;
+    }
+  
+  .share-card-title {
+    font-size: 20px;
   }
-}
-
-@media (max-width: 480px) {
-  .share-header {
-    margin-top: 20px;
+  
+  .share-card-price {
+    font-size: 16px;
   }
-
-  .share-content {
-    padding-top: 50px;
+  
+  .share-card-comment {
+    font-size: 14px;
   }
-
-  .share-card {
-    flex: 1 1 100%;
+  
+  .share-reserve-button {
+    font-size: 16px;
+    padding: 10px;
+    bottom: 10px;
+    right: 10px;
+    top: 150px;
+    bottom: 20px;
+    width: 160px; 
+    font-size: 16px;
+  }
+  
+  .share-go-to-store {
+    margin-top: 7px;
+    font-size: 14px;
+    color: #49baf9;
+    text-decoration: none;
+    position: absolute;
+    line-height: 0;
+    top: 160px;
+    width: 100%; 
   }
 }

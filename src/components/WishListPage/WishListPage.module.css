@@ -458,23 +458,5 @@
   }
 }
 
-@media (max-width: 375px) {
-  .wishlistHeader {
-    margin-top: 80px;
-    left: 10px;
-    
-  }
 
-  .wishlistContent {
-    margin-top: 20px;
-    grid-template-columns: repeat(1, 1fr);
-    width:auto;
-
-  }
-
-  .giftCard {
-    width: 100%;
-    margin: 10px 0;
-  }
-}
 

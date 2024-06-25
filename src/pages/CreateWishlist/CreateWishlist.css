@@ -17,6 +17,9 @@
   width: 800px;
   height: 800px;
 }
+#wishlist-name{ 
+  width: 400px; 
+  }
 
 .back-arrow a {
   text-decoration: none;
